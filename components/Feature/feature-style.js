@@ -129,7 +129,7 @@ const featureStyles = makeStyles({ uniqId: 'feature' })((theme, _params, classes
     },
     [`& .${classes.graphic}`]: {
       right: -60,
-      top: 100,
+      top: 150,
       width: 400,
       [theme.breakpoints.up('md')]: {
         transformStyle: 'preserve-3d',

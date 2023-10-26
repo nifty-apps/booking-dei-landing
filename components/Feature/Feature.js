@@ -140,7 +140,7 @@ function Feature() {
                       className="section"
                     >
                       {/* <figure className={cx(classes.figure, classes.graphic)}> */}
-                      <figure>
+                      <figure className={classes.graphic}>
                         <img src={imgAPI.saas[3]} alt="illustration" />
                       </figure>
                     </Parallax>
