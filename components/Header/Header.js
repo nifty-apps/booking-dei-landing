@@ -62,11 +62,11 @@ function Header(props) {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+console.log(navMenu)
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
-    createData(navMenu[1], '#' + navMenu[1]),
-    createData(navMenu[2], '#' + navMenu[2]),
+    // createData(navMenu[1], '#' + navMenu[1]),
+    // createData(navMenu[2], '#' + navMenu[2]),
     createData(navMenu[3], '#' + navMenu[3], -40),
   ]);
   const [openDrawer, setOpenDrawer] = useState(false);
@@ -75,6 +75,7 @@ function Header(props) {
   };
 
   return (
+   
     <Fragment>
       { isTablet && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
       <AppBar
@@ -140,7 +141,7 @@ function Header(props) {
                     </Button>
                   </li>
                 </Scrollspy>
-              )}
+              )}P
             </nav>
             <nav className={classes.navMenu}>
               {!isMobile && (

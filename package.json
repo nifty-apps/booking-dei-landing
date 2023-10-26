@@ -34,7 +34,7 @@
 		"cross-env": "^7.0.3",
 		"dandelion-animated-slider": "^1.0.0",
 		"i18next": "^22.4.6",
-        "loader-utils": "^3.2.1",
+		"loader-utils": "^3.2.1",
 		"next": "^13.0.7",
 		"next-i18next": "^13.0.2",
 		"next-images": "^1.8.5",
@@ -70,7 +70,7 @@
 		"eslint-plugin-prettier": "4.0.0",
 		"eslint-plugin-react": "7.27.1",
 		"eslint-webpack-plugin": "^3.1.1",
-		"postcss": "8.3.0",
+		"postcss": "^8.4.31",
 		"webpack": "^5.65.0"
 	}
 }
