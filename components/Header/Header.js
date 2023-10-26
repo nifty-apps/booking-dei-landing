@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import { useTranslation } from 'next-i18next';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/saas/agency-logo.png';
 import brand from '~/public/text/brand';
 import link from '~/public/text/link';
 import Settings from './Settings';
@@ -62,12 +62,12 @@ function Header(props) {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
   const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-console.log(navMenu)
+// console.log(navMenu)
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
-    // createData(navMenu[1], '#' + navMenu[1]),
+    createData(navMenu[1], '#' + navMenu[1]),
     // createData(navMenu[2], '#' + navMenu[2]),
-    createData(navMenu[3], '#' + navMenu[3], -40),
+    // createData(navMenu[3], '#' + navMenu[3], -40),
   ]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {
@@ -93,6 +93,7 @@ console.log(navMenu)
           <div className={classes.headerContent}>
             <nav className={classes.navMenu}>
               { isTablet && (
+           
                 <IconButton
                   onClick={handleOpenDrawer}
                   className={cx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
@@ -105,10 +106,14 @@ console.log(navMenu)
               )}
               <div className={classes.logo}>
                 {invert ? (
-                  <Link href={curLang + link.saas.home}>
-                    <img src={logo} alt="logo" />
-                    {!isTablet && brand.saas.name}
-                  </Link>
+                 <Link href={curLang + link.saas.home}>
+                 <img
+                   src={logo}
+                  
+                 />
+                 {!isTablet && brand.saas.name}
+               </Link>
+               
                 ) : (
                   <AnchorLink href="#home">
                     <img src={logo} alt="logo" />
@@ -141,7 +146,7 @@ console.log(navMenu)
                     </Button>
                   </li>
                 </Scrollspy>
-              )}P
+              )}
             </nav>
             <nav className={classes.navMenu}>
               {!isMobile && (

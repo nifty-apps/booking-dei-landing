@@ -176,11 +176,11 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
       margin: '0 auto',
       transition: 'all 0.3s ease-out',
       marginBottom: theme.spacing(),
-      width: 64,
+      width: 100,
       height: 64,
       [theme.breakpoints.down('sm')]: {
-        height: 48,
-        width: 48
+        height: 64,
+        width: 64
       }
     }
   },

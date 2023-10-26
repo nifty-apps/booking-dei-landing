@@ -33,8 +33,10 @@ function MobileMenu(props) {
               key={index.toString()}
               style={{ animationDuration: index * 0.15 + 's' }}
             >
-              <ListItemText primary={t('saas-landing.header_' + item)} className={classes.menuList} />
+              {/* <p>{item}</p> */}
+         <ListItemText primary={t('saas-landing.header_' + item)} className={classes.menuList} /> 
             </ListItem>
+            
           ))}
           <ListItem
             button
