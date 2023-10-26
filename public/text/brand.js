@@ -1,7 +1,7 @@
 module.exports = {
   saas: {
-    name: 'Software',
-    desc: 'Luxiren Saas - React Single Landing Page Template',
+    name: 'Somudro Bilash',
+    desc: 'Somudro Bilash - A five star holet in Coxs Bazar, Bangladesh',
     prefix: 'luxiren',
     footerText: 'Luxiren Theme 2021',
     logoText: 'Luxiren Software',

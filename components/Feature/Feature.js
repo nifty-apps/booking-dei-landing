@@ -107,7 +107,7 @@ function Feature() {
                 >
                   <div>
                     <Title align={isMobile ? 'center' : 'right'}>
-                      {t('saas-landing.feature_title1')}
+                      {t('saas-landing.feature_title2')}
                       &nbsp;
                       <strong>
                         {t('saas-landing.feature_titlestrong2')}
@@ -139,7 +139,8 @@ function Feature() {
                       translateY={isMobile ? [-25, -25] : [-25, 25]}
                       className="section"
                     >
-                      <figure className={classes.graphic}>
+                      {/* <figure className={cx(classes.figure, classes.graphic)}> */}
+                      <figure>
                         <img src={imgAPI.saas[3]} alt="illustration" />
                       </figure>
                     </Parallax>

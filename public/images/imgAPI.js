@@ -29,13 +29,13 @@ const imgAPI = {
     'https://via.placeholder.com/640x425/c4cdff/757575',
   ],
   saas: [
-    'https://via.placeholder.com/1000x625/f2c9ff/757575',
-    'https://via.placeholder.com/1472x637/5abce4/FFFFFF',
-    'https://via.placeholder.com/1000x625/e6f8ff/757575',
-    '/images/saas/app-counter.png',
-    'https://via.placeholder.com/1000x680/b44fd4/FFFFFF',
-    'https://via.placeholder.com/1000x680/00a7e8/FFFFFF',
-    'https://via.placeholder.com/1000x680/e91e63/FFFFFF',
+    '/images/saas/feature-img-one.jpg',
+    '/images/saas/feature-img-two.jpg',
+    '/images/saas/feature-img-three.jpg',
+    '/images/saas/feature-img-four.png',
+    '/images/saas/room-img-one.jpg',
+    '/images/saas/room-img-two.jpg',
+    '/images/saas/room-img-three.jpg',
     '/images/saas/desktop_illustration.png'
   ]
 };
