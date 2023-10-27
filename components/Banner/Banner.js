@@ -98,7 +98,7 @@ function Banner() {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          {t("Hotel Preview")}
+          {t("saas-landing.video_title")}
           <IconButton
             onClick={handleClose}
             className={classes.closeBtn}

@@ -1,7 +1,7 @@
 module.exports = {
   saas: {
-    name: 'Somudro Bilash',
-    desc: 'Somudro Bilash - A five star holet in Coxs Bazar, Bangladesh',
+    name: 'Booking Dei',
+    desc: 'Booking Dei - A Hotel Management Application for your hotel',
     prefix: 'luxiren',
     footerText: 'Luxiren Theme 2021',
     logoText: 'Luxiren Software',
