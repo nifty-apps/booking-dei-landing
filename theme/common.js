@@ -27,8 +27,9 @@ export const useFloat = makeStyles({ uniqId: 'float' })({
 export const useText = makeStyles({ uniqId: 'text' })(theme => ({
   title: {
     fontWeight: theme.typography.fontWeightBold,
-    fontSize: 48,
+    fontSize: 40,
     lineHeight: '72px',
+
     [theme.breakpoints.down('lg')]: {
       fontSize: 38,
       lineHeight: '60px'
@@ -42,6 +43,7 @@ export const useText = makeStyles({ uniqId: 'text' })(theme => ({
     fontSize: 36,
     lineHeight: '56px',
     fontWeight: theme.typography.fontWeightBold,
+    
     [theme.breakpoints.down('lg')]: {
       fontSize: 32,
       lineHeight: '48px'
@@ -53,8 +55,9 @@ export const useText = makeStyles({ uniqId: 'text' })(theme => ({
   },
   subtitle: {
     fontWeight: theme.typography.fontWeightMedium,
-    fontSize: 28,
-    lineHeight: '44px',
+    fontSize: 20,
+    lineHeight: '30px',
+    color:'white' ,
     [theme.breakpoints.down('lg')]: {
       fontSize: 24,
       lineHeight: '36px',

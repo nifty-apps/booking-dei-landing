@@ -92,7 +92,9 @@ const bannerStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) 
   btnArea: {
     display: 'flex',
     [theme.breakpoints.down('md')]: {
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignContent:'center',
+      
     },
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse',
@@ -141,11 +143,13 @@ const bannerStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) 
     },
     '& img': {
       display: 'block',
+      // margin:2,
       [theme.breakpoints.up('md')]: {
         maxWidth: 400,
       },
       [theme.breakpoints.up('lg')]: {
-        maxWidth: 480,
+        maxWidth: 580,
+        
       }
     }
   },

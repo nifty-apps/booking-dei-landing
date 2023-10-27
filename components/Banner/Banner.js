@@ -134,9 +134,10 @@ function Banner() {
                 {t('saas-landing.banner_titlestrong')}
               </strong>
             </Typography>
-            <Typography component="p" className={text.subtitle}>
+            <Typography variant='h3' component="p" className={text.subtitle}>
               {t('saas-landing.banner_subtitle')}
             </Typography>
+            {/* button  */}
             <div className={classes.btnArea}>
               <ButtonBase className={classes.playBtn} onClick={handleClickOpen}>
                 <span className={classes.icon}>
@@ -154,6 +155,7 @@ function Banner() {
               </Button>
             </div>
           </div>
+          {/* banner image  */}
           <div className={classes.illustration}>
             <img src={imgAPI.saas[7]} alt="illustration" />
           </div>

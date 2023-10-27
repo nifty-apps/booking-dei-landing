@@ -295,7 +295,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     }
   },
   mobileNav: {
-    background: darken(theme.palette.primary.dark, 0.3),
+    background: darken(theme.palette.primary.light, 0.3),
     height: '100%',
     [`& .${classes.menu}`]: {
       padding: theme.spacing(0, 5),
@@ -319,7 +319,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     }
   },
   dividerSidebar: {
-    background: 'rgba(255, 255, 255, 0.2)',
+    background: 'rgba(255, 255, 255, 255)',
     margin: theme.spacing(3, 0)
   }
 }));
