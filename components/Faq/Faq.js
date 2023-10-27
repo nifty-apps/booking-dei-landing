@@ -59,7 +59,7 @@ function Faq() {
                 FAQ
               </strong>
             </Title>
-            <Typography className={cx(classes.text, text.subtitle2)} align={isMobile ? 'center' : 'left'} component="p">
+            <Typography className={cx(text.subtitle2)} align={isMobile ? 'center' : 'left'} component="p">
               {t('saas-landing.faq_subtitle')}
             </Typography>
             {!isMobile && (

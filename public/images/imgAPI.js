@@ -13,11 +13,11 @@ const imgAPI = {
     '/images/avatars/pp_boy5.svg'
   ],
   photo: [
-    'https://via.placeholder.com/675x900/e1ad92/ffffff',
     'https://via.placeholder.com/967x725/ea6d6d/ffffff',
-    'https://via.placeholder.com/1280x849/ea6db7/ffffff',
-    'https://via.placeholder.com/967x725/bb6dea/ffffff',
-    'https://via.placeholder.com/1048x701/6d6fea/ffffff',
+    'https://images.unsplash.com/photo-1507498016354-887e17c7d231?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1526749464606-83091e34a261?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1609409603774-260f88c914d8?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'https://via.placeholder.com/1050x700/6dc0ea/ffffff',
     'https://via.placeholder.com/970x725/6deaa6/ffffff',
     'https://via.placeholder.com/1051x700/b8de27/ffffff',
