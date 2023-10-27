@@ -315,7 +315,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
       zIndex: 10
     },
     '& img': {
-      width: 64,
+      width:120
     },
     '& p, span': {
       display: 'block',
@@ -403,7 +403,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     position: 'relative',
     '& p': {
       [theme.breakpoints.down('sm')]: {
-        fontSize: 12
+        fontSize: 15
       },
     },
     '&:before, &:after': {

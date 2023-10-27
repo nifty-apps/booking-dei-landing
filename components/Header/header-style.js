@@ -311,10 +311,11 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     }
   },
   menuList: {
+   
     textTransform: 'capitalize',
     color: theme.palette.common.white,
     '& span': {
-      fontSize: 24
+      fontSize: 20
     }
   },
   dividerSidebar: {
