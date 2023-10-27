@@ -169,15 +169,15 @@ function Feature() {
                     textColor="primary"
                     centered
                   >
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Pellentesque" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Donec" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Vestibulum" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Honeymoon Suite" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Super Deluxe Couple" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Family Deluxe" />
                   </Tabs>
                   <div className={classes.tabContent}>
                     {value === 0 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc3.1')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
                           <figure className={cx(classes.figure, classes.screen)}>
@@ -189,7 +189,7 @@ function Feature() {
                     {value === 1 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc3.2')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
                           <figure className={cx(classes.figure, classes.screen)}>
@@ -201,7 +201,7 @@ function Feature() {
                     {value === 2 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc3.3')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
                           <figure className={cx(classes.figure, classes.screen)}>

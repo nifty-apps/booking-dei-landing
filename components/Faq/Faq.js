@@ -17,24 +17,24 @@ import useStyles from './faq-style';
 
 const faqData = [
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'What is the check-in and check-out time?',
+    a: 'Check-in time is at 3:00 PM, and check-out time is at 12:00 PM. '
   },
   {
-    q: 'In mi nulla, fringilla vestibulum?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'Do you have on-site dining options?',
+    a: 'Yes, we have an on-site restaurant offering a variety of cuisines, and every morning, we provide complimentary breakfast to our guests.'
   },
   {
-    q: 'Quisque lacinia purus ut libero?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'Are there nearby attractions or activities to explore?',
+    a: 'Absolutely! We are located near various attractions and can help you plan excursions, water sports, and other activities. Just ask our staff for recommendations.'
   },
   {
-    q: 'Quisque ut metus sit amet augue?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'Is parking available at the hotel?',
+    a: 'Yes, we offer complimentary parking for our guests.'
   },
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'What is your cancellation policy?',
+    a: 'Our cancellation policy may vary depending on the type of reservation. Please refer to our booking terms and conditions or contact our reservations team for specific details.'
   },
 ];
 
