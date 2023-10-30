@@ -11,7 +11,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/bookingDei_logo.png';
 import brand from '~/public/text/brand';
 import useStyles from './footer-style';
 import SelectLang from '../LangSwitch/Select';

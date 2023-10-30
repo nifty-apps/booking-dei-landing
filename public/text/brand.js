@@ -7,7 +7,7 @@ module.exports = {
     logoText: 'Luxiren Software',
     projectName: 'Booking Dei',
     url: 'luxireact.ux-maestro.com/saas',
-    img: '/static/images/saas-logo.png',
+    img: '/static/images/bookingdei_logo.png',
     notifMsg: 'Donec sit amet nulla sed arcu pulvinar ultricies commodo id ligula.'
   }
 };

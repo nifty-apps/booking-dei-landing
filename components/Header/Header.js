@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import { useTranslation } from 'next-i18next';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/bookingDei_logo.png';
 import brand from '~/public/text/brand';
 import link from '~/public/text/link';
 import Settings from './Settings';
