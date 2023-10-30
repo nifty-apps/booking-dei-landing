@@ -80,16 +80,16 @@ function Feature() {
                     <Title align={isMobile ? 'center' : 'left'}>
                       {t('saas-landing.feature_title1')}
                       &nbsp;
-                      <strong>
+                      {/* <strong>
                         {t('saas-landing.feature_titlestrong1')}
-                      </strong>
+                      </strong> */}
                     </Title>
                     <Typography display="block" component="h6" className={text.subtitle2} align={isMobile ? 'center' : 'left'}>
                       {t('saas-landing.feature_desc1')}
                     </Typography>
-                    <Button variant="contained" color="primary" size="large" className={classes.btn}>
+                    {/* <Button variant="contained" color="primary" size="large" className={classes.btn}>
                       {t('saas-landing.see_detail')}
-                    </Button>
+                    </Button> */}
                   </div>
                 </ScrollAnimation>
               </Grid>
@@ -107,8 +107,8 @@ function Feature() {
                 >
                   <div>
                     <Title align={isMobile ? 'center' : 'right'}>
-                      {t('saas-landing.feature_title1')}
-                      &nbsp;
+                      {/* {t('saas-landing.feature_title1')}
+                      &nbsp; */}
                       <strong>
                         {t('saas-landing.feature_titlestrong2')}
                       </strong>
@@ -117,9 +117,9 @@ function Feature() {
                       {t('saas-landing.feature_desc2')}
                     </Typography>
                     <div className={isMobile ? align.textCenter : align.textRight}>
-                      <Button variant="contained" color="primary" size="large" className={classes.btn}>
+                      {/* <Button variant="contained" color="primary" size="large" className={classes.btn}>
                         {t('saas-landing.see_detail')}
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </ScrollAnimation>
@@ -168,9 +168,9 @@ function Feature() {
                     textColor="primary"
                     centered
                   >
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Pellentesque" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Donec" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Vestibulum" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="ROOM BOOKINGS" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="TRANSACTIONS" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="FINANCIAL INSIGHTS" />
                   </Tabs>
                   <div className={classes.tabContent}>
                     {value === 0 && (
@@ -210,6 +210,11 @@ function Feature() {
                       </section>
                     )}
                     <ParallaxLarge />
+                    <div className={isMobile ? align.textCenter : align.textCenter}>
+                      <Button variant="contained" color="primary" size="large" className={classes.btn}>
+                        {t('saas-landing.learn_more')}
+                      </Button>
+                    </div>
                   </div>
                 </Grid>
               </Grid>

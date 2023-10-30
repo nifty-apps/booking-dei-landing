@@ -13,25 +13,25 @@ import useStyles from './counter-style';
 
 function Counter() {
   const { classes } = useStyles();
-  const { classes: text } = useText();
-  const [play, setPlay] = useState(false);
-  const { t } = useTranslation('common');
+  // const { classes: text } = useText();
+  // const [play, setPlay] = useState(false);
+  // const { t } = useTranslation('common');
 
-  const countup = (val, isPlay) => (
-    <span>
-      {isPlay ? <CountUp end={val} /> : 0}
-    </span>
-  );
+  // const countup = (val, isPlay) => (
+  //   <span>
+  //     {isPlay ? <CountUp end={val} /> : 0}
+  //   </span>
+  // );
 
-  const handlePlay = visible => {
-    if (visible.inViewport) {
-      setTimeout(() => { setPlay(true); }, 500);
-    }
-  };
+  // const handlePlay = visible => {
+  //   if (visible.inViewport) {
+  //     setTimeout(() => { setPlay(true); }, 500);
+  //   }
+  // };
 
   return (
     <div className={classes.counterWrap}>
-      <Container>
+      {/* <Container>
         <ScrollAnimation
           animateOnce
           animateIn="fadeIn"
@@ -92,7 +92,7 @@ function Counter() {
             </Grid>
           </Grid>
         </ScrollAnimation>
-      </Container>
+      </Container> */}
     </div>
   );
 }

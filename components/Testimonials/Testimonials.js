@@ -106,7 +106,7 @@ function Testimonials() {
   };
   return (
     <div className={classes.root}>
-      <Container fixed={isDesktop}>
+      {/* <Container fixed={isDesktop}>
         <Grid container spacing={6}>
           <Grid item md={7} xs={12}>
             <div className={classes.sliderWrap}>
@@ -171,7 +171,7 @@ function Testimonials() {
             )}
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
     </div>
   );
 }

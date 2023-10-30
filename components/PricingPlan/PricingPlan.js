@@ -48,7 +48,7 @@ function PricingPlan() {
 
   return (
     <div className={classes.root}>
-      <div className={classes.decoration}>
+      {/* <div className={classes.decoration}>
         <svg
           fill="#cccccc"
         >
@@ -135,7 +135,7 @@ function PricingPlan() {
             </div>
           </ScrollAnimation>
         </div>
-      </Container>
+      </Container> */}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { makeStyles } from 'tss-react/mui';
+ import { makeStyles } from 'tss-react/mui';
 
 const testiStyles = makeStyles({ uniqId: 'testi' })((theme, _params, classes) => ({
   root: {
