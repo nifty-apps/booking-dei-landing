@@ -56,11 +56,11 @@ const settings = {
 };
 
 function NewsEvent() {
-  const slider = useRef(null);
+  // const slider = useRef(null);
   const { classes } = useStyle();
   return (
     <div className={classes.root}>
-      <div className={classes.carousel}>
+      {/* <div className={classes.carousel}>
         <Carousel ref={slider} {...settings}>
           {newsContent.map((item, index) => (
             <div key={index.toString()}>
@@ -74,7 +74,7 @@ function NewsEvent() {
             </div>
           ))}
         </Carousel>
-      </div>
+      </div> */}
     </div>
   );
 }
