@@ -79,10 +79,6 @@ function Feature() {
                   <div>
                     <Title align={isMobile ? 'center' : 'left'}>
                       {t('saas-landing.feature_title1')}
-                      &nbsp;
-                      <strong>
-                        {t('saas-landing.feature_titlestrong1')}
-                      </strong>
                     </Title>
                     <Typography display="block" component="h6" className={text.subtitle2} align={isMobile ? 'center' : 'left'}>
                       {t('saas-landing.feature_desc1')}
@@ -108,10 +104,6 @@ function Feature() {
                   <div>
                     <Title align={isMobile ? 'center' : 'right'}>
                       {t('saas-landing.feature_title2')}
-                      &nbsp;
-                      <strong>
-                        {t('saas-landing.feature_titlestrong2')}
-                      </strong>
                     </Title>
                     <Typography display="block" component="h6" className={text.subtitle2} align={isMobile ? 'center' : 'right'}>
                       {t('saas-landing.feature_desc2')}
@@ -139,7 +131,6 @@ function Feature() {
                       translateY={isMobile ? [-25, -25] : [-25, 25]}
                       className="section"
                     >
-                      {/* <figure className={cx(classes.figure, classes.graphic)}> */}
                       <figure className={classes.graphic}>
                         <img src={imgAPI.saas[3]} alt="illustration" />
                       </figure>
@@ -153,10 +144,6 @@ function Feature() {
           <div className={cx(classes.item, classes.last)}>
             <Title align="center">
               {t('saas-landing.feature_title3')}
-              &nbsp;
-              <strong>
-                {t('saas-landing.feature_titlestrong3')}
-              </strong>
             </Title>
             <div className={classes.tab}>
               <Grid container spacing={6}>
@@ -169,9 +156,9 @@ function Feature() {
                     textColor="primary"
                     centered
                   >
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Honeymoon Suite" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Super Deluxe Couple" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Family Deluxe" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Room Bookings" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Transactions" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Financial Insights" />
                   </Tabs>
                   <div className={classes.tabContent}>
                     {value === 0 && (

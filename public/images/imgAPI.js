@@ -33,9 +33,9 @@ const imgAPI = {
     '/images/saas/feature-img-two.jpg',
     '/images/saas/feature-img-three.jpg',
     '/images/saas/feature-img-four.png',
-    '/images/saas/room-img-one.jpg',
-    '/images/saas/room-img-two.jpg',
-    '/images/saas/room-img-three.jpg',
+    '/images/saas/New_Booking.jpg',
+    '/images/saas/Transactions_Page.jpg',
+    '/images/saas/coming.png',
     '/images/saas/desktop_illustration.png'
   ]
 };
