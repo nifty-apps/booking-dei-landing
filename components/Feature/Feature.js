@@ -4,7 +4,6 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import ScrollAnimation from 'react-scroll-animation-wrapper';
 import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
@@ -83,9 +82,9 @@ function Feature() {
                     <Typography display="block" component="h6" className={text.subtitle2} align={isMobile ? 'center' : 'left'}>
                       {t('saas-landing.feature_desc1')}
                     </Typography>
-                    <Button variant="contained" color="primary" size="large" className={classes.btn}>
+                    {/* <Button variant="contained" color="primary" size="large" className={classes.btn}>
                       {t('saas-landing.see_detail')}
-                    </Button>
+                    </Button> */}
                   </div>
                 </ScrollAnimation>
               </Grid>
@@ -109,9 +108,9 @@ function Feature() {
                       {t('saas-landing.feature_desc2')}
                     </Typography>
                     <div className={isMobile ? align.textCenter : align.textRight}>
-                      <Button variant="contained" color="primary" size="large" className={classes.btn}>
+                      {/* <Button variant="contained" color="primary" size="large" className={classes.btn}>
                         {t('saas-landing.see_detail')}
-                      </Button>
+                      </Button> */}
                     </div>
                   </div>
                 </ScrollAnimation>
