@@ -17,24 +17,24 @@ import useStyles from './faq-style';
 
 const faqData = [
   {
-    q: 'What is the check-in and check-out time?',
-    a: 'Check-in time is at 3:00 PM, and check-out time is at 12:00 PM. '
+    q: 'How do I add a new guest or employee to the system?',
+    a: 'For guests, as you create a new booking, their details are automatically recorded in the guest look-up page. To add a new employee to the system, simply click on the "New Employee" button and enter their details in the pop-up.'
   },
   {
-    q: 'Do you have on-site dining options?',
-    a: 'Yes, we have an on-site restaurant offering a variety of cuisines, and every morning, we provide complimentary breakfast to our guests.'
+    q: 'How can I add a transaction?',
+    a: 'To add an income transaction, click New Transaction when creating or editing a booking. For expenses, use New Expense on the Transactions page. Once confirmed, the transactions are automatically stored in the Transactions page and can be edited or deleted as needed.',
   },
   {
-    q: 'Are there nearby attractions or activities to explore?',
-    a: 'Absolutely! We are located near various attractions and can help you plan excursions, water sports, and other activities. Just ask our staff for recommendations.'
+    q: 'Can I edit a room booking?',
+    a: 'Absolutely! You can edit any room booking by clicking the “Edit Booking” button on the booking details page.'
   },
   {
-    q: 'Is parking available at the hotel?',
-    a: 'Yes, we offer complimentary parking for our guests.'
+    q: 'How do I check room availability?',
+    a: 'To check room availability, visit the Home page and view the room layout grid. All rooms are color-coded by status, with available rooms marked in white, making it easy to check their availability.'
   },
   {
-    q: 'What is your cancellation policy?',
-    a: 'Our cancellation policy may vary depending on the type of reservation. Please refer to our booking terms and conditions or contact our reservations team for specific details.'
+    q: 'How can I check KPIs and financial reports?',
+    a: 'Stay tuned! Were currently working on bringing you valuable financial insights and analytics, coming soon in the future.'
   },
 ];
 

@@ -58,9 +58,23 @@ const featureStyles = makeStyles({ uniqId: 'feature' })((theme, _params, classes
       overflow: 'hidden',
       boxShadow: theme.shadows[2],
       borderRadius: theme.rounded.medium,
-      background: theme.palette.common.white,
+      background: theme.palette.common.black,
       padding: theme.spacing(1),
-      paddingTop: theme.spacing(3),
+      paddingTop: theme.spacing(2),
+      margin: theme.spacing(3),
+      '& img': {
+        width: '100%',
+      },
+    },
+    [`& .${classes.figureSm}`]: {
+      transformStyle: 'preserve-3d',
+      overflow: 'hidden',
+      boxShadow: theme.shadows[2],
+      borderRadius: theme.rounded.medium,
+      background: "#2a2a2a",
+      padding: theme.spacing(0.5),
+      paddingTop: theme.spacing(1.5),
+      paddingBottom: theme.spacing(1.5),
       margin: theme.spacing(3),
       '& img': {
         width: '100%',
@@ -133,7 +147,7 @@ const featureStyles = makeStyles({ uniqId: 'feature' })((theme, _params, classes
       width: 400,
       [theme.breakpoints.up('md')]: {
         transformStyle: 'preserve-3d',
-        transform: 'rotateY( -30deg ) rotateX(-4deg) rotateZ(0deg)',
+        transform: 'rotateY( -8deg ) rotateX(-2deg) rotateZ(0deg)',
       }
     },
   },
