@@ -37,8 +37,10 @@ const imgAPI = {
     '/images/saas/app-counter.png',
     // 'https://via.placeholder.com/1000x680/b44fd4/FFFFFF',
     '/images/saas/more_features.png',
-    'https://via.placeholder.com/1000x680/00a7e8/FFFFFF',
-    'https://via.placeholder.com/1000x680/e91e63/FFFFFF',
+    '/images/saas/more_features.png',
+    '/images/saas/more_features.png',
+    // 'https://via.placeholder.com/1000x680/00a7e8/FFFFFF',
+    // 'https://via.placeholder.com/1000x680/e91e63/FFFFFF',
     // '/images/saas/desktop_illustration.png',
     '/images/saas/show_allroom.png',
   ]
