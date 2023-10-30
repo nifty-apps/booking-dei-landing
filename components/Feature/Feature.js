@@ -60,9 +60,9 @@ function Feature() {
                       translateY={isMobile ? [0, 0] : [-10, 20]}
                       className="section"
                     >
-                      <figure className={cx(classes.figure, classes.graphic)}>
+                      {/* <figure className={cx(classes.figure, classes.graphic)}>
                         <img src={imgAPI.saas[1]} alt="illustration" />
-                      </figure>
+                      </figure> */}
                     </Parallax>
                   )}
                   <ParallaxMedium />
@@ -139,9 +139,9 @@ function Feature() {
                       translateY={isMobile ? [-25, -25] : [-25, 25]}
                       className="section"
                     >
-                      <figure className={classes.graphic}>
+                      {/* <figure className={classes.graphic}>
                         <img src={imgAPI.saas[3]} alt="illustration" />
-                      </figure>
+                      </figure> */}
                     </Parallax>
                   )}
                   <ParallaxMedium />
