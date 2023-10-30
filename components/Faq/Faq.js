@@ -17,24 +17,24 @@ import useStyles from './faq-style';
 
 const faqData = [
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How do I add a new guest or employee to the system?',
+    a: 'Create a new guest and a new employee profile with their information. '
   },
   {
-    q: 'In mi nulla, fringilla vestibulum?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How can I add a transaction?',
+    a: ' Click on "+ New Transaction" and fill the transaction details. '
   },
   {
-    q: 'Quisque lacinia purus ut libero?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'Can I edit a room booking?',
+    a: 'Yes, you can typically edit a room booking in the system '
   },
   {
-    q: 'Quisque ut metus sit amet augue?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How do I check room availability?',
+    a: 'You can see the available room in home page. '
   },
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How can I check KPIs and financial reports?',
+    a: 'The software will typically display KPIs in the form of charts, graphs, or tables and select the specific financial report you want to view '
   },
 ];
 
