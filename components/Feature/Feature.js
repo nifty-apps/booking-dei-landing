@@ -157,7 +157,7 @@ function Feature() {
               {t('saas-landing.feature_title3')}
               &nbsp;
               <strong>
-                {t('saas-landing.feature_titlestrong3')}
+                {/* {t('saas-landing.feature_titlestrong3')} */}
               </strong>
             </Title>
             <div className={classes.tab}>
@@ -171,9 +171,9 @@ function Feature() {
                     textColor="primary"
                     centered
                   >
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Pellentesque" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Donec" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Vestibulum" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Room Bookings" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Transactions" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Financial Insights" />
                   </Tabs>
                   <div className={classes.tabContent}>
                     {value === 0 && (
@@ -182,7 +182,7 @@ function Feature() {
                           {t('saas-landing.feature_desc3')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
-                          <figure className={cx(classes.figure, classes.screen)}>
+                          <figure className={cx(classes.figure)}>
                             <img src={imgAPI.saas[4]} alt="screen" />
                           </figure>
                         </div>
@@ -191,10 +191,10 @@ function Feature() {
                     {value === 1 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc4')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
-                          <figure className={cx(classes.figure, classes.screen)}>
+                          <figure className={cx(classes.figure)}>
                             <img src={imgAPI.saas[5]} alt="screen" />
                           </figure>
                         </div>
@@ -203,10 +203,10 @@ function Feature() {
                     {value === 2 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc5')}
                         </Typography>
                         <div className={classes.illustrationCenter}>
-                          <figure className={cx(classes.figure, classes.screen)}>
+                          <figure className={cx(classes.figure)}>
                             <img src={imgAPI.saas[6]} alt="screen" />
                           </figure>
                         </div>

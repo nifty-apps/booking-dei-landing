@@ -94,7 +94,7 @@ function Landing(props) {
             <Feature />
           </section>
           <section id="testimonials" className={classes.spaceBottomTesti}>
-            <Testimonials />
+            {/* <Testimonials /> */}
           </section>
           <section id="pricing" className={classes.spaceTop}>
             <PricingPlan/>
