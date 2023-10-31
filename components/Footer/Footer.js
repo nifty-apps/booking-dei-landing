@@ -26,19 +26,19 @@ function Copyright() {
 }
 
 const footers = [
+  // {
+  //   title: 'Company',
+  //   description: ['Team', 'History', 'Contact us', 'Locations'],
+  //   link: ['#team', '#history', '#contact-us', '#locations'],
+  // },
+  // {
+  //   title: 'Resources',
+  //   description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+  //   link: ['#resource', '#resource-name', '#another-resource', '#final-resource'],
+  // },
   {
-    title: 'Company',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
-    link: ['#team', '#history', '#contact-us', '#locations'],
-  },
-  {
-    title: 'Resources',
-    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    link: ['#resource', '#resource-name', '#another-resource', '#final-resource'],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use', 'Terms Condition'],
+    title: 'Menu',
+    description: ['Features', 'FAQ', 'Contact'],
     link: ['#privacy-policy', '#terms-of-use'],
   },
 ];

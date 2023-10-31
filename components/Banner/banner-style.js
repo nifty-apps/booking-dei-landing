@@ -120,10 +120,10 @@ const bannerStyles = makeStyles({ uniqId: 'banner' })((theme, _params, classes) 
       lineHeight: '47px',
       verticalAlign: 'middle',
       marginRight: theme.spacing(),
-      background: theme.palette.primary.main,
+      background: theme.palette.primary.light,
     },
     '& i': {
-      color: theme.palette.common.white,
+      color: theme.palette.common.black,
       lineHeight: '22px',
       marginLeft: theme.spacing(0.5),
       fontSize: 24,

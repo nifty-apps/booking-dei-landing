@@ -12,7 +12,7 @@ const HeadComponent = () => (
       content={brand.saas.desc}
     />
     {/* Favicon */}
-    <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png" />
@@ -30,7 +30,7 @@ const HeadComponent = () => (
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
     {/* PWA primary color */}
-    <meta name="theme-color" content={theme.violeta.palette.primary.main} />
+    <meta name="theme-color" content={theme.oceanBlue.palette.primary.main} />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://unpkg.com/ionicons@3.0.0/dist/css/ionicons.min.css" rel="stylesheet" />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
@@ -12,8 +12,8 @@ import Tab from '@mui/material/Tab';
 import { useTranslation } from 'next-i18next';
 import { useTextAlign, useText } from '~/theme/common';
 import imgAPI from '~/public/images/imgAPI';
-import ParallaxMedium from '../Parallax/Medium';
-import ParallaxLarge from '../Parallax/Large';
+// import ParallaxMedium from '../Parallax/Medium';
+// import ParallaxLarge from '../Parallax/Large';
 import Title from '../Title';
 import useStyles from './feature-style';
 
@@ -47,25 +47,9 @@ function Feature() {
             <Grid container direction={isMobile ? 'column-reverse' : 'row'}>
               <Grid item md={6} xs={12}>
                 <div className={classes.illustrationLeft}>
-                  <Parallax
-                    translateY={isMobile ? [10, 10] : [10, -25]}
-                    className="section"
-                  >
-                    <figure className={cx(classes.figure, classes.screen)}>
-                      <img src={imgAPI.saas[0]} alt="screen" />
-                    </figure>
-                  </Parallax>
-                  {!isMobile && (
-                    <Parallax
-                      translateY={isMobile ? [0, 0] : [-10, 20]}
-                      className="section"
-                    >
-                      {/* <figure className={cx(classes.figure, classes.graphic)}>
-                        <img src={imgAPI.saas[1]} alt="illustration" />
-                      </figure> */}
-                    </Parallax>
-                  )}
-                  <ParallaxMedium />
+                  <figure className={cx(classes.figure, classes.screen)}>
+                    <img src={imgAPI.saas[0]} alt="screen" />
+                  </figure>
                 </div>
               </Grid>
               <Grid item md={6} xs={12}>
@@ -126,25 +110,9 @@ function Feature() {
               </Grid>
               <Grid item md={6} xs={12}>
                 <div className={classes.illustrationRight}>
-                  <Parallax
-                    translateY={isMobile ? [10, 10] : [10, -25]}
-                    className="section"
-                  >
-                    <figure className={cx(classes.figure, classes.screen)}>
-                      <img src={imgAPI.saas[2]} alt="screen" />
-                    </figure>
-                  </Parallax>
-                  {!isMobile && (
-                    <Parallax
-                      translateY={isMobile ? [-25, -25] : [-25, 25]}
-                      className="section"
-                    >
-                      {/* <figure className={classes.graphic}>
-                        <img src={imgAPI.saas[3]} alt="illustration" />
-                      </figure> */}
-                    </Parallax>
-                  )}
-                  <ParallaxMedium />
+                  <figure className={cx(classes.figure, classes.screen)}>
+                    <img src={imgAPI.saas[2]} alt="screen" />
+                  </figure>
                 </div>
               </Grid>
             </Grid>
@@ -178,7 +146,7 @@ function Feature() {
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
                           {t('saas-landing.feature_desc3')}
                         </Typography>
-                        <div className={classes.illustrationCenter}>
+                        <div>
                           <figure className={cx(classes.figure, classes.screen)}>
                             <img src={imgAPI.saas[4]} alt="screen" />
                           </figure>
@@ -188,9 +156,9 @@ function Feature() {
                     {value === 1 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc4')}
                         </Typography>
-                        <div className={classes.illustrationCenter}>
+                        <div>
                           <figure className={cx(classes.figure, classes.screen)}>
                             <img src={imgAPI.saas[5]} alt="screen" />
                           </figure>
@@ -200,16 +168,15 @@ function Feature() {
                     {value === 2 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc5')}
                         </Typography>
-                        <div className={classes.illustrationCenter}>
+                        <div>
                           <figure className={cx(classes.figure, classes.screen)}>
                             <img src={imgAPI.saas[6]} alt="screen" />
                           </figure>
                         </div>
                       </section>
                     )}
-                    <ParallaxLarge />
                     <div className={isMobile ? align.textCenter : align.textCenter}>
                       <Button variant="contained" color="primary" size="large" className={classes.btn}>
                         {t('saas-landing.learn_more')}

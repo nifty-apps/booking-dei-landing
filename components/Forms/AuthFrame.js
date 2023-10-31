@@ -9,7 +9,7 @@ import Grid from '@mui/material/Grid';
 import { useTranslation } from 'next-i18next';
 import brand from '~/public/text/brand';
 import routerLink from '~/public/text/link';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/bookingDei_logo.png';
 import { useText } from '~/theme/common';
 import useStyles from './form-style';
 

@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import ParallaxMedium from '../Parallax/Medium';
+// import ParallaxMedium from '../Parallax/Medium';
 import illustration from '~/public/images/saas/faq.png';
 import Title from '../Title';
 import useStyles from './faq-style';
@@ -18,23 +18,23 @@ import useStyles from './faq-style';
 const faqData = [
   {
     q: 'How do I add a new guest or employee to the system?',
-    a: 'Create a new guest and a new employee profile with their information. '
+    a: 'For guests, as you create a new booking, their details are automatically recorded in the guest look-up page. To add a new employee to the system, simply click on the "+New Employee" button and enter their details in the pop-up. '
   },
   {
     q: 'How can I add a transaction?',
-    a: ' Click on "+ New Transaction" and fill the transaction details. '
+    a: 'To add an income transaction, click "+ New Transaction" when creating or editing a booking. For expenses, use "+ New Expense" on the Transactions page. Once confirmed, the transactions are automatically stored in the Transactions page and can be edited or deleted as needed.'
   },
   {
     q: 'Can I edit a room booking?',
-    a: 'Yes, you can typically edit a room booking in the system '
+    a: 'Absolutely! You can edit any room booking by clicking the “Edit Booking” button on the booking details page.'
   },
   {
     q: 'How do I check room availability?',
-    a: 'You can see the available room in home page. '
+    a: 'To check room availability, visit the Home page and view the room layout grid. All rooms are color-coded by status, with available rooms marked in white, making it easy to check their availability.'
   },
   {
     q: 'How can I check KPIs and financial reports?',
-    a: 'The software will typically display KPIs in the form of charts, graphs, or tables and select the specific financial report you want to view '
+    a: 'Stay tuned! We are currently working on bringing you valuable financial insights and analytics, coming soon in the future.'
   },
 ];
 
@@ -63,8 +63,7 @@ function Faq() {
               {t('saas-landing.faq_subtitle')}
             </Typography>
             {!isMobile && (
-              <div className={classes.illustration}>
-                <ParallaxMedium />
+              <div>
                 <img src={illustration} alt="illustration" />
               </div>
             )}
