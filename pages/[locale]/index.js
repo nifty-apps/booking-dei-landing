@@ -21,6 +21,7 @@ import NewsEvent from '~/components/NewsEvent';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
+import Advertisement from '../../components/Advertisement';
 
 const sectionMargin = margin => (margin * 20);
 const useStyles = makeStyles({ uniqId: 'home' })(theme => ({
@@ -82,6 +83,9 @@ function Landing(props) {
         <main className={classes.containerWrap}>
           <section id="home">
             <Banner />
+          </section>
+          <section id="advertisement">
+            <Advertisement />
           </section>
           {/* <section>
             <CompanyLogo />
