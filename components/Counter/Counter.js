@@ -31,7 +31,7 @@ function Counter() {
 
   return (
     <div className={classes.counterWrap}>
-      <Container>
+      {/* <Container>
         <ScrollAnimation
           animateOnce
           animateIn="fadeIn"
@@ -92,7 +92,7 @@ function Counter() {
             </Grid>
           </Grid>
         </ScrollAnimation>
-      </Container>
+      </Container> */}
     </div>
   );
 }

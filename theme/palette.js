@@ -97,20 +97,38 @@ module.exports = {
       }
     }
   },
+  // violeta: {
+  //   palette: {
+  //     primary: {
+  //       light: '#E1BEE7',
+  //       main: '#9C27B0',
+  //       dark: '#6A1B9A'
+  //     },
+  //     secondary: {
+  //       light: '#DCEDC8',
+  //       main: '#8BC34A',
+  //       dark: '#558B2F'
+  //     }
+  //   }
+  
+  // },
   violeta: {
     palette: {
       primary: {
-        light: '#E1BEE7',
-        main: '#9C27B0',
-        dark: '#6A1B9A'
+        light: '#87CEFA', // Change to your desired color
+        main: '#B0C4DE',
+        dark: '#87CEFA'
       },
       secondary: {
-        light: '#DCEDC8',
-        main: '#8BC34A',
-        dark: '#558B2F'
-      }
+        light:'#87CEFA', // Change to your desired color
+        main:'#B0C4DE',
+        dark: '#87CEFA'
+      },
+      
     }
-  },
+  }
+  
+  ,
   roseGold: {
     palette: {
       primary: {

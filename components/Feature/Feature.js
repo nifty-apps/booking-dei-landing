@@ -51,6 +51,7 @@ function Feature() {
                     translateY={isMobile ? [10, 10] : [10, -25]}
                     className="section"
                   >
+                    {/* first image pink color  */}
                     <figure className={cx(classes.figure, classes.screen)}>
                       <img src={imgAPI.saas[0]} alt="screen" />
                     </figure>
@@ -60,6 +61,7 @@ function Feature() {
                       translateY={isMobile ? [0, 0] : [-10, 20]}
                       className="section"
                     >
+                      {/* second image blue */}
                       <figure className={cx(classes.figure, classes.graphic)}>
                         <img src={imgAPI.saas[1]} alt="illustration" />
                       </figure>

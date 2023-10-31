@@ -1,6 +1,6 @@
 module.exports = {
   saas: {
-    name: 'TravelNest',
+    name: 'Booking Dei!',
     desc: 'Luxiren Saas - React Single Landing Page Template',
     prefix: 'luxiren',
     footerText: 'Luxiren Theme 2021',

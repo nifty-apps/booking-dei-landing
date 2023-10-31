@@ -131,7 +131,7 @@ function MyApp(props) {
         <CssBaseline />
         <LoadingBar
           height={3}
-          color={theme.palette.primary.main}
+          color={theme?.palette?.primary?.main}
           progress={loading}
           className="top-loading-bar"
         />
