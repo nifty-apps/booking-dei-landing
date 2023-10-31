@@ -1,7 +1,9 @@
 import { makeStyles } from 'tss-react/mui';
 
 const advertisementStyle = makeStyles({ uniqId: 'form' })((theme, _params, classes) => ({
-  title: {},
+  root: {
+    position: 'relative',
+  },
   pageWrap: {
     textAlign: 'center',
     minHeight: '100%',
@@ -29,11 +31,8 @@ const advertisementStyle = makeStyles({ uniqId: 'form' })((theme, _params, class
       },
     }
   },
-  innerWrap: {
-    textAlign: 'left',
-  },
   advertisementWrap: {
-    padding: theme.spacing(8, 2),
+    padding: theme.spacing(8),
     [theme.breakpoints.down('sm')]: {
       padding: theme.spacing(4, 1),
     }
@@ -47,7 +46,13 @@ const advertisementStyle = makeStyles({ uniqId: 'form' })((theme, _params, class
       boxShadow: 'none'
     }
   },
-  }));
+  contactBtn: {
+    width: theme.spacing(30),
+    marginTop: 24,
+    background: theme.palette.secondary.main,
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark
+  },
+}));
 
 // TODO jss-to-tss-react codemod: usages of this hook outside of this file will not be converted.
 export default advertisementStyle;
