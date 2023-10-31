@@ -11,7 +11,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/logo.svg';
 import brand from '~/public/text/brand';
 import useStyles from './footer-style';
 import SelectLang from '../LangSwitch/Select';
@@ -28,19 +28,9 @@ function Copyright() {
 const footers = [
   {
     title: 'Company',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
-    link: ['#team', '#history', '#contact-us', '#locations'],
-  },
-  {
-    title: 'Resources',
-    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    link: ['#resource', '#resource-name', '#another-resource', '#final-resource'],
-  },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use', 'Terms Condition'],
-    link: ['#privacy-policy', '#terms-of-use'],
-  },
+    description: ['Features', 'FAQ', 'Contact'],
+    link: ['#feature', '#faq', '/contact'],
+  }
 ];
 
 function Footer(props) {
@@ -60,9 +50,9 @@ function Footer(props) {
         <Grid item xs={12} md={3}>
           <div className={classes.logo}>
             <img src={logo} alt="logo" />
-            <Typography variant="h6" color="textPrimary">
+            {/* <Typography variant="h6" color="textPrimary">
               {brand.saas.projectName}
-            </Typography>
+            </Typography> */}
           </div>
           <Copyright />
         </Grid>

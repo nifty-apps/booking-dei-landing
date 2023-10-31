@@ -101,11 +101,11 @@ module.exports = {
     palette: {
       primary: {
         light: '#E1BEE7',
-        main: '#9C27B0',
+        main: '#0059AA',
         dark: '#6A1B9A'
       },
       secondary: {
-        light: '#DCEDC8',
+        light: '#0059AA',
         main: '#8BC34A',
         dark: '#558B2F'
       }

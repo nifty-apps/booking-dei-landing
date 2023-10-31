@@ -157,7 +157,7 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
   footerDeco: {
     position: 'relative',
     top: 0,
-    background: `linear-gradient(-45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.primary.main} 90%)`,
+    background: `linear-gradient(-45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.main} 90%)`,
     paddingTop: theme.spacing(40),
     [theme.breakpoints.down('lg')]: {
       paddingTop: theme.spacing(30),

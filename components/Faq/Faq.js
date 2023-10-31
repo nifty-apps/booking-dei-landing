@@ -10,30 +10,29 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
-import ParallaxMedium from '../Parallax/Medium';
 import illustration from '~/public/images/saas/faq.png';
 import Title from '../Title';
 import useStyles from './faq-style';
 
 const faqData = [
   {
-    q: 'Pellentesque ac bibendum tortor?',
+    q: 'How do I add a new guest or employee to the system?',
     a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
   },
   {
-    q: 'In mi nulla, fringilla vestibulum?',
+    q: 'How can I add a transaction?',
     a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
   },
   {
-    q: 'Quisque lacinia purus ut libero?',
+    q: 'Can I edit a room booking?',
     a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
   },
   {
-    q: 'Quisque ut metus sit amet augue?',
+    q: 'How do I check room availability?',
     a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
   },
   {
-    q: 'Pellentesque ac bibendum tortor?',
+    q: 'How can I check KPIs and financial reports?',
     a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
   },
 ];
@@ -64,7 +63,6 @@ function Faq() {
             </Typography>
             {!isMobile && (
               <div className={classes.illustration}>
-                <ParallaxMedium />
                 <img src={illustration} alt="illustration" />
               </div>
             )}

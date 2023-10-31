@@ -11,13 +11,13 @@ import { getStaticPaths, makeStaticProps } from '~/lib/getStatic';
 import brand from '~/public/text/brand';
 import Header from '~/components/Header';
 import Banner from '~/components/Banner';
-import CompanyLogo from '~/components/CompanyLogo';
-import Counter from '~/components/Counter';
+// import CompanyLogo from '~/components/CompanyLogo';
+// import Counter from '~/components/Counter';
 import Feature from '~/components/Feature';
-import Testimonials from '~/components/Testimonials';
-import PricingPlan from '~/components/PricingPlan';
+// import Testimonials from '~/components/Testimonials';
+// import PricingPlan from '~/components/PricingPlan';
 import Faq from '~/components/Faq';
-import NewsEvent from '~/components/NewsEvent';
+// import NewsEvent from '~/components/NewsEvent';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
@@ -62,7 +62,7 @@ const useStyles = makeStyles({ uniqId: 'home' })(theme => ({
 }));
 
 function Landing(props) {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
   const isTablet = useMediaQuery(theme => theme.breakpoints.down('md'));
 
@@ -83,27 +83,27 @@ function Landing(props) {
           <section id="home">
             <Banner />
           </section>
-          <section>
+          {/* <section>
             <CompanyLogo />
           </section>
           <section>
             <Counter />
-          </section>
+          </section> */}
           <section id="feature" className={classes.spaceTop}>
             <Feature />
           </section>
-          <section id="testimonials" className={classes.spaceBottomTesti}>
+          {/* <section id="testimonials" className={classes.spaceBottomTesti}>
             <Testimonials />
           </section>
           <section id="pricing" className={classes.spaceTop}>
             <PricingPlan />
-          </section>
+          </section> */}
           <section id="faq" className={classes.spaceTopShort}>
             <Faq />
           </section>
-          <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
+          {/* <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
             <NewsEvent />
-          </div>
+          </div> */}
         </main>
         <section id="footer">
           <FooterWithDeco toggleDir={onToggleDir} />
