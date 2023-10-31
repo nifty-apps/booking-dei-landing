@@ -48,10 +48,11 @@ function Feature() {
               <Grid item md={6} xs={12}>
                 <div className={classes.illustrationLeft}>
                   <Parallax
-                    translateY={isMobile ? [10, 10] : [10, -25]}
+                    translateY={isMobile ? [10, 10] : [9, 15]}
                     className="section"
                   >
                     {/* first image pink color  */}
+                    
                     <figure className={cx(classes.figure, classes.screen)}>
                       <img src={imgAPI.saas[0]} alt="screen" />
                     </figure>
@@ -62,9 +63,9 @@ function Feature() {
                       className="section"
                     >
                       {/* second image blue */}
-                      <figure className={cx(classes.figure, classes.graphic)}>
+                      {/* <figure className={cx(classes.figure, classes.graphic)}>
                         <img src={imgAPI.saas[1]} alt="illustration" />
-                      </figure>
+                      </figure> */}
                     </Parallax>
                   )}
                   <ParallaxMedium />
@@ -83,7 +84,7 @@ function Feature() {
                       {t('saas-landing.feature_title1')}
                       &nbsp;
                       <strong>
-                        {t('saas-landing.feature_titlestrong1')}
+                        {/* {t('saas-landing.feature_titlestrong1')} */}
                       </strong>
                     </Title>
                     <Typography display="block" component="h6" className={text.subtitle2} align={isMobile ? 'center' : 'left'}>
@@ -133,6 +134,7 @@ function Feature() {
                     className="section"
                   >
                     <figure className={cx(classes.figure, classes.screen)}>
+                      {/* mobile images */}
                       <img src={imgAPI.saas[2]} alt="screen" />
                     </figure>
                   </Parallax>

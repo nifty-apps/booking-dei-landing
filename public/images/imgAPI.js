@@ -29,7 +29,7 @@ const imgAPI = {
     'https://via.placeholder.com/640x425/c4cdff/757575',
   ],
   saas: [
-    'https://via.placeholder.com/1000x625/f2c9ff/757575',
+    'https://i.ibb.co/xGwL0YC/Untitled-design-35.png',
     'https://via.placeholder.com/1472x637/5abce4/FFFFFF',
     'https://via.placeholder.com/1000x625/e6f8ff/757575',
     '/images/saas/app-counter.png',
