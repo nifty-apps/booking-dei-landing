@@ -17,24 +17,24 @@ import useStyles from './faq-style';
 
 const faqData = [
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How do I add a new guest or employee to the system??',
+    a: `For guests, as you create a new booking, their details are automatically recorded in the guest look-up page. To add a new employee to the system, simply click on the '+ New Employee' button and enter their details in the pop-up.. `
   },
   {
-    q: 'In mi nulla, fringilla vestibulum?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How can I add a transaction?',
+    a: `To add an income transaction, click '+ New Transaction' when creating or editing a booking. For expenses, use '+ New Expense' on the Transactions page. Once confirmed, the transactions are automatically stored in the Transactions page and can be edited or deleted as needed. `
   },
   {
-    q: 'Quisque lacinia purus ut libero?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'Can I edit a room booking?',
+    a: 'Absolutely! You can edit any room booking by clicking the “Edit Booking” button on the booking details page. '
   },
   {
-    q: 'Quisque ut metus sit amet augue?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'ow do I check room availability?',
+    a: 'To check room availability, visit the Home page and view the room layout grid. All rooms are color-coded by status, with available rooms marked in white, making it easy to check their availability. '
   },
   {
-    q: 'Pellentesque ac bibendum tortor?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    q: 'How can I check KPIs and financial reports?',
+    a: `Stay tuned! We're currently working on bringing you valuable financial insights and analytics, coming soon in the future.`
   },
 ];
 
@@ -65,7 +65,7 @@ function Faq() {
             {!isMobile && (
               <div className={classes.illustration}>
                 <ParallaxMedium />
-                <img src={illustration} alt="illustration" />
+                <img src={'https://s3-alpha-sig.figma.com/img/e559/9691/9695d77e373cf7a64473ce087baf33ab?Expires=1699833600&Signature=AGiWwIeyIdZgofK~0rr~tgaQ8ZuhanjCK89mhLDgqvZRawhlWn6w3prVUgC1aZHY3SufQGNfMnoy2MjujqKbCETghdu8UutwejPSWXjT9YFFbo8P730Js3llwfMH5nfF-J43-pc6JKYQjO7xhS1TbQvBgAfzGLpfZiMJMYIjpuBSS8JlGkc5zZ9hwclKNJ6H0iOb-mSRGuYiuADUePkJXvlXXKlzW~-UayzdxHTPTP3efRtCOdujBBfZREyetaXcxFN4pLPOkJEqD2UyFhcUPcb2zL2rXvat9b5FgFE2JB-ucvabl8-v0RyVLDMw5LnbcZxVujfHpO4Rh0VuM9Vguw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'} alt="illustration" />
               </div>
             )}
           </Grid>
