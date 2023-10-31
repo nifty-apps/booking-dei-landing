@@ -134,9 +134,9 @@ function Banner() {
                 {t('saas-landing.banner_titlestrong')}
               </strong>
             </Typography>
-            <Typography variant='h3' component="p" className={text.subtitle}>
+            <Typography  variant='h3' component="p" className={text.subtitle}>
               {t('saas-landing.banner_subtitle')}
-            </Typography>
+            </Typography >
             {/* button  */}
             <div className={classes.btnArea}>
               <ButtonBase className={classes.playBtn} onClick={handleClickOpen}>
