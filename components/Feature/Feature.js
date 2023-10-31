@@ -47,13 +47,12 @@ function Feature() {
             <Grid container direction={isMobile ? 'column-reverse' : 'row'}>
               <Grid item md={6} xs={12}>
                 <div className={classes.illustrationLeft}>
-                  <Parallax
-                    translateY={isMobile ? [10, 10] : [9, 15]}
+                <Parallax
+                    translateY={isMobile ? [10, 10] : [10, -35]}
                     className="section"
                   >
-                    {/* first image pink color  */}
-                    
-                    <figure className={cx(classes.figure, classes.screen)}>
+                    <figure >
+                      {/* second card mobile images */}
                       <img src={imgAPI.saas[0]} alt="screen" />
                     </figure>
                   </Parallax>
@@ -110,7 +109,7 @@ function Feature() {
                 >
                   <div>
                     <Title align={isMobile ? 'center' : 'right'}>
-                      {t('saas-landing.feature_title1')}
+                      {/* {t('saas-landing.feature_title1')} */}
                       &nbsp;
                       <strong>
                         {t('saas-landing.feature_titlestrong2')}
@@ -130,11 +129,11 @@ function Feature() {
               <Grid item md={6} xs={12}>
                 <div className={classes.illustrationRight}>
                   <Parallax
-                    translateY={isMobile ? [10, 10] : [10, -25]}
+                    translateY={isMobile ? [10, 10] : [10, -35]}
                     className="section"
                   >
-                    <figure className={cx(classes.figure, classes.screen)}>
-                      {/* mobile images */}
+                    <figure >
+                      {/* second card mobile images */}
                       <img src={imgAPI.saas[2]} alt="screen" />
                     </figure>
                   </Parallax>
@@ -144,7 +143,7 @@ function Feature() {
                       className="section"
                     >
                       <figure className={classes.graphic}>
-                        <img src={imgAPI.saas[3]} alt="illustration" />
+                        {/* <img src={imgAPI.saas[3]} alt="illustration" /> */}
                       </figure>
                     </Parallax>
                   )}

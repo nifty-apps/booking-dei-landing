@@ -31,7 +31,7 @@ const imgAPI = {
   saas: [
     'https://i.ibb.co/xGwL0YC/Untitled-design-35.png',
     'https://via.placeholder.com/1472x637/5abce4/FFFFFF',
-    'https://via.placeholder.com/1000x625/e6f8ff/757575',
+    'https://i.ibb.co/6PtcJ5D/Untitled-design34-1.png',
     '/images/saas/app-counter.png',
     'https://via.placeholder.com/1000x680/b44fd4/FFFFFF',
     'https://via.placeholder.com/1000x680/00a7e8/FFFFFF',
