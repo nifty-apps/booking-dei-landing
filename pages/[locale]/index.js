@@ -103,7 +103,7 @@ function Landing(props) {
             <Faq />
           </section>
           <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
-            <NewsEvent />
+            {/* <NewsEvent /> */}
           </div>
         </main>
         <section id="footer">

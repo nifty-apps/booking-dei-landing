@@ -11,7 +11,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/saas/agency-logo.png';
 import brand from '~/public/text/brand';
 import useStyles from './footer-style';
 import SelectLang from '../LangSwitch/Select';
@@ -27,8 +27,8 @@ function Copyright() {
 
 const footers = [
   {
-    title: 'Company',
-    description: ['Team', 'History', 'Contact us', 'Locations'],
+    title: 'Menu',
+    description: ['Features', 'FAQ', 'Contact', 'Locations'],
     link: ['#team', '#history', '#contact-us', '#locations'],
   },
   {
@@ -36,11 +36,11 @@ const footers = [
     description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
     link: ['#resource', '#resource-name', '#another-resource', '#final-resource'],
   },
-  {
-    title: 'Legal',
-    description: ['Privacy policy', 'Terms of use', 'Terms Condition'],
-    link: ['#privacy-policy', '#terms-of-use'],
-  },
+  // {
+  //   title: 'Legal',
+  //   description: ['Privacy policy', 'Terms of use', 'Terms Condition'],
+  //   link: ['#privacy-policy', '#terms-of-use'],
+  // },
 ];
 
 function Footer(props) {
