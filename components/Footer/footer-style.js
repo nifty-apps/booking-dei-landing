@@ -63,8 +63,11 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
     marginBottom: theme.spacing(3),
     fontWeight: theme.typography.fontWeightBold,
   },
-  logo: {
-    textAlign: 'center',
+  footerLeft: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'start',
+    justifyContent: 'center',
     marginBottom: theme.spacing(3),
     '& img': {
       width: 64,
@@ -72,7 +75,11 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
     },
     '& h6': {
       color: theme.palette.common.white,
+      marginTop: 15
     }
+  },
+  logo: {
+    textAlign: 'center'
   },
   footerDesc: {
     display: 'block',
@@ -85,11 +92,14 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
     marginBottom: theme.spacing(4),
     '& button': {
       margin: theme.spacing(),
-      color: theme.palette.primary.dark,
-      background: theme.palette.primary.main,
+      color: theme.palette.primary.light,
+      background: theme.palette.common.white,
       width: 36,
       height: 36,
       '& i': {
+        color: theme.palette.common.black,
+      },
+      '& i:hover': {
         color: theme.palette.common.white,
       }
     },

@@ -3,7 +3,7 @@ module.exports = {
     name: 'Booking Dei',
     desc: 'Booking Dei - A Hotel Management Application for your hotel',
     prefix: 'luxiren',
-    footerText: 'Booking Dei 2023',
+    footerText: 'Booking Dei ',
     logoText: 'Booking Dei',
     projectName: 'Booking Dei',
     url: 'luxireact.ux-maestro.com/saas',
