@@ -21,7 +21,7 @@ const advertisementStyle = makeStyles({ uniqId: 'form' })((theme, _params, class
       color: theme.palette.common.white,
     },
     '& a': {
-      color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
+      color: theme.palette.common.white,
       textTransform: 'none',
       fontSize: 16,
       textDecoration: 'none',
@@ -47,10 +47,10 @@ const advertisementStyle = makeStyles({ uniqId: 'form' })((theme, _params, class
     }
   },
   contactBtn: {
-    width: theme.spacing(30),
+    textAlign: 'center',
+    width: '100%',
     marginTop: 24,
-    background: theme.palette.secondary.main,
-    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.dark
+    '&:hover': {},
   },
 }));
 

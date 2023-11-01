@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import Button from "@mui/material/Button";
 import { ValidatorForm } from 'react-material-ui-form-validator';
 import { useTranslation } from 'next-i18next';
 import { useText } from '~/theme/common';
@@ -30,15 +30,16 @@ function Contact() {
               <Typography display="block" component="h6" className={text.subtitle2} align="center">
                 {t('saas-landing.advertisement_desc1')}
               </Typography>
-              <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                href="/login"
-                className={classes.contactBtn}
-              >
-                {t("saas-landing.connect_us")}
-              </Button>
+              <div className={classes.contactBtn}>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  href="/login"
+                >
+                  {t("saas-landing.connect_us")}
+                </Button>
+              </div>
             </div>
           </Paper>
         </Container>
