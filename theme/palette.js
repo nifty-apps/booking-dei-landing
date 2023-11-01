@@ -115,16 +115,15 @@ module.exports = {
   violeta: {
     palette: {
       primary: {
-        light: '#87CEFA', // Change to your desired color
-        main: '#B0C4DE',
-        dark: '#87CEFA'
+        light: '#779ecb',
+        main: '#7cb9e8',
+        dark: '#034682'
       },
       secondary: {
-        light:'#87CEFA', // Change to your desired color
-        main:'#B0C4DE',
-        dark: '#87CEFA'
-      },
-      
+        light: '#6495ed',
+        main: '#126180',
+        dark: '#446ccf',
+      }
     }
   }
   

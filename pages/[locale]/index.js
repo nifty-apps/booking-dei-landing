@@ -14,13 +14,13 @@ import Banner from '~/components/Banner';
 import CompanyLogo from '~/components/CompanyLogo';
 import Counter from '~/components/Counter';
 import Feature from '~/components/Feature';
-import Testimonials from '~/components/Testimonials';
-import PricingPlan from '~/components/PricingPlan';
+
 import Faq from '~/components/Faq';
 import NewsEvent from '~/components/NewsEvent';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
+
 
 const sectionMargin = margin => (margin * 20);
 const useStyles = makeStyles({ uniqId: 'home' })(theme => ({
@@ -85,6 +85,7 @@ function Landing(props) {
           </section>
        
           <section>
+            {/* <Discover/> */}
             <CompanyLogo />
           </section>
           <section>
