@@ -1,6 +1,6 @@
 import React from 'react';
 import Container from '@mui/material/Container';
-import useStyles from './logo-style';
+import useStyles from '../DiscoverSection/logo-style';
 import { Button, Typography, useMediaQuery } from '@mui/material';
 import Title from '../Title';
 import { useTheme } from '@emotion/react';
@@ -22,7 +22,10 @@ function CompanyLogo() {
   return (
 
     // <></>
-<div>
+<div style={{display:'flex',
+alignContent:'center',
+justifyContent:'center'
+}}>
 <div
   style={{
     width: '80%', // Set to 100% to make it responsive

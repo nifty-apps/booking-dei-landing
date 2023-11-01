@@ -5,6 +5,8 @@ import { Button, Typography, useMediaQuery } from '@mui/material';
 
 import { useTheme } from '@emotion/react';
 import useStyles from './logo-style';
+import Title from '../Title';
+
 
 const logos = [
   '/images/logos/architect.png',
@@ -16,13 +18,16 @@ const logos = [
 ];
 
 function Discover() {
-  // const { classes } = useStyles();
+  const { classes } = useStyles();
   const theme = useTheme();
 
   return (
 
     // <></>
-<div>
+<div style={{display:'flex',
+alignContent:'center',
+justifyContent:'center'
+}}>
 <div
   style={{
     width: '80%', // Set to 100% to make it responsive
@@ -47,9 +52,9 @@ function Discover() {
   <Typography display="block" component="h6" align="center">
     We know that selecting the right solution is crucial for your hotel, and we're here to make it effortless. With our all-in-one, user-friendly solution, you can effortlessly streamline your hotel operations. From managing room bookings and tracking financial transactions to staying ahead with real-time room status updates, you'll optimize decision-making and elevate your guests' experience with ease. Join us for a free demonstration, and see how Booking Dei can simplify your hotel operations, leaving a positive impact every step of the way!
   </Typography>
-  {/* <Button variant="contained" color="primary" size="large" className={classes.btn}>
+  <Button variant="contained" color="primary" size="large" className={classes.btn} style={{margin:40}}>
     CONNECT WITH US!
-  </Button> */}
+  </Button>
 </div>
 </div>
 

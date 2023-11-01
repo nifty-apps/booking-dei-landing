@@ -20,6 +20,7 @@ import NewsEvent from '~/components/NewsEvent';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
+import Discover from '../../components/DiscoverSection/Discover';
 
 
 const sectionMargin = margin => (margin * 20);
@@ -85,8 +86,8 @@ function Landing(props) {
           </section>
        
           <section>
-            {/* <Discover/> */}
-            <CompanyLogo />
+            <Discover/>
+            {/* <CompanyLogo /> */}
           </section>
           <section>
             <Counter />
