@@ -42,7 +42,7 @@ const faqStyles = makeStyles({ uniqId: 'faq' })((theme, _params, classes) => ({
     }
   },
   expanded: {
-    background: theme.palette.secondary.main,
+    background: theme.palette.primary.dark,
     [`& .${classes.heading}`]: {
       color: theme.palette.common.white,
       paddingTop: 0,

@@ -17,7 +17,7 @@ import Feature from '~/components/Feature';
 // import Testimonials from '~/components/Testimonials';
 // import PricingPlan from '~/components/PricingPlan';
 import Faq from '~/components/Faq';
-import NewsEvent from '~/components/NewsEvent';
+// import NewsEvent from '~/components/NewsEvent';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
@@ -63,7 +63,7 @@ const useStyles = makeStyles({ uniqId: 'home' })(theme => ({
 }));
 
 function Landing(props) {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
   const isTablet = useMediaQuery(theme => theme.breakpoints.down('md'));
 
@@ -71,7 +71,7 @@ function Landing(props) {
     <React.Fragment>
       <Head>
         <title>
-          { brand.saas.name + ' - Home Page' }
+          {brand.saas.name + ' - Home Page'}
         </title>
       </Head>
       <CssBaseline />
@@ -105,9 +105,9 @@ function Landing(props) {
           <section id="faq" className={classes.spaceTopShort}>
             <Faq />
           </section>
-          <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
+          {/* <div className={cx(classes.spaceTopShort, classes.spaceBottomShort)}>
             <NewsEvent />
-          </div>
+          </div> */}
         </main>
         <section id="footer">
           <FooterWithDeco toggleDir={onToggleDir} />
