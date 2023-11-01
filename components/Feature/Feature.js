@@ -159,11 +159,11 @@ function Feature() {
                     {value === 1 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc4')}
                         </Typography>
                         <div>
                           <figure className={cx(classes.figure, classes.screen)}>
-                            <img src={imgAPI.saas[10]} alt="screen" />
+                            <img src={imgAPI.saas[11]} alt="screen" />
                           </figure>
                         </div>
                         <div className={classes.action}>
@@ -181,11 +181,11 @@ function Feature() {
                     {value === 2 && (
                       <section>
                         <Typography component="h6" display="block" align="center" className={text.subtitle2}>
-                          {t('saas-landing.feature_desc3')}
+                          {t('saas-landing.feature_desc5')}
                         </Typography>
                         <div>
                           <figure className={cx(classes.figure, classes.screen)}>
-                            <img src={imgAPI.saas[10]} alt="screen" />
+                            <img src={imgAPI.saas[12]} alt="screen" />
                           </figure>
                         </div>
                         <div className={classes.action}>

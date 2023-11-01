@@ -39,7 +39,9 @@ const imgAPI = {
     '/images/saas/banner_img.png',
     '/images/saas/feature_one.png',
     '/images/saas/feature_two.png',
-    '/images/saas/feature_tab_one.png'
+    '/images/saas/feature_tab_one.png',
+    '/images/saas/transaction.png',
+    '/images/saas/comingsoon.png',
   ]
 };
 

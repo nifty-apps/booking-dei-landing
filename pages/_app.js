@@ -21,6 +21,7 @@ import '../vendors/animate-extends.css';
 import '../vendors/top-loading-bar.css';
 import '../vendors/slick/slick.css';
 import '../vendors/slick/slick-theme.css';
+import '../vendors/custom.css'
 
 let themeType = '';
 if (typeof Storage !== 'undefined') { // eslint-disable-line
