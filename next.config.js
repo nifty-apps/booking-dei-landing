@@ -1,3 +1,8 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-unused-labels */
+/* eslint-disable no-labels */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-unused-vars */
 // Enable this code below for Server Side Rendering/Translation (SSR)
 // const { i18n } = require('./next-i18next.config')
 const withImages = require('next-images');
@@ -21,13 +26,13 @@ module.exports = withImages({
       : 'none',
   },
   webpack: (config, options) => {
-    cssModules: true,
+    cssModules: true;
     config.plugins.push(
       //      new ESLintPlugin({
       //        exclude: ['node_modules']
       //      })
     );
-    config.node = {}
+    config.node = {};
     return config;
   },
 });
