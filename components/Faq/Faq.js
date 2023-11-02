@@ -1,39 +1,39 @@
-import React, { useState } from 'react';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTranslation } from 'next-i18next';
-import { useText } from '~/theme/common';
+import React, { useState } from 'react';
 import illustration from '~/public/images/saas/faq.png';
+import { useText } from '~/theme/common';
 import Title from '../Title';
 import useStyles from './faq-style';
 
 const faqData = [
   {
     q: 'How do I add a new guest or employee to the system?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    a: 'For guests, as you create a new booking, their details are automatically recorded in the guest look-up page. To add a new employee to the system, simply click on the "New Employee" button and enter their details in the pop-up.'
   },
   {
     q: 'How can I add a transaction?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    a: 'To add an income transaction, click New Transaction when creating or editing a booking. For expenses, use New Expense on the Transactions page. Once confirmed, the transactions are automatically stored in the Transactions page and can be edited or deleted as needed.',
   },
   {
     q: 'Can I edit a room booking?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    a: 'Absolutely! You can edit any room booking by clicking the “Edit Booking” button on the booking details page.'
   },
   {
     q: 'How do I check room availability?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    a: 'To check room availability, visit the Home page and view the room layout grid. All rooms are color-coded by status, with available rooms marked in white, making it easy to check their availability.'
   },
   {
     q: 'How can I check KPIs and financial reports?',
-    a: 'Vivamus sit amet interdum elit. Proin lacinia erat ac velit tempus auctor. '
+    a: 'Stay tuned! Were currently working on bringing you valuable financial insights and analytics, coming soon in the future.'
   },
 ];
 
@@ -58,7 +58,7 @@ function Faq() {
                 FAQ
               </strong>
             </Title>
-            <Typography className={cx(classes.text, text.subtitle2)} align={isMobile ? 'center' : 'left'} component="p">
+            <Typography className={cx(text.subtitle2)} align={isMobile ? 'center' : 'left'} component="p">
               {t('saas-landing.faq_subtitle')}
             </Typography>
             {!isMobile && (

@@ -12,7 +12,7 @@ import Snackbar from '@mui/material/Snackbar';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'next-i18next';
 import brand from '~/public/text/brand';
-import logo from '~/public/images/saas-logo.svg';
+import logo from '~/public/images/Booking_Dei_logo.png';
 import routeLink from '~/public/text/link';
 import { useText } from '~/theme/common';
 import Checkbox from './Checkbox';

@@ -10,8 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import { useTranslation } from 'next-i18next';
-import logo from '~/public/images/logo.svg';
-// import brand from '~/public/text/brand';
+import logo from '~/public/images/Booking_Dei_logo.png';
 import link from '~/public/text/link';
 import Settings from './Settings';
 import MobileMenu from './MobileMenu';
@@ -65,7 +64,7 @@ function Header(props) {
 
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
-    createData(navMenu[1], '#' + navMenu[1], -40),
+    createData(navMenu[1], '#' + navMenu[1]),
   ]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {

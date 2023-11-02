@@ -11,26 +11,29 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/logo.svg';
+import logo from '~/public/images/Booking_Dei_logo.png';
 import brand from '~/public/text/brand';
 import useStyles from './footer-style';
 import SelectLang from '../LangSwitch/Select';
 
+const date = new Date();
+const year = date.getFullYear();
 function Copyright() {
   return (
-    <Typography variant="body2" display="block" align="center" color="textSecondary">
+    <Typography variant="body2" display="block" align="left" color="textSecondary">
       &copy;&nbsp;
       {brand.saas.footerText}
+      {year}
     </Typography>
   );
 }
 
 const footers = [
   {
-    title: 'Company',
-    description: ['Features', 'FAQ', 'Contact'],
-    link: ['#feature', '#faq', '/contact'],
-  }
+    title: 'menu',
+    description: ['Feature', 'FAQ'],
+    link: ['#feature', '#faq'],
+  },
 ];
 
 function Footer(props) {
@@ -47,16 +50,15 @@ function Footer(props) {
       className={cx(classes.footer, invert && classes.invert)}
     >
       <Grid container spacing={4}>
-        <Grid item xs={12} md={3}>
-          <div className={classes.logo}>
-            <img src={logo} alt="logo" />
-            {/* <Typography variant="h6" color="textPrimary">
-              {brand.saas.projectName}
-            </Typography> */}
-          </div>
-          <Copyright />
-        </Grid>
         <Grid item xs={12} md={6}>
+          <div className={classes.footerLeft}>
+            <div className={classes.logo}>
+              <img src={logo} alt="logo" />
+              <Copyright />
+            </div>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={3}>
           <Grid container spacing={4} justifyContent="space-evenly">
             {footers.map(footer => (
               <Grid item xs={12} md={3} key={footer.title} className={classes.siteMapItem}>
@@ -141,7 +143,7 @@ Footer.propTypes = {
 
 Footer.defaultProps = {
   invert: false,
-  toggleDir: () => {},
+  toggleDir: () => { },
 };
 
 export default Footer;

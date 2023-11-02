@@ -1,7 +1,7 @@
 {
   "extends": [
     "eslint-config-airbnb",
-    "plugin:flowtype/recommended",
+    "plugin:flowtype/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -14,12 +14,13 @@
   "env": {
     "browser": true,
     "node": true,
-    "mocha": true,
+    "mocha": true
   },
   "parser": "@babel/eslint-parser",
   "rules": {
+    "quotes": "off",
     "template-curly-spacing" : "off",
-    indent : "off",
+    "indent" : "off",
     "no-nested-ternary": 0,
     "react/no-unstable-nested-components": 0,
     "import/no-unresolved": 0,
@@ -74,6 +75,6 @@
     "__CLIENT__": true,
     "__SERVER__": true,
     "beforeAll": true,
-    "afterAll": true,
+    "afterAll": true
   }
 }

@@ -21,6 +21,7 @@ import Faq from '~/components/Faq';
 import FooterWithDeco from '~/components/Footer/FooterWithDeco';
 import PageNav from '~/components/PageNav';
 import Notification from '~/components/Notification';
+import Advertisement from '../../components/Advertisement';
 
 const sectionMargin = margin => (margin * 20);
 const useStyles = makeStyles({ uniqId: 'home' })(theme => ({
@@ -70,7 +71,7 @@ function Landing(props) {
     <React.Fragment>
       <Head>
         <title>
-          { brand.saas.name + ' - Home Page' }
+          {brand.saas.name + ' - Home Page'}
         </title>
       </Head>
       <CssBaseline />
@@ -83,6 +84,9 @@ function Landing(props) {
           <section id="home">
             <Banner />
           </section>
+          <section id="advertisement">
+            <Advertisement />
+          </section>
           {/* <section>
             <CompanyLogo />
           </section>
@@ -94,8 +98,8 @@ function Landing(props) {
           </section>
           {/* <section id="testimonials" className={classes.spaceBottomTesti}>
             <Testimonials />
-          </section>
-          <section id="pricing" className={classes.spaceTop}>
+          </section> */}
+          {/* <section id="pricing" className={classes.spaceTop}>
             <PricingPlan />
           </section> */}
           <section id="faq" className={classes.spaceTopShort}>

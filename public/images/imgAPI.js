@@ -13,11 +13,11 @@ const imgAPI = {
     '/images/avatars/pp_boy5.svg'
   ],
   photo: [
-    'https://via.placeholder.com/675x900/e1ad92/ffffff',
     'https://via.placeholder.com/967x725/ea6d6d/ffffff',
-    'https://via.placeholder.com/1280x849/ea6db7/ffffff',
-    'https://via.placeholder.com/967x725/bb6dea/ffffff',
-    'https://via.placeholder.com/1048x701/6d6fea/ffffff',
+    'https://images.unsplash.com/photo-1507498016354-887e17c7d231?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1526749464606-83091e34a261?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1609409603774-260f88c914d8?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'https://via.placeholder.com/1050x700/6dc0ea/ffffff',
     'https://via.placeholder.com/970x725/6deaa6/ffffff',
     'https://via.placeholder.com/1051x700/b8de27/ffffff',
@@ -29,17 +29,14 @@ const imgAPI = {
     'https://via.placeholder.com/640x425/c4cdff/757575',
   ],
   saas: [
-    'https://via.placeholder.com/1000x625/f2c9ff/757575',
-    'https://via.placeholder.com/1472x637/5abce4/FFFFFF',
-    'https://via.placeholder.com/1000x625/e6f8ff/757575',
-    '/images/saas/app-counter.png',
-    'https://via.placeholder.com/1000x680/b44fd4/FFFFFF',
-    'https://via.placeholder.com/1000x680/00a7e8/FFFFFF',
-    'https://via.placeholder.com/1000x680/e91e63/FFFFFF',
-    '/images/saas/banner_img.png',
-    '/images/saas/feature_one.png',
-    '/images/saas/feature_two.png',
-    '/images/saas/feature_tab_one.png'
+    '/images/saas/feature-img-one.jpg',
+    '/images/saas/feature-img-two.jpg',
+    '/images/saas/feature-img-three.jpg',
+    '/images/saas/feature-img-four.jpg',
+    '/images/saas/New_Booking.jpg',
+    '/images/saas/Transactions_Page.jpg',
+    '/images/saas/coming.png',
+    '/images/saas/desktop_illustration.png'
   ]
 };
 

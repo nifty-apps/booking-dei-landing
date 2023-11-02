@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
-import Container from '@mui/material/Container';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import ButtonBase from '@mui/material/ButtonBase';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Dialog from '@mui/material/Dialog';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import YouTube from 'react-youtube';
-import Zoom from '@mui/material/Zoom';
-import { useTranslation } from 'next-i18next';
-import { useText } from '~/theme/common';
-import yt from '~/youtube';
-import imgAPI from '~/public/images/imgAPI';
-import useStyles from './banner-style';
+import React, { useState, useEffect, useRef } from "react";
+import Container from "@mui/material/Container";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import ButtonBase from "@mui/material/ButtonBase";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import YouTube from "react-youtube";
+import Zoom from "@mui/material/Zoom";
+import { useTranslation } from "next-i18next";
+import { useText } from "~/theme/common";
+import yt from "~/youtube";
+import imgAPI from "~/public/images/imgAPI";
+import useStyles from "./banner-style";
 
 const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
   return <Zoom ref={ref} {...props} />;
@@ -26,13 +26,13 @@ function Banner() {
   const { classes, cx } = useStyles();
   const { classes: text } = useText();
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
-  const isTablet = useMediaQuery(theme.breakpoints.down('lg'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
 
   const elem = useRef(null);
   const [hide, setHide] = useState(false);
 
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   const [player, setPlayer] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
@@ -63,26 +63,27 @@ function Banner() {
     player[0].pauseVideo();
   };
 
-  const _onReady = event => {
+  const _onReady = (event) => {
     player.push(event.target);
     setPlayer(player);
   };
 
   const opts = {
-    height: '360',
-    width: '640',
-    playerVars: { // https://developers.google.com/youtube/player_parameters
+    height: "360",
+    width: "640",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
       controls: 1,
       rel: 0,
       showinfo: 1,
       mute: 0,
-      origin: 'https://localhost:3002'
-    }
+      origin: "https://localhost:3002",
+    },
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
   });
 
   return (
@@ -97,30 +98,26 @@ function Banner() {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          {t('saas-landing.banner_title')}
-          <IconButton onClick={handleClose} className={classes.closeBtn} size="large">
+          {t("saas-landing.video_title")}
+          <IconButton
+            onClick={handleClose}
+            className={classes.closeBtn}
+            size="large"
+          >
             <CloseIcon className={classes.icon} />
           </IconButton>
         </DialogTitle>
         <DialogContent>
           {yt.use && (
-            <YouTube
-              videoId="KxZAdEGpYAw"
-              onReady={_onReady}
-              opts={opts}
-            />
+            <YouTube videoId="4K6Sh1tsAW4" onReady={_onReady} opts={opts} />
           )}
         </DialogContent>
       </Dialog>
       <div className={classes.decoration}>
-        <svg
-          className={classes.leftDeco}
-        >
+        <svg className={classes.leftDeco}>
           <use xlinkHref="/images/saas/deco-bg-left.svg#main" />
         </svg>
-        <svg
-          className={classes.rightDeco}
-        >
+        <svg className={classes.rightDeco}>
           <use xlinkHref="/images/saas/deco-bg-right.svg#main" />
         </svg>
       </div>
@@ -128,21 +125,19 @@ function Banner() {
         <div className={classes.sliderWrap}>
           <div className={classes.text}>
             <Typography variant="h3" className={text.title}>
-              {t('saas-landing.banner_title')}
+              {t("saas-landing.banner_title")}
               &nbsp;
-              <strong>
-                {t('saas-landing.banner_titlestrong')}
-              </strong>
+              <strong>{t("saas-landing.banner_titlestrong")}</strong>
             </Typography>
             <Typography component="p" className={text.subtitle}>
-              {t('saas-landing.banner_subtitle')}
+              {t("saas-landing.banner_subtitle")}
             </Typography>
             <div className={classes.btnArea}>
               <ButtonBase className={classes.playBtn} onClick={handleClickOpen}>
                 <span className={classes.icon}>
                   <i className="ion-ios-play-outline" />
                 </span>
-                {t('saas-landing.banner_watchvideo')}
+                {t("saas-landing.banner_watchvideo")}
               </ButtonBase>
               <Button
                 variant="contained"
@@ -150,12 +145,13 @@ function Banner() {
                 size="large"
                 href="/login"
               >
-                {t('saas-landing.getstarted')}
+                {t("saas-landing.getstarted")}
               </Button>
             </div>
           </div>
           <div className={classes.illustration}>
             <img src={imgAPI.saas[7]} alt="illustration" />
+            {/* <img src="https://images.unsplash.com/photo-1471922694854-ff1b63b20054?auto=format&fit=crop&q=80&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="illustration" /> */}
           </div>
         </div>
       </Container>
