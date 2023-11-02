@@ -298,7 +298,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     justifyContent: 'flex-start',
     height: '100%',
     textAlign: 'center',
-    color: theme.palette.common.white,
+    color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black,
     '& h6': {
       fontWeight: theme.typography.fontWeightRegular
     }
@@ -316,11 +316,14 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
     },
     '& img': {
       width: 64,
+      background: theme.palette.mode === 'dark' ? 'transparent' : '#000000',
+      padding: 2,
+      borderRadius: 5,
     },
     '& p, span': {
       display: 'block',
       paddingBottom: 4,
-      color: theme.palette.common.white,
+      color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.common.black,
     }
   },
   head: {
