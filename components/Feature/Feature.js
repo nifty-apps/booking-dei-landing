@@ -155,9 +155,9 @@ function Feature() {
                     textColor="primary"
                     centered
                   >
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Room Bookings" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Transactions" />
-                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label="Financial Insights" />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('saas-landing.feature_label1')} />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('saas-landing.feature_label2')} />
+                    <Tab classes={{ root: classes.tabLabel, selected: classes.selected }} label={t('saas-landing.feature_label3')} />
                   </Tabs>
                   <div className={classes.tabContent}>
                     {value === 0 && (
