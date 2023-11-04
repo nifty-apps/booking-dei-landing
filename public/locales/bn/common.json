@@ -29,7 +29,7 @@
   "login_subtitle": "লগইন করুন",
   "register": "রেজিস্টার",
   "register_already": "একাউন্ট আছে?",
-  "register_or": "অথবা ইমেইল দিয়ে রেজিস্টার করুণ",
+  "register_or": "ইমেইল রেজিস্ট্রেশন",
   "register_name": "নাম? *",
   "register_email": "ইমেইল? *",
   "register_password": "পাসওয়ার্ড",

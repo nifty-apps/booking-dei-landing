@@ -11,7 +11,6 @@ import { useTranslation } from 'next-i18next';
 import routeLink from '~/public/text/link';
 import { useText } from '~/theme/common';
 import Checkbox from './Checkbox';
-import SocialAuth from './SocialAuth';
 import Title from '../Title/TitleSecondary';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
@@ -66,7 +65,6 @@ function Register() {
             {t('register_already')}
           </Button>
         </div>
-        <SocialAuth />
         <div className={classes.separator}>
           <Typography>{t('register_or')}</Typography>
         </div>
