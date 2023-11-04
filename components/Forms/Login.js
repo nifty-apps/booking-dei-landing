@@ -11,7 +11,6 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { useTranslation } from 'next-i18next';
 import routeLink from '~/public/text/link';
 import { useText } from '~/theme/common';
-import SocialAuth from './SocialAuth';
 import Title from '../Title/TitleSecondary';
 import AuthFrame from './AuthFrame';
 import useStyles from './form-style';
@@ -65,7 +64,6 @@ function Login() {
             {t('login_create')}
           </Button>
         </div>
-        <SocialAuth />
         <div className={classes.separator}>
           <Typography>
             {t('login_or')}
