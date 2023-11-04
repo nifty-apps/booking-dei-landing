@@ -94,14 +94,14 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
       margin: theme.spacing(),
       color: theme.palette.primary.light,
       background: theme.palette.common.white,
+      '&:hover': {
+        background: theme.palette.secondary.light
+      },
       width: 36,
       height: 36,
       '& i': {
         color: theme.palette.common.black,
       },
-      '& i:hover': {
-        color: theme.palette.common.white,
-      }
     },
     '& i': {
       fontSize: 24,
