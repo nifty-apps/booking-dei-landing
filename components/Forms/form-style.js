@@ -5,7 +5,7 @@ const contactStyles = makeStyles({ uniqId: 'form' })((theme, _params, classes) =
   title: {},
   pageWrap: {
     textAlign: 'center',
-    background: theme.palette.primary.main,
+    background: theme.palette.primary.dark,
     minHeight: '100%',
     position: 'relative',
     width: '100%',

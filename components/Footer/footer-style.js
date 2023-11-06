@@ -94,14 +94,14 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
       margin: theme.spacing(),
       color: theme.palette.primary.light,
       background: theme.palette.common.white,
+      '&:hover': {
+        background: theme.palette.secondary.light
+      },
       width: 36,
       height: 36,
       '& i': {
         color: theme.palette.common.black,
       },
-      '& i:hover': {
-        color: theme.palette.common.white,
-      }
     },
     '& i': {
       fontSize: 24,
@@ -167,7 +167,7 @@ const footerStyles = makeStyles({ uniqId: 'footer' })((theme, _params, classes) 
   footerDeco: {
     position: 'relative',
     top: 0,
-    background: `linear-gradient(-45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.main} 90%)`,
+    background: `linear-gradient(-45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.primary.main} 90%)`,
     paddingTop: theme.spacing(40),
     [theme.breakpoints.down('lg')]: {
       paddingTop: theme.spacing(30),

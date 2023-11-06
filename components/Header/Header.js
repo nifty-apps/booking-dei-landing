@@ -11,6 +11,7 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 import Scrollspy from 'react-scrollspy';
 import { useTranslation } from 'next-i18next';
 import logo from '~/public/images/Booking_Dei_logo.png';
+import brand from '~/public/text/brand';
 import link from '~/public/text/link';
 import Settings from './Settings';
 import MobileMenu from './MobileMenu';
@@ -65,6 +66,8 @@ function Header(props) {
   const [menuList] = useState([
     createData(navMenu[0], '#' + navMenu[0]),
     createData(navMenu[1], '#' + navMenu[1]),
+    // createData(navMenu[2], '#' + navMenu[2]),
+    // createData(navMenu[3], '#' + navMenu[3], -40),
   ]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {
@@ -103,12 +106,12 @@ function Header(props) {
                 {invert ? (
                   <Link href={curLang + link.saas.home}>
                     <img src={logo} alt="logo" />
-                    {/* {!isTablet && brand.saas.name} */}
+                    {!isTablet && brand.saas.name}
                   </Link>
                 ) : (
                   <AnchorLink href="#home">
                     <img src={logo} alt="logo" />
-                    {/* {!isTablet && brand.saas.name} */}
+                    {!isTablet && brand.saas.name}
                   </AnchorLink>
                 )}
               </div>

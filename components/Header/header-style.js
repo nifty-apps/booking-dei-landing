@@ -75,7 +75,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
       }
     },
     [`&.${classes.fixed}`]: {
-      background: darken(theme.palette.primary.main, 0.3),
+      background: darken(theme.palette.primary.dark, 0.3),
       [`& .${classes.logo}`]: {
         '& a': {
           color: 'transparent',
@@ -272,7 +272,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
   openDrawer: {},
   paperNav: {
     width: '100%',
-    background: theme.palette.mode === 'dark' ? darken(theme.palette.primary.main, 0.5) : theme.palette.primary.main,
+    background: theme.palette.mode === 'dark' ? darken(theme.palette.primary.dark, 0.5) : theme.palette.primary.dark,
     [theme.breakpoints.up(680)]: {
       width: 300,
     },
@@ -295,7 +295,7 @@ const headerStyles = makeStyles({ uniqId: 'header' })((theme, _params, classes) 
     }
   },
   mobileNav: {
-    background: darken(theme.palette.primary.main, 0.3),
+    background: darken(theme.palette.primary.dark, 0.3),
     height: '100%',
     [`& .${classes.menu}`]: {
       padding: theme.spacing(0, 5),

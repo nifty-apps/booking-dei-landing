@@ -1,16 +1,17 @@
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
+import React, { useState } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTranslation } from 'next-i18next';
-import React, { useState } from 'react';
-import illustration from '~/public/images/saas/faq.png';
 import { useText } from '~/theme/common';
+import ParallaxMedium from '../Parallax/Medium';
+import illustration from '~/public/images/saas/faq.png';
 import Title from '../Title';
 import useStyles from './faq-style';
 
@@ -63,6 +64,7 @@ function Faq() {
             </Typography>
             {!isMobile && (
               <div className={classes.illustration}>
+                <ParallaxMedium />
                 <img src={illustration} alt="illustration" />
               </div>
             )}

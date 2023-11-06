@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import { useTranslation } from 'next-i18next';
-// import brand from '~/public/text/brand';
+import brand from '~/public/text/brand';
 import routerLink from '~/public/text/link';
 import logo from '~/public/images/Booking_Dei_logo.png';
 import { useText } from '~/theme/common';
@@ -30,9 +30,9 @@ function AuthFrame(props) {
         <div className={cx(classes.logo, classes.logoHeader)}>
           <a href={curLang + routerLink.saas.home}>
             <img src={logo} alt="logo" />
-            {/* <Typography component="p" className={text.subtitle2}>
+            <Typography component="p" className={text.subtitle2}>
               {brand.saas.projectName}
-            </Typography> */}
+            </Typography>
           </a>
         </div>
       )}
@@ -63,9 +63,9 @@ function AuthFrame(props) {
                   <div className={classes.greeting}>
                     <div className={classes.logo}>
                       <img src={logo} alt="logo" />
-                      {/* <Typography className={text.subtitle2}>
+                      <Typography className={text.subtitle2}>
                         {brand.saas.projectName}
-                      </Typography> */}
+                      </Typography>
                     </div>
                     <Typography gutterBottom variant="h4" className={text.title2}>
                       { title }
