@@ -76,7 +76,7 @@ function Header(props) {
 
   return (
     <Fragment>
-      { isTablet && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />) }
+      {isTablet && (<MobileMenu open={openDrawer} toggleDrawer={handleOpenDrawer} />)}
       <AppBar
         component="header"
         position="relative"
@@ -91,7 +91,7 @@ function Header(props) {
         <Container fixed={isDesktop}>
           <div className={classes.headerContent}>
             <nav className={classes.navMenu}>
-              { isTablet && (
+              {isTablet && (
                 <IconButton
                   onClick={handleOpenDrawer}
                   className={cx('hamburger hamburger--spin', classes.mobileMenu, openDrawer && 'is-active')}
@@ -148,7 +148,8 @@ function Header(props) {
                   <Button href={curLang + link.saas.login} className={classes.textBtn}>
                     {t('saas-landing.header_login')}
                   </Button>
-                  <Button href={curLang + link.saas.register} variant="contained" color="secondary" className={classes.button}>
+                  {/* bookingdei dashboard */}
+                  <Button href="http://localhost:5173/registration" variant="contained" color="secondary" className={classes.button}>
                     {t('saas-landing.header_register')}
                   </Button>
                 </Fragment>
