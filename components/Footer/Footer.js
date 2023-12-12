@@ -1,26 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import { useTheme } from '@mui/material/styles';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import IconButton from '@mui/material/IconButton';
-import logo from '~/public/images/Booking_Dei_logo.png';
-import brand from '~/public/text/brand';
-import useStyles from './footer-style';
-import SelectLang from '../LangSwitch/Select';
+import React from "react";
+import PropTypes from "prop-types";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import { useTheme } from "@mui/material/styles";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
+import IconButton from "@mui/material/IconButton";
+import logo from "~/public/images/Booking_Dei_logo.png";
+import brand from "~/public/text/brand";
+import useStyles from "./footer-style";
+import SelectLang from "../LangSwitch/Select";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import EmailIcon from "@mui/icons-material/Email";
+import PhoneIcon from "@mui/icons-material/Phone";
 
 const date = new Date();
 const year = date.getFullYear();
 function Copyright() {
   return (
-    <Typography variant="body2" display="block" align="left" color="textSecondary">
+    <Typography
+      variant="body2"
+      display="block"
+      align="left"
+      color="textSecondary"
+    >
       &copy;&nbsp;
       {brand.saas.footerText}
       {year}
@@ -30,9 +38,14 @@ function Copyright() {
 
 const footers = [
   {
-    title: 'menu',
-    description: ['Feature', 'FAQ'],
-    link: ['#feature', '#faq'],
+    title: "menu",
+    description: ["Feature", "FAQ"],
+    link: ["#feature", "#faq"],
+  },
+  {
+    title: "policy",
+    description: ["Privacy Policy", "Data Security", "Cookie Policy"],
+    link: ["policy/privacy-policy", "#faq"],
   },
 ];
 
@@ -40,8 +53,8 @@ function Footer(props) {
   const { classes, cx } = useStyles();
   const { invert, toggleDir } = props;
   const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <Container
@@ -49,28 +62,62 @@ function Footer(props) {
       component="footer"
       className={cx(classes.footer, invert && classes.invert)}
     >
-      <Grid container spacing={4}>
+      <Grid container spacing={4} className={classes.footerStyle}>
         <Grid item xs={12} md={6}>
           <div className={classes.footerLeft}>
             <div className={classes.logo}>
               <img src={logo} alt="logo" />
               <Copyright />
             </div>
+            <div className={classes.location}>
+              <LocationOnIcon className={classes.icon} />
+              <Typography variant="body2" align="left" color="textSecondary">
+                House # 8, Road # 6, Shekhertek, Mohammadpur
+                <br /> Dhaka-1207, Bangladesh.
+              </Typography>
+            </div>
+            <div className={classes.mail}>
+              <EmailIcon className={classes.icon} />
+              <Typography variant="body2" align="left" color="textSecondary">
+                info@bookingdei.com
+              </Typography>
+            </div>
+            <div className={classes.phone}>
+              <PhoneIcon className={classes.icon} />
+              <Typography variant="body2" align="left" color="textSecondary">
+                +1 (323)-388-4703
+              </Typography>
+            </div>
           </div>
         </Grid>
         <Grid item xs={12} md={3}>
           <Grid container spacing={4} justifyContent="space-evenly">
-            {footers.map(footer => (
-              <Grid item xs={12} md={3} key={footer.title} className={classes.siteMapItem}>
+            {footers.map((footer) => (
+              <Grid
+                item
+                xs={12}
+                md={6}
+                key={footer.title}
+                className={classes.siteMapItem}
+              >
                 {isDesktop && (
                   <div>
-                    <Typography variant="h6" className={classes.title} color="textPrimary" gutterBottom>
+                    <Typography
+                      variant="h6"
+                      className={classes.title}
+                      color="textPrimary"
+                      gutterBottom
+                    >
                       {footer.title}
                     </Typography>
                     <ul>
                       {footer.description.map((item, index) => (
                         <li key={item}>
-                          <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
+                          <Link
+                            href={footer.link[index]}
+                            variant="subtitle1"
+                            color="textSecondary"
+                          >
                             {item}
                           </Link>
                         </li>
@@ -86,22 +133,26 @@ function Footer(props) {
                     }}
                   >
                     <AccordionSummary
-                      expandIcon={<ExpandMoreIcon className={classes.accordionIcon} />}
+                      expandIcon={
+                        <ExpandMoreIcon className={classes.accordionIcon} />
+                      }
                       aria-controls="panel1a-content"
                       id="panel1a-header"
                       classes={{
                         content: classes.accordionContent,
                       }}
                     >
-                      <strong>
-                        {footer.title}
-                      </strong>
+                      <strong>{footer.title}</strong>
                     </AccordionSummary>
                     <AccordionDetails>
                       <ul>
                         {footer.description.map((item, index) => (
                           <li key={item}>
-                            <Link href={footer.link[index]} variant="subtitle1" color="textSecondary">
+                            <Link
+                              href={footer.link[index]}
+                              variant="subtitle1"
+                              color="textSecondary"
+                            >
                               {item}
                             </Link>
                           </li>
@@ -118,12 +169,6 @@ function Footer(props) {
           <div className={classes.socmed}>
             <IconButton aria-label="FB" className={classes.margin} size="small">
               <i className="ion-logo-facebook" />
-            </IconButton>
-            <IconButton aria-label="TW" className={classes.margin} size="small">
-              <i className="ion-logo-twitter" />
-            </IconButton>
-            <IconButton aria-label="IG" className={classes.margin} size="small">
-              <i className="ion-logo-instagram" />
             </IconButton>
             <IconButton aria-label="LI" className={classes.margin} size="small">
               <i className="ion-logo-linkedin" />
@@ -143,7 +188,7 @@ Footer.propTypes = {
 
 Footer.defaultProps = {
   invert: false,
-  toggleDir: () => { },
+  toggleDir: () => {},
 };
 
 export default Footer;
