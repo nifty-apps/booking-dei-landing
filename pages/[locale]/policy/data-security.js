@@ -40,6 +40,7 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
     color: theme.palette.common.white,
     fontWeight: 700,
     marginBottom: theme.spacing(4),
+    textDecoration: "underline",
   },
   descriptionContainer: {
     width: "60%",
@@ -51,9 +52,10 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
   },
   descriptionHeading: {
     padding: theme.spacing(4, 0, 0, 0),
+    fontWeight: 700,
   },
   descriptionText: {
-    padding: theme.spacing(4, 0, 0, 0),
+    padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
     marginBottom: theme.spacing(4),
