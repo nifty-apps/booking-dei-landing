@@ -1,24 +1,25 @@
-import React, { useState, useEffect, useRef } from "react";
-import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonBase from "@mui/material/ButtonBase";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import Button from "@mui/material/Button";
+import ButtonBase from "@mui/material/ButtonBase";
+import Container from "@mui/material/Container";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import YouTube from "react-youtube";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 import Zoom from "@mui/material/Zoom";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTranslation } from "next-i18next";
+import React, { useEffect, useRef, useState } from "react";
+import YouTube from "react-youtube";
+import imgAPI from "~/public/images/imgAPI";
 import { useText } from "~/theme/common";
 import yt from "~/youtube";
-import imgAPI from "~/public/images/imgAPI";
 import useStyles from "./banner-style";
 
-const Transition = React.forwardRef(function Transition(props, ref) { // eslint-disable-line
+const Transition = React.forwardRef(function Transition(props, ref) {
+  // eslint-disable-line
   return <Zoom ref={ref} {...props} />;
 });
 
@@ -52,10 +53,10 @@ function Banner() {
   };
 
   const handleClickOpen = () => {
-    if (yt.use) {
-      setOpenPopup(true);
-      player[0].playVideo();
-    }
+    // if (yt.use) {
+    //   setOpenPopup(true);
+    //   player[0].playVideo();
+    // }
   };
 
   const handleClose = () => {
