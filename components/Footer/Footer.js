@@ -84,9 +84,7 @@ function Footer(props) {
               <LocationOnIcon className={classes.icon} />
               <Typography variant="body2" align="left" color="textSecondary">
                 House # 8, Road # 6, Shekhertek, Mohammadpur
-                <br />
-                {' '}
-                Dhaka-1207, Bangladesh.
+                <br /> Dhaka-1207, Bangladesh.
               </Typography>
             </div>
             <div className={classes.mail}>
@@ -181,10 +179,22 @@ function Footer(props) {
         <Grid item xs={12} md={3}>
           <div className={classes.socmed}>
             <IconButton aria-label="FB" className={classes.margin} size="small">
-              <i className="ion-logo-facebook" />
+              <a
+                href="https://www.facebook.com/BookingDei"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="ion-logo-facebook" />
+              </a>
             </IconButton>
             <IconButton aria-label="LI" className={classes.margin} size="small">
-              <i className="ion-logo-linkedin" />
+              <a
+                href="https://www.linkedin.com/company/booking-dei/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="ion-logo-linkedin" />
+              </a>
             </IconButton>
           </div>
           <SelectLang toggleDir={toggleDir} />
