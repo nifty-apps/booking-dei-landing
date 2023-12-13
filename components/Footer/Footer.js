@@ -1,23 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import EmailIcon from "@mui/icons-material/Email";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PhoneIcon from "@mui/icons-material/Phone";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import IconButton from "@mui/material/IconButton";
+// import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Link from "next/link";
+import PropTypes from "prop-types";
+import React from "react";
 import logo from "~/public/images/Booking_Dei_logo.png";
 import brand from "~/public/text/brand";
-import useStyles from "./footer-style";
 import SelectLang from "../LangSwitch/Select";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import EmailIcon from "@mui/icons-material/Email";
-import PhoneIcon from "@mui/icons-material/Phone";
+import useStyles from "./footer-style";
 
 const date = new Date();
 const year = date.getFullYear();
@@ -44,8 +45,18 @@ const footers = [
   },
   {
     title: "policy",
-    description: ["Privacy Policy", "Data Security", "Cookie Policy"],
-    link: ["policy/privacy-policy", "#faq"],
+    description: [
+      "Terms of Service",
+      "Privacy Policy",
+      "Data Security",
+      "Cookie Policy",
+    ],
+    link: [
+      "policy/terms-of-service",
+      "policy/privacy-policy",
+      "policy/data-security",
+      "policy/cookie-policy",
+    ],
   },
 ];
 
@@ -73,7 +84,9 @@ function Footer(props) {
               <LocationOnIcon className={classes.icon} />
               <Typography variant="body2" align="left" color="textSecondary">
                 House # 8, Road # 6, Shekhertek, Mohammadpur
-                <br /> Dhaka-1207, Bangladesh.
+                <br />
+                {' '}
+                Dhaka-1207, Bangladesh.
               </Typography>
             </div>
             <div className={classes.mail}>
