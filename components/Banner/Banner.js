@@ -38,13 +38,27 @@ function Banner() {
   const [player, setPlayer] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
 
+  // const handleScroll = () => {
+  //   if (!elem.current) {
+  //     return;
+  //   }
+  //   const doc = document.documentElement;
+  //   const elTop = elem.current.offsetTop - 200;
+  //   const elBottom = elTop + elem.current?.getBoundingClientRect()?.height;
+  //   if (doc.scrollTop > elTop && doc.scrollTop < elBottom) {
+  //     setHide(false);
+  //   } else {
+  //     setHide(true);
+  //   }
+  // };
   const handleScroll = () => {
     if (!elem.current) {
       return;
     }
     const doc = document.documentElement;
     const elTop = elem.current.offsetTop - 200;
-    const elBottom = elTop + elem.current.getBoundingClientRect().height;
+    const rect = elem.current.getBoundingClientRect();
+    const elBottom = elTop + (rect ? rect.height : 0);
     if (doc.scrollTop > elTop && doc.scrollTop < elBottom) {
       setHide(false);
     } else {
@@ -83,10 +97,15 @@ function Banner() {
     },
   };
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  // });
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-  });
-
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className={classes.root} ref={elem}>
       <Dialog

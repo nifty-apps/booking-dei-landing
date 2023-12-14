@@ -14,7 +14,7 @@ import Notification from "~/components/Notification";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 import brand from "~/public/text/brand";
 
-const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
+const useStyles = makeStyles({ uniqId: "terms-of-service" })((theme) => ({
   mainWrap: {
     position: "relative",
     width: "100%",
@@ -43,10 +43,10 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
   },
   descriptionContainer: {
     width: "60%",
-    padding: theme.spacing(0, 4, 0, 8),
+    padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(0),
     margin: "0 auto",
   },
   descriptionHeading: {
@@ -57,7 +57,7 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
     padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(0),
     margin: "0 auto",
   },
 }));
@@ -71,7 +71,7 @@ function TermsOfService(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>{brand.saas.name + " - Privacy Policy"}</title>
+        <title>{brand.saas.name + " - Terms of Service"}</title>
       </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>
