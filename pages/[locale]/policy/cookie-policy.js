@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import { useTranslation } from "next-i18next";
@@ -14,7 +15,7 @@ import Notification from "~/components/Notification";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 import brand from "~/public/text/brand";
 
-const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
+const useStyles = makeStyles({ uniqId: "cookie-policy" })((theme) => ({
   mainWrap: {
     position: "relative",
     width: "100%",
@@ -43,7 +44,7 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
   },
   descriptionContainer: {
     width: "60%",
-    padding: theme.spacing(0, 4, 0, 8),
+    padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
     marginBottom: theme.spacing(4),
@@ -71,7 +72,7 @@ function CookiePolicy(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>{brand.saas.name + " - Privacy Policy"}</title>
+        <title>{brand.saas.name + " - Cookie Policy"}</title>
       </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>

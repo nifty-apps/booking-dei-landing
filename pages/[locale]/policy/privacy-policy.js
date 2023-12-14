@@ -43,7 +43,7 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
   },
   descriptionContainer: {
     width: "60%",
-    padding: theme.spacing(0, 4, 0, 8),
+    padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
     marginBottom: theme.spacing(4),

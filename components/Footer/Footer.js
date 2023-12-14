@@ -19,6 +19,7 @@ import logo from "~/public/images/Booking_Dei_logo.png";
 import brand from "~/public/text/brand";
 import SelectLang from "../LangSwitch/Select";
 import useStyles from "./footer-style";
+import { getRedirect } from "../../lib/redirect";
 
 const date = new Date();
 const year = date.getFullYear();
@@ -122,17 +123,19 @@ function Footer(props) {
                       {footer.title}
                     </Typography>
                     <ul>
-                      {footer.description.map((item, index) => (
-                        <li key={item}>
-                          <Link
-                            href={footer.link[index]}
-                            variant="subtitle1"
-                            color="textSecondary"
-                          >
-                            {item}
-                          </Link>
-                        </li>
-                      ))}
+                      {footer.description.map((item, index) => {
+                        return (
+                          <li key={item}>
+                            <Link
+                              href={`/${footer.link[index]}`}
+                              variant="subtitle1"
+                              color="textSecondary"
+                            >
+                              {item}
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}

@@ -70,7 +70,7 @@ function Header(props) {
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
-
+  console.log(curLang + link.saas.home);
   return (
     <Fragment>
       {isTablet && (
@@ -107,15 +107,15 @@ function Header(props) {
               )}
               <div className={classes.logo}>
                 {invert ? (
-                  <Link href={curLang + link.saas.home}>
+                  <Link href={curLang + "/"}>
                     <img src={logo} alt="logo" />
                     {!isTablet && brand.saas.name}
                   </Link>
                 ) : (
-                  <AnchorLink href="#home">
+                  <Link href="/">
                     <img src={logo} alt="logo" />
                     {!isTablet && brand.saas.name}
-                  </AnchorLink>
+                  </Link>
                 )}
               </div>
               {isDesktop && (

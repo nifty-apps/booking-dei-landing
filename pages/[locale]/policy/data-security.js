@@ -15,7 +15,7 @@ import Notification from "~/components/Notification";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 import brand from "~/public/text/brand";
 
-const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
+const useStyles = makeStyles({ uniqId: "data-security" })((theme) => ({
   mainWrap: {
     position: "relative",
     width: "100%",
@@ -44,7 +44,7 @@ const useStyles = makeStyles({ uniqId: "privacy-policy" })((theme) => ({
   },
   descriptionContainer: {
     width: "60%",
-    padding: theme.spacing(0, 4, 0, 8),
+    padding: theme.spacing(0, 0, 0, 0),
     color: theme.palette.common.white,
     fontWeight: 400,
     marginBottom: theme.spacing(4),
@@ -72,7 +72,7 @@ function DataSecurity(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>{brand.saas.name + " - Privacy Policy"}</title>
+        <title>{brand.saas.name + " - Data Security"}</title>
       </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>
@@ -159,8 +159,7 @@ function DataSecurity(props) {
                 <Box component="span" fontWeight="bold">
                   {" "}
                   support@bookingdei.com
-                </Box>
-                {" "}
+                </Box>{" "}
                 with the relevant information so we can get working on it right
                 away.
               </Typography>
