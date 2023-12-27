@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import { useTranslation } from 'next-i18next';
-import routeLink from '~/public/text/link';
-import useStyles from './header-style';
-import navMenu from './menu';
+import React from "react";
+import PropTypes from "prop-types";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Divider from "@mui/material/Divider";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import { useTranslation } from "next-i18next";
+import routeLink from "~/public/text/link";
+import useStyles from "./header-style";
+import navMenu from "./menu";
 
 function MobileMenu(props) {
   const { classes, cx } = useStyles();
   const { toggleDrawer, open } = props;
-  const { t, i18n } = useTranslation('common');
-  const curLang = '/' + i18n.language;
+  const { t, i18n } = useTranslation("common");
+  const curLang = "/" + i18n.language;
 
   const SideList = () => (
     <div
@@ -31,29 +31,49 @@ function MobileMenu(props) {
               component="a"
               href={`#${item}`}
               key={index.toString()}
-              style={{ animationDuration: index * 0.15 + 's' }}
+              style={{ animationDuration: index * 0.15 + "s" }}
             >
-              <ListItemText primary={t('saas-landing.header_' + item)} className={classes.menuList} />
+              <ListItemText
+                primary={t("saas-landing.header_" + item)}
+                className={classes.menuList}
+              />
             </ListItem>
           ))}
           <ListItem
             button
             component="a"
             href={curLang + routeLink.saas.contact}
-            style={{ animationDuration: navMenu.length * 0.15 + 's' }}
+            style={{ animationDuration: navMenu.length * 0.15 + "s" }}
           >
-            <ListItemText primary={t('saas-landing.header_contact')} className={classes.menuList} />
+            <ListItemText
+              primary={t("saas-landing.header_contact")}
+              className={classes.menuList}
+            />
+          </ListItem>
+          <ListItem
+            button
+            component="a"
+            href={curLang + routeLink.saas.blogsMedia}
+            style={{ animationDuration: navMenu.length * 0.15 + "s" }}
+          >
+            <ListItemText
+              primary={t("saas-landing.header_blogs_&_media")}
+              className={classes.menuList}
+            />
           </ListItem>
           <Divider className={classes.dividerSidebar} />
-          {['login', 'register'].map((item, index) => (
+          {["login", "register"].map((item, index) => (
             <ListItem
               button
               component="a"
               href={curLang + routeLink.saas[item]}
               key={index.toString()}
-              style={{ animationDuration: navMenu.length * 0.15 + 's' }}
+              style={{ animationDuration: navMenu.length * 0.15 + "s" }}
             >
-              <ListItemText primary={t('saas-landing.header_' + item)} className={classes.menuList} />
+              <ListItemText
+                primary={t("saas-landing.header_" + item)}
+                className={classes.menuList}
+              />
             </ListItem>
           ))}
         </List>
@@ -67,7 +87,7 @@ function MobileMenu(props) {
       onClose={toggleDrawer}
       onOpen={toggleDrawer}
       classes={{
-        paper: classes.paperNav
+        paper: classes.paperNav,
       }}
     >
       <SideList />

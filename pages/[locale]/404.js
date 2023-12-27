@@ -1,40 +1,38 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { makeStyles } from 'tss-react/mui';
-import { useTranslation } from 'next-i18next';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import Head from "next/head";
+import { makeStyles } from "tss-react/mui";
+import { useTranslation } from "next-i18next";
 // Use this below for Server Side Render/Translation (SSR)
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 // Use this below for Static Site Generation (SSG)
-import { getStaticPaths, makeStaticProps } from '~/lib/getStatic';
-import brand from '~/public/text/brand';
-import Error from '~/components/Error';
-import Footer from '~/components/Footer';
-import Header from '~/components/Header';
+import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
+import brand from "~/public/text/brand";
+import Error from "~/components/Error";
+import Footer from "~/components/Footer";
+import Header from "~/components/Header";
 
-const useStyles = makeStyles({ uniqId: 'error' })(theme => ({
+const useStyles = makeStyles({ uniqId: "error" })((theme) => ({
   dedicatedPage: {
-    background: theme.palette.primary.dark
-  }
+    background: theme.palette.primary.dark,
+  },
 }));
 
 function ErrorPage(props) {
   const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
   const { errorCode, stars } = props;
-  const { t } = useTranslation('common');
+  const { t } = useTranslation("common");
 
   if (errorCode) {
     return (
       <Fragment>
         <Head>
-          <title>
-            { brand.saas.name + ' - ' + errorCode }
-          </title>
+          <title>{brand.saas.name + " - " + errorCode}</title>
         </Head>
         <div className={classes.dedicatedPage}>
           <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
-          <Error errorCode={errorCode} text={t('404')} />
+          <Error errorCode={errorCode} text={t("404")} />
           <Footer />
         </div>
       </Fragment>
@@ -43,7 +41,7 @@ function ErrorPage(props) {
 
   return (
     <div className={classes.dedicatedPage}>
-      {t('description')}
+      {t("description")}
       Next stars:&nbsp;
       {stars}
     </div>
@@ -58,7 +56,7 @@ ErrorPage.propTypes = {
 };
 
 ErrorPage.defaultProps = {
-  errorCode: '400',
+  errorCode: "400",
   stars: 0,
 };
 
@@ -66,7 +64,7 @@ ErrorPage.defaultProps = {
 // export const getStaticProps = async ({ locale }) => ({ props: { ...await serverSideTranslations(locale, ['common']) } });
 
 // Use this below for Static Site Generation (SSG)
-const getStaticProps = makeStaticProps(['common']);
+const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
 
 export default ErrorPage;
