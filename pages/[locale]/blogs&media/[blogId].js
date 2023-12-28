@@ -65,11 +65,11 @@ const getStaticProps = makeStaticProps(["common"]);
 
 export async function getStaticPaths() {
   const response = await fetch("http://localhost:3008/api/blog");
-  const blogs = await response.json();
+  const data = await response.json();
   const locales = ["en", "bn"];
 
   const paths = locales.flatMap((locale) =>
-    blogs.map((blog) => ({
+    data.blogs.map((blog) => ({
       params: { locale: locale, blogId: blog.id.toString() },
     }))
   );

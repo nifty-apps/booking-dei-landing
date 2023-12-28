@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import { makeStyles } from "tss-react/mui";
-import BlogBanner from "./BlogBanner";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 const Blogs = () => {
   const useStyles = makeStyles({ uniqId: "blogs" })((theme) => ({
@@ -32,24 +33,30 @@ const Blogs = () => {
       textDecoration: "underline",
     },
     activePage: {
-      color: theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main,
+      fontWeight: "bold",
     },
   }));
   const { classes } = useStyles();
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const blogsPerPage = 6; // Adjust as needed
-  const totalBlogs = blogs.length;
+  const [totalBlogs, setTotalBlogs] = useState(0);
+  const blogsPerPage = 2; // Adjust as needed
+
+  console.log(totalBlogs);
   useEffect(() => {
     fetch(
-      `http://localhost:3008/api/blog?_page=${currentPage}&_limit=${blogsPerPage}`
+      `http://localhost:3008/api/blog?page=${currentPage}&limit=${blogsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
-        setBlogs(data);
+        setBlogs(data.blogs);
+        setTotalBlogs(data.totalBlogs);
         console.log(data);
       });
   }, [currentPage]);
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -58,43 +65,47 @@ const Blogs = () => {
   return (
     <>
       <div className={classes.blogsContainer}>
-        {blogs?.map((blog) => {
-          return (
+        {Array.isArray(blogs) && blogs.length > 0 ? (
+          blogs.map((blog) => (
             <div key={blog.id}>
               <Blog blog={blog} />
             </div>
-          );
-        })}
+          ))
+        ) : (
+          <p>No blogs available.</p>
+        )}
       </div>
-      <div className={classes.paginationContainer}>
-        <span
-          className={`${classes.paginationButton} ${
-            canGoPrevious ? "" : "disabled"
-          }`}
+      <ButtonGroup
+        className={classes.paginationContainer}
+        variant="text"
+        color="primary"
+        aria-label="text primary button group"
+      >
+        <Button
+          disabled={!canGoPrevious}
           onClick={() => canGoPrevious && handlePageChange(currentPage - 1)}
         >
           {"<"}
-        </span>
-        {[...Array(Math.ceil(totalBlogs / blogsPerPage)).keys()].map((page) => (
-          <span
-            key={page + 1}
-            className={`${classes.paginationButton} ${
-              page + 1 === currentPage ? "active" : ""
-            }`}
-            onClick={() => handlePageChange(page + 1)}
-          >
-            {page + 1}
-          </span>
-        ))}
-        <span
-          className={`${classes.paginationButton} ${
-            canGoNext ? "" : "disabled"
-          }`}
+        </Button>
+        {Number.isFinite(Math.ceil(totalBlogs / blogsPerPage)) &&
+          [...Array(Math.ceil(totalBlogs / blogsPerPage)).keys()].map(
+            (page) => (
+              <Button
+                key={page + 1}
+                className={page + 1 === currentPage ? classes.activePage : ""}
+                onClick={() => handlePageChange(page + 1)}
+              >
+                {page + 1}
+              </Button>
+            )
+          )}
+        <Button
+          disabled={!canGoNext}
           onClick={() => canGoNext && handlePageChange(currentPage + 1)}
         >
           {">"}
-        </span>
-      </div>
+        </Button>
+      </ButtonGroup>
     </>
   );
 };
