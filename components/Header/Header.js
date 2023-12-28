@@ -17,6 +17,7 @@ import MobileMenu from "./MobileMenu";
 import Settings from "./Settings";
 import useStyles from "./header-style";
 import navMenu from "./menu";
+import { useRouter } from "next/router";
 
 let counter = 0;
 function createData(name, url, offset) {
@@ -59,18 +60,21 @@ function Header(props) {
   const isDesktop = useMediaQuery(theme.breakpoints.up("lg"));
   const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const router = useRouter();
 
   const [menuList] = useState([
     createData(navMenu[0], "#" + navMenu[0]),
     createData(navMenu[1], "#" + navMenu[1]),
-    // createData(navMenu[2], '#' + navMenu[2]),
+    // createData(navMenu[2], "#" + navMenu[2]),
     // createData(navMenu[3], '#' + navMenu[3], -40),
   ]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const handleOpenDrawer = () => {
     setOpenDrawer(!openDrawer);
   };
-  console.log(curLang + link.saas.home);
+  const pathforblogs = "/" + router.pathname.split("/")[2];
+  const isActive = pathforblogs === link.saas.blogsMedia;
+
   return (
     <Fragment>
       {isTablet && (
@@ -120,27 +124,40 @@ function Header(props) {
               </div>
               {isDesktop && (
                 <Scrollspy items={navMenu} currentClassName="active">
-                  {menuList.map((item) => (
-                    <li key={item.id.toString()}>
-                      {invert ? (
-                        // eslint-disable-next-line
-                        <Button offset={item.offset || 0} href={"/" + item.url}>
-                          {t("saas-landing.header_" + item.name)}
-                        </Button>
-                      ) : (
-                        <Button
-                          component={LinkBtn}
-                          offset={item.offset || 0}
-                          href={item.url}
-                        >
-                          {t("saas-landing.header_" + item.name)}
-                        </Button>
-                      )}
-                    </li>
-                  ))}
+                  {menuList.map((item) => {
+                    return (
+                      <li key={item.id.toString()}>
+                        {invert ? (
+                          // eslint-disable-next-line
+                          <Button
+                            offset={item.offset || 0}
+                            href={"/" + item.url}
+                          >
+                            {t("saas-landing.header_" + item.name)}
+                          </Button>
+                        ) : (
+                          <Button
+                            component={LinkBtn}
+                            offset={item.offset || 0}
+                            href={item.url}
+                          >
+                            {t("saas-landing.header_" + item.name)}
+                          </Button>
+                        )}
+                      </li>
+                    );
+                  })}
                   <li>
                     <Button href={curLang + link.saas.contact}>
                       {t("saas-landing.header_contact")}
+                    </Button>
+                  </li>
+                  <li>
+                    <Button
+                      href={curLang + link.saas.blogsMedia}
+                      style={{ opacity: isActive ? ".5" : "1" }}
+                    >
+                      {t("saas-landing.header_blogs_&_media")}
                     </Button>
                   </li>
                 </Scrollspy>

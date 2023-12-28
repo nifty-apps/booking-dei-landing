@@ -15,7 +15,7 @@ model Blogs{
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  author      String
+  imgUrl     String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   published   Boolean   @default(false)
