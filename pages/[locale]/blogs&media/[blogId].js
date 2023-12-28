@@ -63,18 +63,24 @@ blog.propTypes = {
 
 const getStaticProps = makeStaticProps(["common"]);
 
-export async function getStaticPaths() {
-  const response = await fetch("http://localhost:3008/api/blog");
-  const data = await response.json();
-  const locales = ["en", "bn"];
+// export async function getStaticPaths() {
+//   const response = await fetch("http://localhost:3008/api/blog");
+//   const data = await response.json();
+//   const locales = ["en", "bn"];
 
-  const paths = locales.flatMap((locale) =>
-    data.blogs.map((blog) => ({
-      params: { locale: locale, blogId: blog.id.toString() },
-    }))
-  );
+//   const paths = locales.flatMap((locale) =>
+//     data.blogs.map((blog) => ({
+//       params: { locale: locale, blogId: blog.id.toString() },
+//     }))
+//   );
 
-  return { paths, fallback: true };
-}
+//   return { paths, fallback: true };
+// }
+export const getStaticPaths = async () => {
+  return {
+    paths: [], //indicates that no page needs be created at build time
+    fallback: "blocking", //indicates the type of fallback
+  };
+};
 export { getStaticProps };
 export default blog;
