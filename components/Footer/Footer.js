@@ -62,7 +62,6 @@ const footers = [
 ];
 
 function Footer(props) {
-  console.log(logo);
   const { classes, cx } = useStyles();
   const { invert, toggleDir } = props;
   const theme = useTheme();

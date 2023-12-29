@@ -126,7 +126,6 @@ const Editor = () => {
         res.json();
       })
       .then((data) => {
-        console.log(data);
         alert("Your post has been published");
         setDescription("");
         setImgUrl("");
