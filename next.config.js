@@ -27,26 +27,10 @@ module.exports = withImages({
         ? process.env.LOCALE_SUBPATHS
         : "none",
   },
-  // webpack: (config, options) => {
-  //   cssModules: true;
-  //   config.plugins
-  //     .push
-  //     //      new ESLintPlugin({
-  //     //        exclude: ['node_modules']
-  //     //      })
-  //     ();
-  //   config.node = {};
 
-  //   return config;
-  // },
   webpack: (config, options) => {
     cssModules: true;
-    // config.plugins
-    //   .push
-    //   //      new ESLintPlugin({
-    //   //        exclude: ['node_modules']
-    //   //      })
-    //   ();
+
     config.node = {};
     config.resolve.fallback = { fs: false };
     config.module.rules.push({
@@ -64,6 +48,9 @@ module.exports = withImages({
 
     return config;
   },
+});
+
+module.exports = {
   async headers() {
     return [
       {
@@ -85,4 +72,25 @@ module.exports = withImages({
       },
     ];
   },
-});
+};
+
+// it was inside of config function
+// config.plugins
+//   .push
+//   //      new ESLintPlugin({
+//   //        exclude: ['node_modules']
+//   //      })
+//   ();
+
+// webpack: (config, options) => {
+//   cssModules: true;
+//   config.plugins
+//     .push
+//     //      new ESLintPlugin({
+//     //        exclude: ['node_modules']
+//     //      })
+//     ();
+//   config.node = {};
+
+//   return config;
+// },
