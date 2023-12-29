@@ -15,7 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import React from "react";
-import logo from "~/public/images/Booking_Dei_logo.png";
+import logo from "../../public/images/Booking_Dei_logo.png";
 import brand from "~/public/text/brand";
 import SelectLang from "../LangSwitch/Select";
 import useStyles from "./footer-style";
@@ -62,6 +62,7 @@ const footers = [
 ];
 
 function Footer(props) {
+  console.log(logo);
   const { classes, cx } = useStyles();
   const { invert, toggleDir } = props;
   const theme = useTheme();
@@ -78,7 +79,7 @@ function Footer(props) {
         <Grid item xs={12} md={6}>
           <div className={classes.footerLeft}>
             <div className={classes.logo}>
-              <img src={logo} alt="logo" />
+              <img src={logo.src} alt="logo" />
               <Copyright />
             </div>
             <div className={classes.location}>

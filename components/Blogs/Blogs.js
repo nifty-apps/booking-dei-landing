@@ -46,7 +46,7 @@ const Blogs = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3008/api/blog?page=${currentPage}&limit=${blogsPerPage}`
+      `http://localhost:3008/api/blogs?page=${currentPage}&limit=${blogsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {

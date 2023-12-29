@@ -27,26 +27,23 @@ module.exports = withImages({
         ? process.env.LOCALE_SUBPATHS
         : "none",
   },
-  // webpack: (config, options) => {
-  //   cssModules: true;
-  //   config.plugins
-  //     .push
-  //     //      new ESLintPlugin({
-  //     //        exclude: ['node_modules']
-  //     //      })
-  //     ();
-  //   config.node = {};
 
-  //   return config;
-  // },
   webpack: (config, options) => {
     cssModules: true;
-    // config.plugins
-    //   .push
-    //   //      new ESLintPlugin({
-    //   //        exclude: ['node_modules']
-    //   //      })
-    //   ();
+
+    // webpack: (config, options) => {
+    //   cssModules: true;
+    //   config.plugins
+    //     .push
+    //     //      new ESLintPlugin({
+    //     //        exclude: ['node_modules']
+    //     //      })
+    //     ();
+    //   config.node = {};
+
+    //   return config;
+    // },
+
     config.node = {};
     config.resolve.fallback = { fs: false };
     config.module.rules.push({
@@ -55,6 +52,13 @@ module.exports = withImages({
         /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
       loader: "babel-loader",
     });
+    // it was inside of config function
+    // config.plugins
+    //   .push
+    //   //      new ESLintPlugin({
+    //   //        exclude: ['node_modules']
+    //   //      })
+    //   ();
 
     config.plugins.push(
       new webpack.ProvidePlugin({
@@ -63,6 +67,12 @@ module.exports = withImages({
     );
 
     return config;
+  },
+});
+
+module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   async headers() {
     return [
@@ -85,4 +95,4 @@ module.exports = withImages({
       },
     ];
   },
-});
+};
