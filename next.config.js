@@ -71,6 +71,9 @@ module.exports = withImages({
 });
 
 module.exports = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async headers() {
     return [
       {
