@@ -57,6 +57,7 @@ const EditorForm = (props) => {
                 value={title}
                 onChange={handleTitleChange}
                 className={classes.input}
+                required
               />
             </div>
 
@@ -67,9 +68,10 @@ const EditorForm = (props) => {
                 value={imgUrl}
                 onChange={handleImageChange}
                 className={classes.input}
+                required
               />
             </div>
-            <div className={classes.label}>
+            {/* <div className={classes.label}>
               <TextField
                 label="Tags"
                 select
@@ -83,7 +85,7 @@ const EditorForm = (props) => {
                   </MenuItem>
                 ))}
               </TextField>
-            </div>
+            </div> */}
           </FormControl>
         </Container>
       </div>
