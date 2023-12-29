@@ -103,6 +103,11 @@ const Editor = () => {
   };
 
   const handleSubmit = () => {
+    event.preventDefault();
+    if (!title || !imgUrl || !description) {
+      alert("Please fill out all required fields.");
+      return;
+    }
     fetch("http://localhost:3008/api/blog/", {
       method: "POST",
       headers: {

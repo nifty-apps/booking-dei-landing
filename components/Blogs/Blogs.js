@@ -44,7 +44,6 @@ const Blogs = () => {
   const [totalBlogs, setTotalBlogs] = useState(0);
   const blogsPerPage = 2; // Adjust as needed
 
-  console.log(totalBlogs);
   useEffect(() => {
     fetch(
       `http://localhost:3008/api/blog?page=${currentPage}&limit=${blogsPerPage}`
@@ -53,7 +52,6 @@ const Blogs = () => {
       .then((data) => {
         setBlogs(data.blogs);
         setTotalBlogs(data.totalBlogs);
-        console.log(data);
       });
   }, [currentPage]);
 
