@@ -31,7 +31,7 @@ const blog = (props) => {
   const { blogId } = router.query;
   const [blog, setBlog] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:3008/api/blog/${blogId}`)
+    fetch(`http://localhost:3008/api/blogs/${blogId}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -64,7 +64,7 @@ blog.propTypes = {
 const getStaticProps = makeStaticProps(["common"]);
 
 // export async function getStaticPaths() {
-//   const response = await fetch("http://localhost:3008/api/blog");
+//   const response = await fetch("blog");
 //   const data = await response.json();
 //   const locales = ["en", "bn"];
 

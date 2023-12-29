@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import React, { Fragment, useEffect, useState } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Scrollspy from "react-scrollspy";
-import logo from "~/public/images/logos/booking-dei-logo.png";
+import logo from "../../public/images/logos/booking-dei-logo.png";
 import brand from "~/public/text/brand";
 import link from "~/public/text/link";
 import MobileMenu from "./MobileMenu";
@@ -112,12 +112,12 @@ function Header(props) {
               <div className={classes.logo}>
                 {invert ? (
                   <Link href={curLang + "/"}>
-                    <img src={logo} alt="logo" />
+                    <img src={logo.src} alt="logo" />
                     {!isTablet && brand.saas.name}
                   </Link>
                 ) : (
                   <Link href="/">
-                    <img src={logo} alt="logo" />
+                    <img src={logo.src} alt="logo" />
                     {!isTablet && brand.saas.name}
                   </Link>
                 )}
