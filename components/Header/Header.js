@@ -112,12 +112,12 @@ function Header(props) {
               <div className={classes.logo}>
                 {invert ? (
                   <Link href={curLang + "/"}>
-                    <img src={logo.src} alt="logo" />
+                    <img src={logo} alt="logo" />
                     {!isTablet && brand.saas.name}
                   </Link>
                 ) : (
                   <Link href="/">
-                    <img src={logo.src} alt="logo" />
+                    <img src={logo} alt="logo" />
                     {!isTablet && brand.saas.name}
                   </Link>
                 )}

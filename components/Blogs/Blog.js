@@ -111,7 +111,7 @@ const Blog = ({ blog }) => {
           ></div>
         </div>
         <div>
-          <Link href={`/blogs&media/${blog.id}`}>
+          <Link href={`/blogs&media/${blog.id}`} as={`/blogs&media/${blog.id}`}>
             <button className={classes.button}>Read more</button>
           </Link>
         </div>

@@ -78,7 +78,7 @@ function Footer(props) {
         <Grid item xs={12} md={6}>
           <div className={classes.footerLeft}>
             <div className={classes.logo}>
-              <img src={logo.src} alt="logo" />
+              <img src={logo} alt="logo" />
               <Copyright />
             </div>
             <div className={classes.location}>
