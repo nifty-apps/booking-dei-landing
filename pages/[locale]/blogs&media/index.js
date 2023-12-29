@@ -42,7 +42,9 @@ const blogs = (props) => {
   const { onToggleDark, onToggleDir } = props;
   return (
     <Fragment>
-      <Head>{/* <title>{brand.saas.name + " - " + errorCode}</title> */}</Head>
+      <Head>
+        <title>{brand.saas.name + " - Blogs"}</title>
+      </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>
         <Header
