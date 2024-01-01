@@ -28,7 +28,6 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
 
 const blog = (props) => {
   const router = useRouter();
-  // const { blogId } = router.query;
   // const [blog, setBlog] = useState({});
   // useEffect(() => {
   //   fetch(`http://localhost:3008/api/blogs/${blogId}`)
