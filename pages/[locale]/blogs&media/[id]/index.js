@@ -92,7 +92,7 @@ export async function getStaticProps(context) {
 
   // Fetch data for the blog post with the given ID
   const response = await fetch(
-    `http://localhost:3008/api/blogs/${context.params.blogId}`
+    `http://localhost:3008/api/blogs/${context.params.id}`
   );
 
   const blog = await response.json();

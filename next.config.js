@@ -149,8 +149,8 @@ module.exports = withImages({
   async redirects() {
     return [
       {
-        source: "/blogs&media/:blogId",
-        destination: "/blogs&media/:blogId",
+        source: "/blogs&media/:id",
+        destination: "/blogs&media/:id",
         permanent: false,
       },
     ];
