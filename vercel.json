@@ -1,8 +1,5 @@
 {
   "cleanUrls": true,
-  "rewrites": [
-    { "source": "/blogs&media/:path*", "destination": "/blogs&media/:path*" }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",

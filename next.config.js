@@ -146,4 +146,13 @@ module.exports = withImages({
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/blogs&media/:blogId",
+        destination: "/blogs&media/:blogId",
+        permanent: false,
+      },
+    ];
+  },
 });
