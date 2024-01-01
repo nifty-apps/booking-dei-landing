@@ -28,7 +28,7 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
 
 const blog = (props) => {
   const router = useRouter();
-  const { blogId } = router.query;
+  // const { blogId } = router.query;
   // const [blog, setBlog] = useState({});
   // useEffect(() => {
   //   fetch(`http://localhost:3008/api/blogs/${blogId}`)
@@ -84,7 +84,6 @@ blog.propTypes = {
 //   );
 //   const blog = await response.json();
 
-//   // Pass the blog post data to the page component as props
 //   return { props: { blog } };
 // }
 
