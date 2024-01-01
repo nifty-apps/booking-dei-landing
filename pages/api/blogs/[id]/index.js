@@ -6,6 +6,7 @@ export default async function handler(req, res) {
     switch (req.method) {
       case "GET":
         const blog = await getBlogById(id);
+        console.log(blog);
         return res.status(200).json(blog);
 
       default:
