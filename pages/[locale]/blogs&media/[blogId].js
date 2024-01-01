@@ -29,16 +29,16 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
 const blog = (props) => {
   const router = useRouter();
   const { blogId } = router.query;
-  const [blog, setBlog] = useState({});
-  useEffect(() => {
-    fetch(`http://localhost:3008/api/blogs/${blogId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data);
-      });
-  }, []);
+  // const [blog, setBlog] = useState({});
+  // useEffect(() => {
+  //   fetch(`http://localhost:3008/api/blogs/${blogId}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBlog(data);
+  //     });
+  // }, []);
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, blog } = props;
   return (
     <Fragment>
       <Head>{/* <title>{brand.saas.name + " - " + errorCode}</title> */}</Head>
@@ -61,7 +61,7 @@ blog.propTypes = {
   onToggleDir: PropTypes.func.isRequired,
 };
 
-const getStaticProps = makeStaticProps(["common"]);
+// const getStaticProps = makeStaticProps(["common"]);
 
 // export async function getStaticPaths() {
 //   const response = await fetch("blog");
@@ -76,11 +76,38 @@ const getStaticProps = makeStaticProps(["common"]);
 
 //   return { paths, fallback: true };
 // }
+
+// export async function getStaticProps({ params }) {
+//   // Fetch data for the blog post with the given ID
+//   const response = await fetch(
+//     `http://localhost:3008/api/blogs/${params.blogId}`
+//   );
+//   const blog = await response.json();
+
+//   // Pass the blog post data to the page component as props
+//   return { props: { blog } };
+// }
+
+export async function getStaticProps(context) {
+  // Call your custom makeStaticProps function
+  const staticProps = await makeStaticProps(["common"])(context);
+
+  // Fetch data for the blog post with the given ID
+  const response = await fetch(
+    `http://localhost:3008/api/blogs/${context.params.blogId}`
+  );
+  const blog = await response.json();
+
+  // Merge the blog data with the other static props
+  const props = { ...staticProps.props, blog };
+
+  return { props };
+}
 export const getStaticPaths = async () => {
   return {
     paths: [], //indicates that no page needs be created at build time
     fallback: "blocking", //indicates the type of fallback
   };
 };
-export { getStaticProps };
+
 export default blog;
