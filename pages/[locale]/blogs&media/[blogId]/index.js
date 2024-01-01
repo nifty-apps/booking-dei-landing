@@ -94,6 +94,7 @@ export async function getStaticProps(context) {
   const response = await fetch(
     `http://localhost:3008/api/blogs/${context.params.blogId}`
   );
+
   const blog = await response.json();
 
   // Merge the blog data with the other static props
