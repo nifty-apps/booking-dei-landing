@@ -7,7 +7,7 @@ import { makeStyles } from "tss-react/mui";
 import PropTypes from "prop-types";
 import { makeStaticProps } from "~/lib/getStatic";
 import { useRouter } from "next/router";
-import SingleBlog from "../../../components/Blogs/SingleBlog";
+import SingleBlog from "../../../../components/Blogs/SingleBlog";
 
 const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
   header: {
