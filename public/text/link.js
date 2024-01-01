@@ -5,7 +5,7 @@ const link = {
     login: "/login",
     register: "/register",
     editor: "/editor",
-    blogsMedia: "/blogs&media",
+    blogsMedia: "/blogs-media",
   },
 };
 
