@@ -176,6 +176,7 @@ export async function getStaticProps(context) {
     );
     if (response.ok) {
       blogData = await response.json();
+      console.log(blog);
     } else {
       console.error("Blog not found", response.status);
     }
@@ -186,7 +187,7 @@ export async function getStaticProps(context) {
   // If blog data is not found, return notFound: true to render a 404 page
   if (!blogData) {
     return {
-      notFound: true,
+      notFound: "blocking",
     };
   }
 
@@ -204,7 +205,7 @@ export async function getStaticPaths() {
   // For now, we'll just tell Next.js to dynamically generate pages on request
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 }
 
