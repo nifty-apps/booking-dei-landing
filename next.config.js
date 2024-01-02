@@ -102,12 +102,12 @@ module.exports = withImages({
   eslint: {
     ignoreDuringBuilds: true,
   },
-  publicRuntimeConfig: {
-    localeSubpaths:
-      typeof process.env.LOCALE_SUBPATHS === "string"
-        ? process.env.LOCALE_SUBPATHS
-        : "none",
-  },
+  // publicRuntimeConfig: {
+  //   localeSubpaths:
+  //     typeof process.env.LOCALE_SUBPATHS === "string"
+  //       ? process.env.LOCALE_SUBPATHS
+  //       : "none",
+  // },
   webpack: (config, options) => {
     config.node = {};
     config.resolve.fallback = { fs: false };
@@ -146,13 +146,4 @@ module.exports = withImages({
       },
     ];
   },
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/blogs-media/:id",
-  //       destination: "/blogs-media/:id",
-  //       permanent: false,
-  //     },
-  //   ];
-  // },
 });
