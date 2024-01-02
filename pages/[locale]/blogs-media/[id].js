@@ -111,7 +111,7 @@
 
 // export default blog;
 
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import Head from "next/head";
@@ -119,6 +119,7 @@ import { makeStyles } from "tss-react/mui";
 import PropTypes from "prop-types";
 import SingleBlog from "~/components/Blogs/SingleBlog";
 import { makeStaticProps } from "~/lib/getStatic";
+import { useRouter } from "next/router";
 
 const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
   header: {
@@ -134,11 +135,32 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir, blog } = props;
+  const { onToggleDark, onToggleDir } = props;
+
+  // if (!blog) {
+  //   // Handle case when blog data is not available
+  //   return <div>Blog not found.</div>;
+  // }
+
+  const [blog, setBlog] = useState([]);
+  const router = useRouter();
+  const { id } = router.query;
+
+  useEffect(() => {
+    if (id) {
+      // Replace 'http://localhost:3008' with your production API endpoint if different
+      fetch(`http://localhost:3008/api/blogs/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setBlog(data);
+          console.log(data);
+        })
+        .catch((error) => console.error("Fetching blog failed", error));
+    }
+  }, [id]);
 
   if (!blog) {
-    // Handle case when blog data is not available
-    return <div>Blog not found.</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -164,50 +186,50 @@ BlogPage.propTypes = {
   blog: PropTypes.object.isRequired,
 };
 
-export async function getStaticProps(context) {
-  // Call your custom makeStaticProps function to get common props
-  const commonProps = await makeStaticProps(["common"])(context);
+// export async function getStaticProps(context) {
+//   // Call your custom makeStaticProps function to get common props
+//   const commonProps = await makeStaticProps(["common"])(context);
 
-  // Fetch data for the blog post with the given ID
-  let blogData = null;
-  try {
-    const response = await fetch(
-      `http://localhost:3008/api/blogs/${context.params.id}`
-    );
-    if (response.ok) {
-      blogData = await response.json();
-      console.log(blog);
-    } else {
-      console.error("Blog not found", response.status);
-    }
-  } catch (error) {
-    console.error("Error fetching blog", error);
-  }
+//   // Fetch data for the blog post with the given ID
+//   let blogData = null;
+//   try {
+//     const response = await fetch(
+//       `http://localhost:3008/api/blogs/${context.params.id}`
+//     );
+//     if (response.ok) {
+//       blogData = await response.json();
+//       console.log(blog);
+//     } else {
+//       console.error("Blog not found", response.status);
+//     }
+//   } catch (error) {
+//     console.error("Error fetching blog", error);
+//   }
 
-  // If blog data is not found, return notFound: true to render a 404 page
-  if (!blogData) {
-    return {
-      notFound: "blocking",
-    };
-  }
+//   // If blog data is not found, return notFound: true to render a 404 page
+//   if (!blogData) {
+//     return {
+//       notFound: "blocking",
+//     };
+//   }
 
-  // Combine the common props with the blog data
-  const props = {
-    ...commonProps.props,
-    blog: blogData,
-  };
+//   // Combine the common props with the blog data
+//   const props = {
+//     ...commonProps.props,
+//     blog: blogData,
+//   };
 
-  return { props };
-}
+//   return { props };
+// }
 
-export async function getStaticPaths() {
-  // Optionally fetch and list all possible paths here
-  // For now, we'll just tell Next.js to dynamically generate pages on request
-  return {
-    paths: [],
-    fallback: "blocking",
-  };
-}
+// export async function getStaticPaths() {
+//   // Optionally fetch and list all possible paths here
+//   // For now, we'll just tell Next.js to dynamically generate pages on request
+//   return {
+//     paths: [],
+//     fallback: "blocking",
+//   };
+// }
 
 export default BlogPage;
 
