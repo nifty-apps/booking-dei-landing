@@ -113,7 +113,7 @@ const Blog = ({ blog }) => {
         <div>
           <Link
             href={`/blogs-media/${blog.id}/`}
-            as={`/blogs-media/${blog.id}/`}
+            as={`/blogs-media/${blog.id}`}
           >
             <button className={classes.button}>Read more</button>
           </Link>
