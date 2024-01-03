@@ -83,7 +83,7 @@ const getStaticProps = makeStaticProps(["common"]);
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: "blocking", // See the "fallback" section below
+    fallback: false, // See the "fallback" section below
   };
 }
 
