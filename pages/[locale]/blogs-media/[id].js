@@ -22,21 +22,21 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, blog } = props;
 
-  const [blog, setBlog] = useState([]);
+  // const [blog, setBlog] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    fetch(`http://localhost:3008/api/blogs/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data);
-        console.log(data);
-      })
-      .catch((error) => console.error("Fetching blog failed", error));
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:3008/api/blogs/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBlog(data);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => console.error("Fetching blog failed", error));
+  // }, [id]);
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -65,21 +65,29 @@ BlogPage.propTypes = {
   blog: PropTypes.object.isRequired,
 };
 
-const getStaticProps = makeStaticProps(["common"]);
+export async function getStaticProps(context) {
+  const commonProps = await makeStaticProps(["common"])(context);
+
+  const response = await fetch(
+    `http://localhost:3008/api/blogs/${context.params.id}`
+  );
+  const blogData = await response.json();
+  const props = {
+    ...commonProps.props,
+    blog: blogData,
+  };
+
+  return { props, revalidate: 10 };
+}
 
 export async function getStaticPaths() {
-  const response = await fetch("http://localhost:3008/api/blogs");
-  const data = await response.json();
-  const locales = ["en", "bn"];
+  const paths = [];
 
-  const paths = locales.flatMap((locale) =>
-    data?.blogs?.map((blog) => ({
-      params: { locale: locale, id: blog.id.toString() },
-    }))
-  );
-
-  return { paths: paths, fallback: true };
+  return {
+    paths,
+    fallback: "blocking",
+  };
 }
-export { getStaticProps };
+// export { getStaticProps };
 
 export default BlogPage;
