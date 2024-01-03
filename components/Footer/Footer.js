@@ -97,7 +97,7 @@ function Footer(props) {
             <div className={classes.phone}>
               <PhoneIcon className={classes.icon} />
               <Typography variant="body2" align="left" color="textSecondary">
-                +1 (323)-388-4703
+                +1 (323)-388-4703, +8801717457286
               </Typography>
             </div>
           </div>

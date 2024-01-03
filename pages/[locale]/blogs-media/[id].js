@@ -110,7 +110,7 @@
 // };
 
 // export default blog;
-
+import { serverSideTranslations as ssgTranslate } from "next-i18next/serverSideTranslations";
 import React, { Fragment, useEffect, useState } from "react";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
@@ -120,6 +120,7 @@ import PropTypes from "prop-types";
 import SingleBlog from "~/components/Blogs/SingleBlog";
 import { makeStaticProps } from "~/lib/getStatic";
 import { useRouter } from "next/router";
+import { withPageStaticProps } from "../../../utils/dynamicHelper";
 
 const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
   header: {
@@ -135,29 +136,22 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, blog } = props;
+  console.log(props);
 
-  // if (!blog) {
-  //   // Handle case when blog data is not available
-  //   return <div>Blog not found.</div>;
-  // }
-
-  const [blog, setBlog] = useState([]);
+  // const [blog, setBlog] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    if (id) {
-      // Replace 'http://localhost:3008' with your production API endpoint if different
-      fetch(`http://localhost:3008/api/blogs/${id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setBlog(data);
-          console.log(data);
-        })
-        .catch((error) => console.error("Fetching blog failed", error));
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:3008/api/blogs/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBlog(data);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => console.error("Fetching blog failed", error));
+  // }, [id]);
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -186,51 +180,63 @@ BlogPage.propTypes = {
   blog: PropTypes.object.isRequired,
 };
 
-// export async function getStaticProps(context) {
-//   // Call your custom makeStaticProps function to get common props
-//   const commonProps = await makeStaticProps(["common"])(context);
+export async function getStaticProps(context) {
+  const commonProps = await makeStaticProps(["common"])(context);
 
-//   // Fetch data for the blog post with the given ID
-//   let blogData = null;
-//   try {
-//     const response = await fetch(
-//       `http://localhost:3008/api/blogs/${context.params.id}`
-//     );
-//     if (response.ok) {
-//       blogData = await response.json();
-//       console.log(blog);
-//     } else {
-//       console.error("Blog not found", response.status);
-//     }
-//   } catch (error) {
-//     console.error("Error fetching blog", error);
-//   }
+  let blogData = null;
+  try {
+    const response = await fetch(
+      `http://localhost:3008/api/blogs/${context.params.id}`
+    );
+    if (response.ok) {
+      blogData = await response.json();
+      console.log(blog);
+    } else {
+      console.error("Blog not found", response.status);
+    }
+  } catch (error) {
+    console.error("Error fetching blog", error);
+  }
 
-//   // If blog data is not found, return notFound: true to render a 404 page
-//   if (!blogData) {
-//     return {
-//       notFound: "blocking",
-//     };
-//   }
+  // If blog data is not found, return notFound: true to render a 404 page
+  if (!blogData) {
+    return {
+      notFound: "blocking",
+    };
+  }
 
-//   // Combine the common props with the blog data
-//   const props = {
-//     ...commonProps.props,
-//     blog: blogData,
-//   };
+  // Combine the common props with the blog data
+  const props = {
+    ...commonProps.props,
+    blog: blogData,
+  };
 
-//   return { props };
-// }
-const getStaticProps = makeStaticProps(["common"]);
+  return { props };
+}
+// const getStaticProps = makeStaticProps(["common"]);
 export async function getStaticPaths() {
-  // Optionally fetch and list all possible paths here
-  // For now, we'll just tell Next.js to dynamically generate pages on request
+  let paths = [];
+  try {
+    // Fetch the list of blog post IDs from your API
+    const res = await fetch("http://localhost:3008/api/blogs/");
+    const posts = await res.json(); // Assuming this returns an array of posts
+
+    // Create paths with the `id` param
+    paths = posts.map((post) => ({
+      params: { id: post.id.toString() },
+    }));
+  } catch (error) {
+    console.error("Failed to fetch posts", error);
+    // Handle errors or fallback here if necessary
+  }
+
   return {
-    paths: [],
-    fallback: "blocking",
+    paths,
+    fallback: "blocking", // or false if you want unknown paths to 404
   };
 }
-export { getStaticProps };
+
+// export { getStaticProps };
 
 export default BlogPage;
 
