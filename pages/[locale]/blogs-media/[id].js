@@ -24,11 +24,15 @@ const BlogPage = (props) => {
   const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
 
-  const [blog, setBlog] = useState([]);
+  const [blog, setBlog] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
+    if (!router.isReady) {
+      // If router is not ready, exit the effect
+      return;
+    }
     fetch(`http://localhost:3008/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
@@ -83,8 +87,9 @@ const getStaticProps = makeStaticProps(["common"]);
 export async function getStaticPaths() {
   const blogs = await fetch(`http://localhost:3008/api/blogs`);
   const blogsData = await blogs.json();
-  const paths = blogsData.map((blog) => ({
-    id: blog.id,
+  console.log(blogsData);
+  const paths = blogsData?.blogs.map((blog) => ({
+    params: { id: blog.id, locale: "en" },
   }));
   return {
     paths: paths,
