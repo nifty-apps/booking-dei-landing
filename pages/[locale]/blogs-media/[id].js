@@ -115,7 +115,7 @@ export async function getStaticPaths() {
   // Generate the paths for each locale and post
   const paths = locales.flatMap((locale) =>
     posts.blogs.map((post) => ({
-      params: { locale, id: "" }, // Ensure the id is a string
+      params: { locale, id: post.id }, // Ensure the id is a string
     }))
   );
 
