@@ -81,8 +81,13 @@ BlogPage.propTypes = {
 // }
 const getStaticProps = makeStaticProps(["common"]);
 export async function getStaticPaths() {
+  const blogs = await fetch(`http://localhost:3008/api/blogs`);
+  const blogsData = await blogs.json();
+  const paths = blogsData.map((blog) => ({
+    id: blog.id,
+  }));
   return {
-    paths: [],
+    paths: paths,
     fallback: false, // See the "fallback" section below
   };
 }
