@@ -5,8 +5,9 @@ import Head from "next/head";
 import { makeStyles } from "tss-react/mui";
 import PropTypes from "prop-types";
 import SingleBlog from "~/components/Blogs/SingleBlog";
-import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
+import { makeStaticProps } from "~/lib/getStatic";
 import { useRouter } from "next/router";
+import nextI18nextConfig from "../../../next-i18next.config";
 
 const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
   header: {
@@ -96,8 +97,34 @@ const getStaticProps = makeStaticProps(["common"]);
 //     fallback: false, // See the "fallback" section below
 //   };
 // }
+// export const getI18nPaths = () =>
+//   nextI18nextConfig.i18n.locales.map((lng) => ({
+//     params: {
+//       locale: lng,
+//     },
+//   }));
 
-export { getStaticPaths, getStaticProps };
+export async function getStaticPaths() {
+  // Fetch the list of blog posts
+  const res = await fetch("http://localhost:3008/api/blogs");
+  const posts = await res.json(); // Assuming the API returns an array of posts
+
+  // Get the locales from your configuration
+  const locales = nextI18nextConfig.i18n.locales;
+
+  // Generate the paths for each locale and post
+  const paths = locales.flatMap((locale) =>
+    posts.blogs.map((post) => ({
+      params: { locale, id: post.id.toString() }, // Ensure the id is a string
+    }))
+  );
+
+  return {
+    paths,
+    fallback: false, // or 'blocking' if you want SSR for new paths
+  };
+}
+export { getStaticProps };
 // export { getStaticProps };
 
 export default BlogPage;
