@@ -221,15 +221,16 @@ BlogPage.propTypes = {
 
 //   return { props };
 // }
-
-// export async function getStaticPaths() {
-//   // Optionally fetch and list all possible paths here
-//   // For now, we'll just tell Next.js to dynamically generate pages on request
-//   return {
-//     paths: [],
-//     fallback: "blocking",
-//   };
-// }
+const getStaticProps = makeStaticProps(["common"]);
+export async function getStaticPaths() {
+  // Optionally fetch and list all possible paths here
+  // For now, we'll just tell Next.js to dynamically generate pages on request
+  return {
+    paths: [],
+    fallback: "blocking",
+  };
+}
+export { getStaticProps };
 
 export default BlogPage;
 
