@@ -5,7 +5,7 @@ import Head from "next/head";
 import { makeStyles } from "tss-react/mui";
 import PropTypes from "prop-types";
 import SingleBlog from "~/components/Blogs/SingleBlog";
-import { makeStaticProps } from "~/lib/getStatic";
+import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 import { useRouter } from "next/router";
 
 const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
@@ -84,20 +84,20 @@ BlogPage.propTypes = {
 //   return { props, revalidate: 1 };
 // }
 const getStaticProps = makeStaticProps(["common"]);
-export async function getStaticPaths() {
-  const blogs = await fetch(`http://localhost:3008/api/blogs`);
-  const blogsData = await blogs.json();
-  console.log(blogsData);
-  const paths = blogsData?.blogs.map((blog) => ({
-    params: { id: blog.id, locale: "en" },
-  }));
-  return {
-    paths: paths,
-    fallback: false, // See the "fallback" section below
-  };
-}
+// export async function getStaticPaths() {
+//   const blogs = await fetch(`http://localhost:3008/api/blogs`);
+//   const blogsData = await blogs.json();
+//   console.log(blogsData);
+//   const paths = blogsData?.blogs.map((blog) => ({
+//     params: { id: blog.id, locale: "en" },
+//   }));
+//   return {
+//     paths: paths,
+//     fallback: false, // See the "fallback" section below
+//   };
+// }
 
-export { getStaticProps };
+export { getStaticPaths, getStaticProps };
 // export { getStaticProps };
 
 export default BlogPage;
