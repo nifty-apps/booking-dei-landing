@@ -115,13 +115,13 @@ export async function getStaticPaths() {
   // Generate the paths for each locale and post
   const paths = locales.flatMap((locale) =>
     posts.blogs.map((post) => ({
-      params: { locale, id: post.id.toString() }, // Ensure the id is a string
+      params: { locale, id: "" }, // Ensure the id is a string
     }))
   );
 
   return {
     paths,
-    fallback: false, // or 'blocking' if you want SSR for new paths
+    fallback: "blocking", // or 'blocking' if you want SSR for new paths
   };
 }
 export { getStaticProps };
