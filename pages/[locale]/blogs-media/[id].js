@@ -23,25 +23,25 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, blog } = props;
 
-  const [blog, setBlog] = useState({});
+  // const [blog, setBlog] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    if (!router.isReady) {
-      // If router is not ready, exit the effect
-      return;
-    }
-    fetch(`/api/blogs/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data);
-        console.log(data);
-      })
-      .catch((error) => console.error("Fetching blog failed", error));
-  }, [id]);
+  // useEffect(() => {
+  //   if (!router.isReady) {
+  //     // If router is not ready, exit the effect
+  //     return;
+  //   }
+  //   fetch(`/api/blogs/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBlog(data);
+  //       console.log(data);
+  //     })
+  //     .catch((error) => console.error("Fetching blog failed", error));
+  // }, [id]);
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -70,21 +70,21 @@ BlogPage.propTypes = {
   blog: PropTypes.object.isRequired,
 };
 
-// export async function getStaticProps(context) {
-//   const commonProps = await makeStaticProps(["common"])(context);
+export async function getStaticProps(context) {
+  const commonProps = await makeStaticProps(["common"])(context);
 
-//   const response = await fetch(
-//     `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
-//   );
-//   const blogData = await response.json();
-//   const props = {
-//     ...commonProps.props,
-//     blog: blogData,
-//   };
+  const response = await fetch(
+    `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
+  );
+  const blogData = await response.json();
+  const props = {
+    ...commonProps.props,
+    blog: blogData,
+  };
 
-//   return { props, revalidate: 1 };
-// }
-const getStaticProps = makeStaticProps(["common"]);
+  return { props, revalidate: 1 };
+}
+// const getStaticProps = makeStaticProps(["common"]);
 // export async function getStaticPaths() {
 //   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
 //   const blogsData = await blogs.json();
@@ -121,7 +121,7 @@ export async function getStaticPaths() {
     fallback: "blocking",
   };
 }
-export { getStaticProps };
+// export { getStaticProps };
 // export { getStaticProps };
 
 export default BlogPage;
