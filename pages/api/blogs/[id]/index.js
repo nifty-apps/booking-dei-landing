@@ -1,7 +1,13 @@
 import { getBlogById } from "../../../../prisma/blogs";
+import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
   const { id } = req.query;
+  await NextCors(req, res, {
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "https://booking-dei-landing.vercel.app",
+    optionsSuccessStatus: 200,
+  });
   try {
     switch (req.method) {
       case "GET":

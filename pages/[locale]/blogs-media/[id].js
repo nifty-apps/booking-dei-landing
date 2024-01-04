@@ -34,7 +34,7 @@ const BlogPage = (props) => {
       // If router is not ready, exit the effect
       return;
     }
-    fetch(`https://booking-dei-landing-eight.vercel.app/api/blogs/${id}`)
+    fetch(`https://booking-dei-landing.vercel.app/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -74,7 +74,7 @@ BlogPage.propTypes = {
 //   const commonProps = await makeStaticProps(["common"])(context);
 
 //   const response = await fetch(
-//     `https://booking-dei-landing-eight.vercel.app/api/blogs/${context.params.id}`
+//     `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
 //   );
 //   const blogData = await response.json();
 //   const props = {
@@ -86,7 +86,7 @@ BlogPage.propTypes = {
 // }
 const getStaticProps = makeStaticProps(["common"]);
 // export async function getStaticPaths() {
-//   const blogs = await fetch(`https://booking-dei-landing-eight.vercel.app/api/blogs`);
+//   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
 //   const blogsData = await blogs.json();
 //   console.log(blogsData);
 //   const paths = blogsData?.blogs.map((blog) => ({
@@ -105,7 +105,7 @@ const getStaticProps = makeStaticProps(["common"]);
 //   }));
 
 export async function getStaticPaths() {
-  // const res = await fetch("https://booking-dei-landing-eight.vercel.app/api/blogs");
+  // const res = await fetch("https://booking-dei-landing.vercel.app/api/blogs");
   // const posts = await res.json();
 
   // const locales = nextI18nextConfig.i18n.locales;

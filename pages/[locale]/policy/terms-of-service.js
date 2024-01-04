@@ -105,14 +105,14 @@ function TermsOfService(props) {
                 terms and conditions (together with any documents they expressly
                 incorporate by reference, collectively, “Terms of Use”). The
                 Terms of Use govern your access to and use of
-                https://booking-dei-landing-eight.vercel.app/ (the “Website”),
+                https://booking-dei-landing.vercel.app/ (the “Website”),
                 including any content, functionality, and services offered on or
-                through https://booking-dei-landing-eight.vercel.app/
-                (collectively, the “Services”), whether as a guest or a
-                registered user. Please read the Terms of Use carefully before
-                you start to use the Services. By using the Services, you accept
-                and agree to these Terms of Use and our Privacy Policy, found at
-                https://booking-dei-landing-eight.vercel.app//privacy-policy/,
+                through https://booking-dei-landing.vercel.app/ (collectively,
+                the “Services”), whether as a guest or a registered user. Please
+                read the Terms of Use carefully before you start to use the
+                Services. By using the Services, you accept and agree to these
+                Terms of Use and our Privacy Policy, found at
+                https://booking-dei-landing.vercel.app//privacy-policy/,
                 incorporated herein by reference. If you do not want to agree to
                 these Terms of Use or the Privacy Policy, do not access or use
                 the Services. By using the Services, you represent and warrant
