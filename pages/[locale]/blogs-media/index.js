@@ -40,6 +40,7 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
 const blogs = (props) => {
   const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
+
   return (
     <Fragment>
       <Head>{/* <title>{brand.saas.name + " - Blogs"}</title> */}</Head>

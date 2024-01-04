@@ -46,7 +46,7 @@ const Blogs = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:3008/api/blogs?page=${currentPage}&limit=${blogsPerPage}`
+      `https://booking-dei-landing-eight.vercel.app/api/blogs?page=${currentPage}&limit=${blogsPerPage}`
     )
       .then((res) => res.json())
       .then((data) => {
