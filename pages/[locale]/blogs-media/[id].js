@@ -34,7 +34,7 @@ const BlogPage = (props) => {
       // If router is not ready, exit the effect
       return;
     }
-    fetch(`https://booking-dei-landing.vercel.app/api/blogs/${id}`)
+    fetch(`/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
