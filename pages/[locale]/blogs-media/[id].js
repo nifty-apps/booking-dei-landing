@@ -105,19 +105,19 @@ const getStaticProps = makeStaticProps(["common"]);
 //   }));
 
 export async function getStaticPaths() {
-  const res = await fetch("http://localhost:3008/api/blogs");
-  const posts = await res.json();
+  // const res = await fetch("http://localhost:3008/api/blogs");
+  // const posts = await res.json();
 
-  const locales = nextI18nextConfig.i18n.locales;
+  // const locales = nextI18nextConfig.i18n.locales;
 
-  const paths = locales.flatMap((locale) =>
-    posts.blogs.map((post) => ({
-      params: { locale, id: post.id },
-    }))
-  );
+  // const paths = locales.flatMap((locale) =>
+  //   posts.blogs.map((post) => ({
+  //     params: { locale, id: post.id },
+  //   }))
+  // );
 
   return {
-    paths,
+    paths: [],
     fallback: "blocking",
   };
 }
