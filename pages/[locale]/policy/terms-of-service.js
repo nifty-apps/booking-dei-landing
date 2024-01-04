@@ -105,22 +105,23 @@ function TermsOfService(props) {
                 terms and conditions (together with any documents they expressly
                 incorporate by reference, collectively, “Terms of Use”). The
                 Terms of Use govern your access to and use of
-                https://bookingdei.com/ (the “Website”), including any content,
-                functionality, and services offered on or through
-                https://bookingdei.com/ (collectively, the “Services”), whether
-                as a guest or a registered user. Please read the Terms of Use
-                carefully before you start to use the Services. By using the
-                Services, you accept and agree to these Terms of Use and our
-                Privacy Policy, found at
-                https://bookingdei.com//privacy-policy/, incorporated herein by
-                reference. If you do not want to agree to these Terms of Use or
-                the Privacy Policy, do not access or use the Services. By using
-                the Services, you represent and warrant that you are of legal
-                age(18 or older) to form a binding contract with the Company,
-                meet all of the foregoing eligibility requirements, and, if you
-                are acting on behalf of a company or entity, have been
-                authorized to bind such entity to the Terms of Use. You must
-                meet all of these requirements to access or use the Services.
+                https://booking-dei-landing-eight.vercel.app/ (the “Website”),
+                including any content, functionality, and services offered on or
+                through https://booking-dei-landing-eight.vercel.app/
+                (collectively, the “Services”), whether as a guest or a
+                registered user. Please read the Terms of Use carefully before
+                you start to use the Services. By using the Services, you accept
+                and agree to these Terms of Use and our Privacy Policy, found at
+                https://booking-dei-landing-eight.vercel.app//privacy-policy/,
+                incorporated herein by reference. If you do not want to agree to
+                these Terms of Use or the Privacy Policy, do not access or use
+                the Services. By using the Services, you represent and warrant
+                that you are of legal age(18 or older) to form a binding
+                contract with the Company, meet all of the foregoing eligibility
+                requirements, and, if you are acting on behalf of a company or
+                entity, have been authorized to bind such entity to the Terms of
+                Use. You must meet all of these requirements to access or use
+                the Services.
               </Typography>
               <Typography
                 variant="h5"
