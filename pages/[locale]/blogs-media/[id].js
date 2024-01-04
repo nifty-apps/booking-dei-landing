@@ -105,23 +105,20 @@ const getStaticProps = makeStaticProps(["common"]);
 //   }));
 
 export async function getStaticPaths() {
-  // Fetch the list of blog posts
   const res = await fetch("http://localhost:3008/api/blogs");
-  const posts = await res.json(); // Assuming the API returns an array of posts
+  const posts = await res.json();
 
-  // Get the locales from your configuration
   const locales = nextI18nextConfig.i18n.locales;
 
-  // Generate the paths for each locale and post
   const paths = locales.flatMap((locale) =>
     posts.blogs.map((post) => ({
-      params: { locale, id: post.id }, // Ensure the id is a string
+      params: { locale, id: post.id },
     }))
   );
 
   return {
     paths,
-    fallback: false, // or 'blocking' if you want SSR for new paths
+    fallback: "blocking",
   };
 }
 export { getStaticProps };
