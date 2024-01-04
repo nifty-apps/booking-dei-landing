@@ -34,7 +34,7 @@ const BlogPage = (props) => {
       // If router is not ready, exit the effect
       return;
     }
-    fetch(`http://localhost:3008/api/blogs/${id}`)
+    fetch(`https://bookingdei.com/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
@@ -74,7 +74,7 @@ BlogPage.propTypes = {
 //   const commonProps = await makeStaticProps(["common"])(context);
 
 //   const response = await fetch(
-//     `http://localhost:3008/api/blogs/${context.params.id}`
+//     `https://bookingdei.com/api/blogs/${context.params.id}`
 //   );
 //   const blogData = await response.json();
 //   const props = {
@@ -86,7 +86,7 @@ BlogPage.propTypes = {
 // }
 const getStaticProps = makeStaticProps(["common"]);
 // export async function getStaticPaths() {
-//   const blogs = await fetch(`http://localhost:3008/api/blogs`);
+//   const blogs = await fetch(`https://bookingdei.com/api/blogs`);
 //   const blogsData = await blogs.json();
 //   console.log(blogsData);
 //   const paths = blogsData?.blogs.map((blog) => ({
@@ -105,7 +105,7 @@ const getStaticProps = makeStaticProps(["common"]);
 //   }));
 
 export async function getStaticPaths() {
-  // const res = await fetch("http://localhost:3008/api/blogs");
+  // const res = await fetch("https://bookingdei.com/api/blogs");
   // const posts = await res.json();
 
   // const locales = nextI18nextConfig.i18n.locales;
