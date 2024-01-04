@@ -45,9 +45,7 @@ const Blogs = () => {
   const blogsPerPage = 2; // Adjust as needed
 
   useEffect(() => {
-    fetch(
-      `https://booking-dei-landing.vercel.app/api/blogs?page=${currentPage}&limit=${blogsPerPage}`
-    )
+    fetch(`/api/blogs?page=${currentPage}&limit=${blogsPerPage}`)
       .then((res) => res.json())
       .then((data) => {
         setBlogs(data.blogs);
