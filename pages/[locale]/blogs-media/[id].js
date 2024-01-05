@@ -23,24 +23,24 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir, blog } = props;
+  const { onToggleDark, onToggleDir } = props;
 
-  // const [blog, setBlog] = useState({});
+  const [blog, setBlog] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
-  // useEffect(() => {
-  //   if (!router.isReady) {
-  //     // If router is not ready, exit the effect
-  //     return;
-  //   }
-  //   fetch(`/api/blogs/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBlog(data);
-  //     })
-  //     .catch((error) => console.error("Fetching blog failed", error));
-  // }, [id]);
+  useEffect(() => {
+    if (!router.isReady) {
+      // If router is not ready, exit the effect
+      return;
+    }
+    fetch(`/api/blogs/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setBlog(data);
+      })
+      .catch((error) => console.error("Fetching blog failed", error));
+  }, [id]);
 
   if (!blog) {
     return <div>Loading...</div>;
