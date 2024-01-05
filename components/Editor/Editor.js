@@ -108,7 +108,7 @@ const Editor = () => {
       alert("Please fill out all required fields.");
       return;
     }
-    fetch("https://booking-dei-landing.vercel.app/api/blogs", {
+    fetch("/api/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
