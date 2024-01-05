@@ -56,24 +56,6 @@ editor.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
-export async function getStaticProps(context) {
-  const commonProps = await makeStaticProps(["common"])(context);
-  // Update the URL to your production or environment-specific API
-  const response = await fetch(
-    `https://booking-dei-landing.vercel.app/api/blogs`
-  );
-  if (!response.ok) {
-    // Handle errors here, perhaps throw a 404 or return an error page
-    return { notFound: true };
-  }
-
-  const blogData = await response.json();
-  const props = {
-    ...commonProps.props,
-    blog: blogData,
-  };
-
-  return { props, revalidate: 1 }; // revalidate every 1 second for ISR
-}
+const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
 export default editor;
