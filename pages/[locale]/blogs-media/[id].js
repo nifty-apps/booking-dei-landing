@@ -120,7 +120,7 @@ console.log(getStaticProps);
 //     fallback: "blocking",
 //   };
 // }
-export { getStaticProps };
+
 // export { getStaticProps };
 
 // export async function getStaticProps(context) {
@@ -146,16 +146,17 @@ export { getStaticProps };
 // }
 
 export async function getStaticPaths() {
-  const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
-  const blogsData = await blogs.json();
-  const paths = blogsData?.blogs.map((blog) => ({
-    params: { id: blog.id.toString(), locale: "en" }, // Ensure IDs are strings
-  }));
+  // const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
+  // const blogsData = await blogs.json();
+  // const paths = blogsData?.blogs.map((blog) => ({
+  //   params: { id: blog.id.toString(), locale: "en" }, // Ensure IDs are strings
+  // }));
 
   return {
-    paths,
+    paths: [],
     fallback: "blocking", // Use 'blocking' for better SEO and user experience
   };
 }
+export { getStaticProps };
 
 export default BlogPage;
