@@ -3,7 +3,7 @@ import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
   const { title, imgUrl, description } = req.body;
-  console.log(process.env);
+
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: "https://booking-dei-landing.vercel.app/",

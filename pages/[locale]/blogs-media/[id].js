@@ -38,7 +38,6 @@ const BlogPage = (props) => {
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
-        console.log(data);
       })
       .catch((error) => console.error("Fetching blog failed", error));
   }, [id]);
@@ -88,7 +87,6 @@ const getStaticProps = makeStaticProps(["common"]);
 export async function getStaticPaths() {
   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
   const blogsData = await blogs.json();
-  console.log(blogsData);
   const paths = blogsData?.blogs.map((blog) => ({
     params: { id: blog.id, locale: "en" },
   }));

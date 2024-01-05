@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 // import dynamic from "next/dynamic";
 import Container from "@mui/material/Container";
@@ -105,10 +106,11 @@ const Editor = () => {
   const handleSubmit = () => {
     event.preventDefault();
     if (!title || !imgUrl || !description) {
-      alert("Please fill out all required fields.");
+      // Using hot-toast to notify the user about the need to fill all fields
+      toast.error("Please fill out all required fields.");
       return;
     }
-    fetch("https://booking-dei-landing.vercel.app/api/blogs", {
+    fetch("/api/blogs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -123,10 +125,10 @@ const Editor = () => {
         if (!res.ok) {
           throw Error("Sorry, some error occurred");
         }
-        res.json();
+        return res.json();
       })
       .then((data) => {
-        alert("Your post has been published");
+        toast.success("Your post has been published");
         setDescription("");
         setImgUrl("");
         setTitle("");
@@ -136,7 +138,8 @@ const Editor = () => {
           "There has been a problem with your fetch operation:",
           error
         );
-        alert("Sorry, some error occurred");
+        // Notifying error with hot-toast
+        toast.error("Sorry, some error occurred");
       });
   };
   return (
