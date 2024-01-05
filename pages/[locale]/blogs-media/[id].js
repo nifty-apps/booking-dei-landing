@@ -125,6 +125,7 @@ BlogPage.propTypes = {
 export async function getStaticProps(context) {
   const commonProps = await makeStaticProps(["common"])(context);
 
+  console.log("context", commonProps);
   // Update the URL to your production or environment-specific API
   const response = await fetch(
     `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
