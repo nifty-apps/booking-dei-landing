@@ -74,7 +74,6 @@ function Header(props) {
   };
   const pathforblogs = "/" + router.pathname.split("/")[2];
   const isActive = pathforblogs === link.saas.blogsMedia;
-
   return (
     <Fragment>
       {isTablet && (
