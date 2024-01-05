@@ -152,7 +152,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: "blocking", // Use 'blocking' for better SEO and user experience
+    fallback: true, // Use 'blocking' for better SEO and user experience
   };
 }
 // export { getStaticProps };
