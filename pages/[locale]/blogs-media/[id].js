@@ -92,7 +92,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths: paths,
-    fallback: "blocking", // See the "fallback" section below
+    fallback: false, // See the "fallback" section below
   };
 }
 // export const getI18nPaths = () =>
