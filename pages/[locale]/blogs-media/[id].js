@@ -84,6 +84,7 @@ BlogPage.propTypes = {
 //   return { props, revalidate: 1 };
 // }
 const getStaticProps = makeStaticProps(["common"]);
+console.log(getStaticProps);
 // export async function getStaticPaths() {
 //   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
 //   const blogsData = await blogs.json();

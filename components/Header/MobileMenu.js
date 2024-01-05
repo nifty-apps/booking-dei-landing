@@ -57,7 +57,7 @@ function MobileMenu(props) {
             style={{ animationDuration: navMenu.length * 0.15 + "s" }}
           >
             <ListItemText
-              primary={t("saas-landing.header_blogs_&_media")}
+              primary={t("saas-landing.header_blogs_media")}
               className={classes.menuList}
             />
           </ListItem>
