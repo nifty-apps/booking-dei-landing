@@ -23,24 +23,24 @@ const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
 
 const BlogPage = (props) => {
   const { classes } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
+  const { onToggleDark, onToggleDir, blog } = props;
 
-  const [blog, setBlog] = useState({});
+  // const [blog, setBlog] = useState({});
   const router = useRouter();
   const { id } = router.query;
 
-  useEffect(() => {
-    if (!router.isReady) {
-      // If router is not ready, exit the effect
-      return;
-    }
-    fetch(`/api/blogs/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlog(data);
-      })
-      .catch((error) => console.error("Fetching blog failed", error));
-  }, [id]);
+  // useEffect(() => {
+  //   if (!router.isReady) {
+  //     // If router is not ready, exit the effect
+  //     return;
+  //   }
+  //   fetch(`/api/blogs/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBlog(data);
+  //     })
+  //     .catch((error) => console.error("Fetching blog failed", error));
+  // }, [id]);
 
   if (!blog) {
     return <div>Loading...</div>;
@@ -83,18 +83,18 @@ BlogPage.propTypes = {
 
 //   return { props, revalidate: 1 };
 // }
-const getStaticProps = makeStaticProps(["common"]);
-export async function getStaticPaths() {
-  const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
-  const blogsData = await blogs.json();
-  const paths = blogsData?.blogs.map((blog) => ({
-    params: { id: blog.id, locale: "en" },
-  }));
-  return {
-    paths: paths,
-    fallback: true, // See the "fallback" section below
-  };
-}
+// const getStaticProps = makeStaticProps(["common"]);
+// export async function getStaticPaths() {
+//   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
+//   const blogsData = await blogs.json();
+//   const paths = blogsData?.blogs.map((blog) => ({
+//     params: { id: blog.id, locale: "en" },
+//   }));
+//   return {
+//     paths: paths,
+//     fallback: true, // See the "fallback" section below
+//   };
+// }
 // export const getI18nPaths = () =>
 //   nextI18nextConfig.i18n.locales.map((lng) => ({
 //     params: {
@@ -120,6 +120,40 @@ export async function getStaticPaths() {
 //   };
 // }
 // export { getStaticProps };
-export { getStaticProps };
+// export { getStaticProps };
+
+export async function getStaticProps(context) {
+  const commonProps = await makeStaticProps(["common"])(context);
+
+  // Update the URL to your production or environment-specific API
+  const response = await fetch(
+    `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
+  );
+  if (!response.ok) {
+    // Handle errors here, perhaps throw a 404 or return an error page
+    return { notFound: true };
+  }
+
+  const blogData = await response.json();
+  const props = {
+    ...commonProps.props,
+    blog: blogData,
+  };
+
+  return { props, revalidate: 1 }; // revalidate every 1 second for ISR
+}
+
+export async function getStaticPaths() {
+  const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
+  const blogsData = await blogs.json();
+  const paths = blogsData?.blogs.map((blog) => ({
+    params: { id: blog.id.toString(), locale: "en" }, // Ensure IDs are strings
+  }));
+
+  return {
+    paths,
+    fallback: "blocking", // Use 'blocking' for better SEO and user experience
+  };
+}
 
 export default BlogPage;
