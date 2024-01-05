@@ -157,7 +157,7 @@ function Header(props) {
                       href={curLang + link.saas.blogsMedia}
                       style={{ opacity: isActive ? ".5" : "1" }}
                     >
-                      {t("saas-landing.header_blogs_&_media")}
+                      {t("saas-landing.header_blogs_media")}
                     </Button>
                   </li>
                 </Scrollspy>
