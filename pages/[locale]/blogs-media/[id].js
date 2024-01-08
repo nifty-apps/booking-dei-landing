@@ -69,21 +69,21 @@ BlogPage.propTypes = {
   blog: PropTypes.object.isRequired,
 };
 
-// export async function getStaticProps(context) {
-//   const commonProps = await makeStaticProps(["common"])(context);
+export async function getStaticProps(context) {
+  const commonProps = await makeStaticProps(["common"])(context);
 
-//   const response = await fetch(
-//     `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
-//   );
-//   const blogData = await response.json();
-//   const props = {
-//     ...commonProps.props,
-//     blog: blogData,
-//   };
+  // const response = await fetch(
+  //   `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
+  // );
+  // const blogData = await response.json();
+  const props = {
+    ...commonProps.props,
+    // blog: blogData,
+  };
 
-//   return { props, revalidate: 1 };
-// }
-const getStaticProps = makeStaticProps(["common"]);
+  return { props, revalidate: 1 };
+}
+// const getStaticProps = makeStaticProps(["common"]);
 // console.log(getStaticProps);
 // export async function getStaticPaths() {
 //   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
@@ -150,12 +150,11 @@ export async function getStaticPaths() {
     params: { id: blog.id.toString(), locale: "en" }, // Ensure IDs are strings
   }));
 
-  console.log(blogs);
   return {
     paths,
     fallback: true, // Use 'blocking' for better SEO and user experience
   };
 }
-export { getStaticProps };
+// export { getStaticProps };
 
 export default BlogPage;
