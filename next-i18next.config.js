@@ -1,9 +1,10 @@
 module.exports = {
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: "en",
     // locales: ['en', 'de', 'id', 'ar', 'pt', 'zh'],
-    locales: ['en', 'bn'],
-    fallbackLng: 'en',
+    locales: ["en", "bn"],
+    fallbackLng: "en",
   },
-  ssg: true // Set to true for Static Site Generation (SSG)
+  ssg: true, // Set to true for Static Site Generation (SSG)
+  reloadOnPrerender: true, // Set to true if you want to refetch data on each page prerender
 };
