@@ -45,6 +45,7 @@ const Editor = () => {
     quillEditor: {
       height: "100%",
       width: "100%",
+   
     },
     editorWithSpace: {
       margin: "200px",
@@ -122,15 +123,17 @@ const Editor = () => {
       }),
     })
       .then((res) => {
-        if (!res.ok) {
-          throw Error("Sorry, some error occurred");
-        }
+        console.log(imgUrl);
+        console.log(res);
+        // if (!res.ok) {
+        //   throw Error("Sorry, some error occurred");
+        // }
         return res.json();
       })
       .then((data) => {
         toast.success("Your post has been published");
         setDescription("");
-        setImgUrl("");
+        // setImgUrl("");
         setTitle("");
       })
       .catch((error) => {

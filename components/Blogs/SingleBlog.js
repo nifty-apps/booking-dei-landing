@@ -13,6 +13,7 @@ const SingleBlog = ({ blog }) => {
       boxSizing: "border-box",
     },
     blogContent: {
+      minHeight: "400px",
       position: "relative",
       display: "flex",
       flexDirection: "column",
@@ -48,9 +49,7 @@ const SingleBlog = ({ blog }) => {
     },
 
     blogDetailsContent: {
-      position: "relative",
       textAlign: "center",
-
       "& p:first-child, & p:last-child": {
         color: "#333",
         textTransform: "uppercase",
@@ -58,13 +57,12 @@ const SingleBlog = ({ blog }) => {
         padding: theme.spacing(2, 0, 2, 0),
         lineHeight: "0",
       },
-
       "& p:nth-child(2)": {
         color: "black",
         fontSize: "30px",
         fontWeight: "bold",
-        lineHeight: "0",
-        padding: theme.spacing(0),
+        lineHeight: "36px",
+        padding: theme.spacing(0, 4),
       },
     },
 
@@ -72,8 +70,11 @@ const SingleBlog = ({ blog }) => {
       width: "80%",
       fontSize: "18px",
       marginTop: theme.spacing(20),
-      position: "relative",
+      // position: "relative",
       zIndex: "1",
+      "& img": {
+        maxWidth: "100%",
+      },
     },
   }));
 

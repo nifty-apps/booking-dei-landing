@@ -11,7 +11,7 @@ export async function createBlogs({ title, imgUrl, description }) {
         description,
       },
     });
-
+console.log(blogs);
     return blogs;
   } catch (error) {
     console.error("Error creating blog:", error);
