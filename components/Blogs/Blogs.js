@@ -20,6 +20,9 @@ const Blogs = () => {
       background: "white",
       padding: theme.spacing(10),
       gap: theme.spacing(10),
+      [theme.breakpoints.down("md")]: {
+        gridTemplateColumns: "1fr",
+      },
     },
     paginationContainer: {
       display: "flex",
@@ -42,7 +45,7 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalBlogs, setTotalBlogs] = useState(0);
-  const blogsPerPage = 2; // Adjust as needed
+  const blogsPerPage = 6; // Adjust as needed
 
   useEffect(() => {
     fetch(`/api/blogs?page=${currentPage}&limit=${blogsPerPage}`)

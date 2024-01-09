@@ -29,6 +29,11 @@ const Blog = ({ blog }) => {
         textTransform: "uppercase",
         fontSize: "14px",
       },
+      [theme.breakpoints.down("sm")]: {
+        "& p": {
+          fontSize: "10px",
+        },
+      },
     },
     imgDiv: {
       position: "relative",
@@ -38,16 +43,28 @@ const Blog = ({ blog }) => {
     },
     blogImg: {
       width: "100%",
-      height: "100%",
+      height: "300px",
       objectFit: "cover",
+      [theme.breakpoints.down("md")]: {
+        height: "250px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        height: "150px",
+      },
+      // margin: theme.spacing(2, "auto"),
     },
     title: {
       marginTop: theme.spacing(2),
     },
+    first150: {
+      // Your specific styles for the first 300 characters
+      fontSize: "18px", // example style
+      color: "gray", // example style
+    },
     descriptionContainer: {
-      color: "gray",
       "& > *": {
         fontSize: "18px",
+        color: [["gray"], "!important"],
       },
     },
     button: {
@@ -78,7 +95,7 @@ const Blog = ({ blog }) => {
   const options = { day: "numeric", month: "long", year: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
-  const getDescriptionPreview = (description, maxLength = 300) => {
+  const getDescriptionPreview = (description, maxLength = 150) => {
     const trimmedDescription = description?.trim();
     if (trimmedDescription?.length > maxLength) {
       return `${trimmedDescription.substring(0, maxLength)}...`;
@@ -88,7 +105,9 @@ const Blog = ({ blog }) => {
   };
 
   const descriptionPreview = getDescriptionPreview(blog.description);
+  const titlePreview = getDescriptionPreview(blog.title, 40);
   const sanitizedDescription = DOMPurify.sanitize(descriptionPreview);
+  const sanitizedTitle = DOMPurify.sanitize(titlePreview);
 
   return (
     <div className={classes.mainBlogContainer}>
@@ -100,14 +119,14 @@ const Blog = ({ blog }) => {
         <div className={classes.imgDiv}>
           <img src={blog.imgUrl} alt={blog.title} className={classes.blogImg} />
         </div>
-        <h1 className={classes.title}>{blog.title}</h1>
-        <div className={classes.descriptionContainer}>
+        <h1 className={classes.title}>{sanitizedTitle}</h1>
+        <div >
           <div
             dangerouslySetInnerHTML={{
               __html: sanitizedDescription,
             }}
             className={classes.descriptionContainer}
-            style={{ fontSize: "18px" }}
+            style={{ fontSize: "18px", color: "gray" ,width:"400px",overflowWrap: "break-word"}}
           ></div>
         </div>
         <div>
