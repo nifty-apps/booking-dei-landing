@@ -12,10 +12,11 @@ import BlotFormatter from "quill-blot-formatter";
 import { useTranslation } from "next-i18next";
 import Quill from "quill";
 import ImageResize from "quill-image-resize-module";
+import { useRouter } from "next/router";
 
 // const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
-const Editor = () => {
+const Editor = ({ isEditing }) => {
   window.Quill = Quill;
   Quill.register("modules/imageResize", ImageResize);
   Quill.register("modules/blotFormatter", BlotFormatter);
@@ -45,7 +46,6 @@ const Editor = () => {
     quillEditor: {
       height: "100%",
       width: "100%",
-   
     },
     editorWithSpace: {
       margin: "200px",
@@ -104,15 +104,39 @@ const Editor = () => {
     // this.quill.setSelection(cursorPosition + 1);
   };
 
+  const router = useRouter();
+  const { blogId } = router.query; // Assuming the URL parameter name is 'blogId'
+
+  useEffect(() => {
+    if (blogId) {
+      // Use 'blogId' instead of 'isEditing'
+      fetch(`/api/blogs/${blogId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          // Assuming your API returns the blog directly
+          setDescription(data.description);
+          setImgUrl(data.imgUrl);
+          setTitle(data.title);
+        })
+        .catch((error) => {
+          console.error("Error fetching blog data:", error);
+          toast.error("Sorry, some error occurred");
+        });
+    }
+  }, [blogId]);
+
   const handleSubmit = () => {
     event.preventDefault();
     if (!title || !imgUrl || !description) {
-      // Using hot-toast to notify the user about the need to fill all fields
       toast.error("Please fill out all required fields.");
       return;
     }
-    fetch("/api/blogs", {
-      method: "POST",
+
+    const method = isEditing ? "PATCH" : "POST";
+    const url = isEditing ? `/api/blogs/${blogId}` : "/api/blogs";
+
+    fetch(url, {
+      method: method,
       headers: {
         "Content-Type": "application/json",
       },
@@ -123,28 +147,29 @@ const Editor = () => {
       }),
     })
       .then((res) => {
-        console.log(imgUrl);
-        console.log(res);
-        // if (!res.ok) {
-        //   throw Error("Sorry, some error occurred");
-        // }
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
         return res.json();
       })
       .then((data) => {
-        toast.success("Your post has been published");
+        toast.success(
+          `Your post has been ${isEditing ? "updated" : "published"}`
+        );
         setDescription("");
-        // setImgUrl("");
+        setImgUrl("");
         setTitle("");
+        // Redirect to a different page or reset the editor as needed
       })
       .catch((error) => {
         console.error(
           "There has been a problem with your fetch operation:",
           error
         );
-        // Notifying error with hot-toast
         toast.error("Sorry, some error occurred");
       });
   };
+
   return (
     <>
       <div>
@@ -174,7 +199,7 @@ const Editor = () => {
             className={classes.button}
             onClick={handleSubmit}
           >
-            Publish your post
+            {isEditing ? "Update your post" : "Publish your post"}
           </Button>
         </Container>
       </div>

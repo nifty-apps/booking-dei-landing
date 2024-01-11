@@ -11,7 +11,7 @@ export async function createBlogs({ title, imgUrl, description }) {
         description,
       },
     });
-console.log(blogs);
+    console.log(blogs);
     return blogs;
   } catch (error) {
     console.error("Error creating blog:", error);
@@ -52,6 +52,24 @@ export async function getTotalBlogs() {
     return totalBlogs;
   } catch (error) {
     console.error("Error getting total blogs:", error);
+    throw error;
+  }
+}
+
+export async function updateBlogById(id, data) {
+  try {
+    const updatedBlog = await prisma.blogs.update({
+      where: {
+        id: id,
+      },
+      data: {
+        ...data,
+        updatedAt: new Date(),
+      },
+    });
+    return updatedBlog;
+  } catch (error) {
+    console.error("Error updating blog:", error);
     throw error;
   }
 }
