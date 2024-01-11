@@ -2,8 +2,12 @@ import React from "react";
 import { makeStyles } from "tss-react/mui";
 import Link from "next/link";
 import DOMPurify from "dompurify";
+import Swal from "sweetalert2";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { position } from "stylis";
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, onDeleteBlog }) => {
   const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
     mainBlogContainer: {
       height: "100%",
@@ -15,6 +19,7 @@ const Blog = ({ blog }) => {
       boxSizing: "border-box",
     },
     blogContainer: {
+      position: "relative",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
@@ -85,6 +90,15 @@ const Blog = ({ blog }) => {
         color: "white",
       },
     },
+    modifyButton: {
+      position: "absolute",
+      bottom: theme.spacing(2), // Adjust as needed
+      right: theme.spacing(1), // Adjust as needed
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 1,
+    },
   }));
 
   const { classes } = useStyles();
@@ -108,6 +122,40 @@ const Blog = ({ blog }) => {
   const titlePreview = getDescriptionPreview(blog.title, 40);
   const sanitizedDescription = DOMPurify.sanitize(descriptionPreview);
   const sanitizedTitle = DOMPurify.sanitize(titlePreview);
+
+  const deleteBlog = (blogId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`/api/blogs/${blogId}`, {
+          method: "DELETE",
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Error deleting blog");
+            }
+            return response.json();
+          })
+          .then(() => {
+            Swal.fire("Deleted!", "Your blog has been deleted.", "success");
+            onDeleteBlog(blogId); // Call the callback function to update state
+          })
+          .catch((error) => {
+            console.error("There was an error deleting the blog:", error);
+            Swal.fire("Error!", "Failed to delete the blog", "error");
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelled", "Your blog is safe :)", "info");
+      }
+    });
+  };
 
   return (
     <div className={classes.mainBlogContainer}>
@@ -138,12 +186,30 @@ const Blog = ({ blog }) => {
           <Link href={`/blogs-media/${blog.id}`} as={`/blogs-media/${blog.id}`}>
             <button className={classes.button}>Read more</button>
           </Link>
+        </div>
+        <div className={classes.modifyButton}>
           <Link
             href={`/edit-blog?blogId=${blog.id}`}
             as={`/edit-blog?blogId=${blog.id}`}
           >
-            <button className={classes.button}>Edit</button>
+            <BorderColorIcon
+              style={{
+                color: "black",
+                marginRight: "10px",
+                fontSize: "28px",
+                cursor: "pointer",
+              }}
+            />
           </Link>
+          <DeleteForeverIcon
+            style={{
+              color: "red",
+              marginLeft: "10px",
+              fontSize: "30px",
+              cursor: "pointer",
+            }}
+            onClick={() => deleteBlog(blog.id)}
+          />
         </div>
       </div>
     </div>
