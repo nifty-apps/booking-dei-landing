@@ -120,18 +120,29 @@ const Blog = ({ blog }) => {
           <img src={blog.imgUrl} alt={blog.title} className={classes.blogImg} />
         </div>
         <h1 className={classes.title}>{sanitizedTitle}</h1>
-        <div >
+        <div>
           <div
             dangerouslySetInnerHTML={{
               __html: sanitizedDescription,
             }}
             className={classes.descriptionContainer}
-            style={{ fontSize: "18px", color: "gray" ,width:"400px",overflowWrap: "break-word"}}
+            style={{
+              fontSize: "18px",
+              color: "gray",
+              width: "400px",
+              overflowWrap: "break-word",
+            }}
           ></div>
         </div>
         <div>
           <Link href={`/blogs-media/${blog.id}`} as={`/blogs-media/${blog.id}`}>
             <button className={classes.button}>Read more</button>
+          </Link>
+          <Link
+            href={`/edit-blog?blogId=${blog.id}`}
+            as={`/edit-blog?blogId=${blog.id}`}
+          >
+            <button className={classes.button}>Edit</button>
           </Link>
         </div>
       </div>

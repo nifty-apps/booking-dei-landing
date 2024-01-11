@@ -30,7 +30,7 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
   },
 }));
 
-const editor = (props) => {
+const editBlog = (props) => {
   const { onToggleDark, onToggleDir } = props;
   const { t } = useTranslation("common");
   const { classes } = useStyles();
@@ -44,7 +44,7 @@ const editor = (props) => {
         />
       </div>
       <div className={classes.editorSection}>
-        <Editor isEditing={false} />
+        <Editor isEditing={true} />
       </div>
       <div className={classes.footer}>
         <Footer />
@@ -52,10 +52,10 @@ const editor = (props) => {
     </div>
   );
 };
-editor.propTypes = {
+editBlog.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
 const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
-export default editor;
+export default editBlog;
