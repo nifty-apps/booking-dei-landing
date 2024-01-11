@@ -4,6 +4,7 @@ import { makeStyles } from "tss-react/mui";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
+
 const Blogs = () => {
   const useStyles = makeStyles({ uniqId: "blogs" })((theme) => ({
     mainWrap: {
@@ -54,11 +55,18 @@ const Blogs = () => {
         setBlogs(data.blogs);
         setTotalBlogs(data.totalBlogs);
       });
-  }, [currentPage]);
+  }, [currentPage, totalBlogs]);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
+
+  const handleDeleteBlog = (deletedBlogId) => {
+    // Filter out the deleted blog from the current blogs state
+    const updatedBlogs = blogs.filter((blog) => blog.id !== deletedBlogId);
+    setBlogs(updatedBlogs);
+  };
+
   const canGoPrevious = currentPage > 1;
   const canGoNext = currentPage < Math.ceil(totalBlogs / blogsPerPage);
   return (
@@ -67,7 +75,7 @@ const Blogs = () => {
         {Array.isArray(blogs) && blogs.length > 0 ? (
           blogs.map((blog) => (
             <div key={blog.id}>
-              <Blog blog={blog} />
+              <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
             </div>
           ))
         ) : (

@@ -73,3 +73,16 @@ export async function updateBlogById(id, data) {
     throw error;
   }
 }
+
+export async function deleteBlogById(id) {
+  try {
+    await prisma.blogs.delete({
+      where: {
+        id: id,
+      },
+    });
+  } catch (error) {
+    console.error("Error deleting blog:", error);
+    throw error;
+  }
+}

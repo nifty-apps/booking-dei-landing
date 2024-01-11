@@ -37,7 +37,7 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
     },
   },
 }));
-const blogs = (props) => {
+const blogsMedia = (props) => {
   const { classes } = useStyles();
   const { onToggleDark, onToggleDir } = props;
 
@@ -64,7 +64,7 @@ const blogs = (props) => {
     </Fragment>
   );
 };
-blogs.propTypes = {
+blogsMedia.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
@@ -72,4 +72,4 @@ blogs.propTypes = {
 const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
 
-export default blogs;
+export default blogsMedia;
