@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
-import { ObjectId } from "mongodb";
 
+// Create Blog
 export async function createBlogs({ title, imgUrl, description }) {
   try {
     const blogs = await prisma.blogs.create({
@@ -18,6 +18,8 @@ export async function createBlogs({ title, imgUrl, description }) {
     throw error;
   }
 }
+
+// Get Blogs
 export async function getBlogs(page = 1, limit = 10) {
   const pageInt = parseInt(page, 10);
   const limitInt = parseInt(limit, 10);
@@ -32,6 +34,7 @@ export async function getBlogs(page = 1, limit = 10) {
   }
 }
 
+// Get a single Blog
 export async function getBlogById(id) {
   try {
     const blog = await prisma.blogs.findUnique({
@@ -46,6 +49,7 @@ export async function getBlogById(id) {
   }
 }
 
+// get all Blogs number
 export async function getTotalBlogs() {
   try {
     const totalBlogs = await prisma.blogs.count();
@@ -56,6 +60,7 @@ export async function getTotalBlogs() {
   }
 }
 
+// Edit a blog
 export async function updateBlogById(id, data) {
   try {
     const updatedBlog = await prisma.blogs.update({
@@ -74,6 +79,7 @@ export async function updateBlogById(id, data) {
   }
 }
 
+// Delete  a blog
 export async function deleteBlogById(id) {
   try {
     await prisma.blogs.delete({

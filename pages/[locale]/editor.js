@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "tss-react/mui";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
+import withAdmin from "../../components/WithAdmin/WithAdmin";
 
 const Editor = dynamic(() => import("~/components/Editor"), { ssr: false });
 const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
@@ -58,4 +59,4 @@ editor.propTypes = {
 };
 const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
-export default editor;
+export default withAdmin(editor);
