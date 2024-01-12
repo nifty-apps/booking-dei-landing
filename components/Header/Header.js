@@ -1,5 +1,6 @@
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
+import dynamic from "next/dynamic";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
@@ -18,6 +19,7 @@ import Settings from "./Settings";
 import useStyles from "./header-style";
 import navMenu from "./menu";
 import { useRouter } from "next/router";
+import useIsUserLoggedIn from "../../utils/isLoggedIn";
 
 let counter = 0;
 function createData(name, url, offset) {
@@ -37,6 +39,10 @@ const LinkBtn = React.forwardRef(function LinkBtn(props, ref) {
 
 function Header(props) {
   const [fixed, setFixed] = useState(false);
+
+  const isLoggedIn = useIsUserLoggedIn();
+  console.log(isLoggedIn);
+
   let flagFixed = false;
   const handleScroll = () => {
     const doc = document.documentElement;
@@ -74,6 +80,10 @@ function Header(props) {
   };
   const pathforblogs = "/" + router.pathname.split("/")[2];
   const isActive = pathforblogs === link.saas.blogsMedia;
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    router.push("/login");
+  };
   return (
     <Fragment>
       {isTablet && (
@@ -165,12 +175,22 @@ function Header(props) {
             <nav className={classes.navMenu}>
               {!isMobile && (
                 <Fragment>
-                  <Button
-                    href={curLang + link.saas.login}
-                    className={classes.textBtn}
-                  >
-                    {t("saas-landing.header_login")}
-                  </Button>
+                  {isLoggedIn ? (
+                    <Button
+                      className={classes.textBtn}
+                      style={{ color: "white" }}
+                      onClick={handleLogout}
+                    >
+                      {t("saas-landing.header_logout")}
+                    </Button>
+                  ) : (
+                    <Button
+                      href={curLang + link.saas.login}
+                      className={classes.textBtn}
+                    >
+                      {t("saas-landing.header_login")}
+                    </Button>
+                  )}
                   <Button
                     href={curLang + link.saas.register}
                     variant="contained"

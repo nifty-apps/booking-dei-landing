@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import Icon from '@mui/material/Icon';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Grid from '@mui/material/Grid';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { useTranslation } from 'next-i18next';
-import routeLink from '~/public/text/link';
-import { useText } from '~/theme/common';
-import Title from '../Title/TitleSecondary';
-import AuthFrame from './AuthFrame';
-import useStyles from './form-style';
+import React, { useState, useEffect } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import Icon from "@mui/material/Icon";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Grid from "@mui/material/Grid";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { useTranslation } from "next-i18next";
+import routeLink from "~/public/text/link";
+import { useText } from "~/theme/common";
+import Title from "../Title/TitleSecondary";
+import AuthFrame from "./AuthFrame";
+import useStyles from "./form-style";
+import { useRouter } from "next/router";
 
 function Login() {
   const { classes, cx } = useStyles();
   const { classes: text } = useText();
   const theme = useTheme();
-  const { t, i18n } = useTranslation('common');
-  const curLang = '/' + i18n.language;
+  const { t, i18n } = useTranslation("common");
+  const curLang = "/" + i18n.language;
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const router = useRouter();
   const [values, setValues] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
 
   useEffect(() => {
-    ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+    ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
       if (value !== values.password) {
         return false;
       }
@@ -40,37 +42,68 @@ function Login() {
 
   const [check, setCheck] = useState(false);
 
-  const handleChange = name => event => {
+  const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  const handleCheck = event => {
+  const handleCheck = (event) => {
     setCheck(event.target.checked);
   };
 
-  const handleSubmit = () => {
-    console.log('data submited');
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const toastId = toast.loading("Loggin in ...");
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    toast.dismiss(toastId);
+    const data = await response.json();
+
+    if (response.ok) {
+      const userToStore = {
+        email: data.email,
+        name: data.name,
+      };
+      toast.success("login successful");
+
+      if (data.isAdmin) {
+        userToStore.isAdmin = data.isAdmin;
+      }
+      localStorage.setItem("user", JSON.stringify(userToStore));
+      router.push("/");
+      // Handle successful login (e.g., redirect, update UI)
+    } else {
+      toast.error(data.message);
+      // Handle login failure (e.g., show error message)
+    }
   };
 
   return (
-    <AuthFrame title={t('login_title')} subtitle={t('login_subtitle')}>
+    <AuthFrame title={t("login_title")} subtitle={t("login_subtitle")}>
       <div>
         <div className={classes.head}>
-          <Title align={isMobile ? 'center' : 'left'}>
-            {t('login')}
-          </Title>
-          <Button size="small" className={classes.buttonLink} href={curLang + routeLink.saas.register}>
-            <Icon className={cx(classes.icon, classes.signArrow)}>arrow_forward</Icon>
-            {t('login_create')}
+          <Title align={isMobile ? "center" : "left"}>{t("login")}</Title>
+          <Button
+            size="small"
+            className={classes.buttonLink}
+            href={curLang + routeLink.saas.register}
+          >
+            <Icon className={cx(classes.icon, classes.signArrow)}>
+              arrow_forward
+            </Icon>
+            {t("login_create")}
           </Button>
         </div>
         <div className={classes.separator}>
-          <Typography>
-            {t('login_or')}
-          </Typography>
+          <Typography>{t("login_or")}</Typography>
         </div>
         <ValidatorForm
-          onError={errors => console.log(errors)}
+          onError={(errors) => console.log(errors)}
           onSubmit={handleSubmit}
         >
           <Grid container spacing={3}>
@@ -78,12 +111,12 @@ function Login() {
               <TextValidator
                 variant="filled"
                 className={classes.input}
-                label={t('login_email')}
-                onChange={handleChange('email')}
+                label={t("login_email")}
+                onChange={handleChange("email")}
                 name="email"
                 value={values.email}
-                validators={['required', 'isEmail']}
-                errorMessages={['This field is required', 'Email is not valid']}
+                validators={["required", "isEmail"]}
+                errorMessages={["This field is required", "Email is not valid"]}
               />
             </Grid>
             <Grid item xs={12}>
@@ -91,10 +124,10 @@ function Login() {
                 variant="filled"
                 type="password"
                 className={classes.input}
-                label={t('login_password')}
-                validators={['required']}
-                onChange={handleChange('password')}
-                errorMessages={['This field is required']}
+                label={t("login_password")}
+                validators={["required"]}
+                onChange={handleChange("password")}
+                errorMessages={["This field is required"]}
                 name="password"
                 value={values.password}
               />
@@ -102,7 +135,7 @@ function Login() {
           </Grid>
           <div className={classes.formHelper}>
             <FormControlLabel
-              control={(
+              control={
                 <Checkbox
                   checked={check}
                   onChange={(e) => handleCheck(e)}
@@ -110,20 +143,24 @@ function Login() {
                   value={check}
                   className={classes.check}
                 />
-              )}
-              label={(
-                <span className={text.caption}>
-                  {t('login_remember')}
-                </span>
-              )}
+              }
+              label={
+                <span className={text.caption}>{t("login_remember")}</span>
+              }
             />
             <Button size="small" className={classes.buttonLink} href="#">
-              {t('login_forgot')}
+              {t("login_forgot")}
             </Button>
           </div>
           <div className={classes.btnArea}>
-            <Button variant="contained" fullWidth type="submit" color="secondary" size="large">
-              {t('continue')}
+            <Button
+              variant="contained"
+              fullWidth
+              type="submit"
+              color="secondary"
+              size="large"
+            >
+              {t("continue")}
             </Button>
           </div>
         </ValidatorForm>

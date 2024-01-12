@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { position } from "stylis";
+import useIsAdmin from "../../utils/adminCheck";
 
 const Blog = ({ blog, onDeleteBlog }) => {
   const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
@@ -100,7 +101,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
       zIndex: 1,
     },
   }));
-
+  const { isAdmin, isLoading } = useIsAdmin();
   const { classes } = useStyles();
   // Formatting Date
   const dateString = blog.createdAt;
@@ -187,30 +188,32 @@ const Blog = ({ blog, onDeleteBlog }) => {
             <button className={classes.button}>Read more</button>
           </Link>
         </div>
-        <div className={classes.modifyButton}>
-          <Link
-            href={`/edit-blog?blogId=${blog.id}`}
-            as={`/edit-blog?blogId=${blog.id}`}
-          >
-            <BorderColorIcon
+        {isAdmin && !isLoading && (
+          <div className={classes.modifyButton}>
+            <Link
+              href={`/edit-blog?blogId=${blog.id}`}
+              as={`/edit-blog?blogId=${blog.id}`}
+            >
+              <BorderColorIcon
+                style={{
+                  color: "black",
+                  marginRight: "10px",
+                  fontSize: "28px",
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
+            <DeleteForeverIcon
               style={{
-                color: "black",
-                marginRight: "10px",
-                fontSize: "28px",
+                color: "red",
+                marginLeft: "10px",
+                fontSize: "30px",
                 cursor: "pointer",
               }}
+              onClick={() => deleteBlog(blog.id)}
             />
-          </Link>
-          <DeleteForeverIcon
-            style={{
-              color: "red",
-              marginLeft: "10px",
-              fontSize: "30px",
-              cursor: "pointer",
-            }}
-            onClick={() => deleteBlog(blog.id)}
-          />
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
