@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 
 // const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
-const Editor = ({ isEditing }) => {
+const AddBlogs = ({ isEditing }) => {
   window.Quill = Quill;
   Quill.register("modules/imageResize", ImageResize);
   Quill.register("modules/blotFormatter", BlotFormatter);
@@ -207,4 +207,4 @@ const Editor = ({ isEditing }) => {
   );
 };
 
-export default Editor;
+export default AddBlogs;

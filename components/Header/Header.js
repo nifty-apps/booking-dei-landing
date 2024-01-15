@@ -20,6 +20,7 @@ import useStyles from "./header-style";
 import navMenu from "./menu";
 import { useRouter } from "next/router";
 import useIsUserLoggedIn from "../../utils/isLoggedIn";
+import useIsAdmin from "../../utils/adminCheck";
 
 let counter = 0;
 function createData(name, url, offset) {
@@ -41,7 +42,6 @@ function Header(props) {
   const [fixed, setFixed] = useState(false);
 
   const isLoggedIn = useIsUserLoggedIn();
-  console.log(isLoggedIn);
 
   let flagFixed = false;
   const handleScroll = () => {
@@ -67,6 +67,7 @@ function Header(props) {
   const isTablet = useMediaQuery(theme.breakpoints.down("lg"));
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
+  const { isAdmin, isLoading } = useIsAdmin();
 
   const [menuList] = useState([
     createData(navMenu[0], "#" + navMenu[0]),
@@ -168,6 +169,14 @@ function Header(props) {
                     >
                       {t("saas-landing.header_blogs_media")}
                     </Button>
+                    {isAdmin && !isLoading && (
+                      <Button
+                        href={curLang + link.saas.addBlogs}
+                        style={{ opacity: isActive ? ".5" : "1" }}
+                      >
+                        {t("saas-landing.header_addBlogs")}
+                      </Button>
+                    )}
                   </li>
                 </Scrollspy>
               )}

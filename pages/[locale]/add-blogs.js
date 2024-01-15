@@ -31,7 +31,7 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
   },
 }));
 
-const editor = (props) => {
+const addBlogs = (props) => {
   const { onToggleDark, onToggleDir } = props;
   const { t } = useTranslation("common");
   const { classes } = useStyles();
@@ -53,10 +53,10 @@ const editor = (props) => {
     </div>
   );
 };
-editor.propTypes = {
+addBlogs.propTypes = {
   onToggleDark: PropTypes.func.isRequired,
   onToggleDir: PropTypes.func.isRequired,
 };
 const getStaticProps = makeStaticProps(["common"]);
 export { getStaticPaths, getStaticProps };
-export default withAdmin(editor);
+export default withAdmin(addBlogs);

@@ -1,5 +1,6 @@
 {
   "header_login": "log in",
+  "header_logout": "log out",
   "header_register": "register",
   "header_language": "language",
   "header_theme": "Theme mode",
@@ -11,6 +12,7 @@
   "header_faq": "faq",
   "header_contact": "contact",
   "header_blogs_media": "blogs & media",
+  "header_addBlogs": "add blogs",
   "banner_title": "Unlocking The",
   "blog_banner_title": "Explore Hotel Management Insights, Operational Tips, and More on Our Blog!",
   "blog_banner_description": "Delve into the realm of effective hotel operations and insightful management practices through Booking Dei's enriching blog content.",
