@@ -64,37 +64,38 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (values.password !== values.confirmPassword) {
-      toast.error("Passwords do not match");
-      return; // Stop the form submission
-    }
+    // if (values.password !== values.confirmPassword) {
+    //   toast.error("Passwords do not match");
+    //   return; // Stop the form submission
+    // }
 
-    const toastId = toast.loading("Registering...");
+    // const toastId = toast.loading("Registering...");
 
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+    // try {
+    //   const response = await fetch("/api/register", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(values),
+    //   });
 
-      toast.dismiss(toastId);
+    //   toast.dismiss(toastId);
 
-      const data = await response.json();
-      if (!response.ok) {
-        toast.error(data.message);
-        return;
-      }
+    //   const data = await response.json();
+    //   if (!response.ok) {
+    //     toast.error(data.message);
+    //     return;
+    //   }
 
-      toast.success("Registration successful!");
-      resetForm();
-      router.push("/login");
-      // Redirect or update UI as needed
-    } catch (error) {
-      toast.error(error.message || "Failed to register");
-    }
+    //   toast.success("Registration successful!");
+    //   resetForm();
+    //   router.push("/login");
+    //   // Redirect or update UI as needed
+    // } catch (error) {
+    //   toast.error(error.message || "Failed to register");
+    // }
+    toast("This feature is not available yet");
   };
   return (
     <AuthFrame title={t("register_title")} subtitle={t("register_subtitle")}>
