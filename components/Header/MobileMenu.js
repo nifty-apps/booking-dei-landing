@@ -9,12 +9,14 @@ import { useTranslation } from "next-i18next";
 import routeLink from "~/public/text/link";
 import useStyles from "./header-style";
 import navMenu from "./menu";
+import useIsAdmin from "../../utils/adminCheck";
 
 function MobileMenu(props) {
   const { classes, cx } = useStyles();
   const { toggleDrawer, open } = props;
   const { t, i18n } = useTranslation("common");
   const curLang = "/" + i18n.language;
+  const { isAdmin, isLoading } = useIsAdmin();
 
   const SideList = () => (
     <div
@@ -61,6 +63,19 @@ function MobileMenu(props) {
               className={classes.menuList}
             />
           </ListItem>
+          {isAdmin && !isLoading && (
+            <ListItem
+              button
+              component="a"
+              href={curLang + routeLink.saas.addBlogs}
+              style={{ animationDuration: navMenu.length * 0.15 + "s" }}
+            >
+              <ListItemText
+                primary={t("saas-landing.header_addBlogs")}
+                className={classes.menuList}
+              />
+            </ListItem>
+          )}
           <Divider className={classes.dividerSidebar} />
           {["login", "register"].map((item, index) => (
             <ListItem
