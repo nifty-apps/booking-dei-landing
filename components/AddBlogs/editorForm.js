@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Container from "@mui/material/Container";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { makeStyles } from "tss-react/mui";
-
+import CssBaseline from "@mui/material/CssBaseline";
 const EditorForm = (props) => {
   const { imgUrl, tags, title, setTitle, setTags, setImgUrl } = props;
   const [isUploading, setIsUploading] = useState(false);
@@ -22,40 +22,31 @@ const EditorForm = (props) => {
         alignItems: "center",
         justifyContent: "center",
       },
+      labelHeader: {
+        display: "flex",
+        flexDirection: "column",
+        gap: theme.spacing(0),
+        alignItems: "start",
+        fontSize: "1rem",
+        color: "black",
+      },
       label: {
         width: "400px",
-        // padding: theme.spacing(1, 0, 0, 0),
+        height: "60px",
         margin: theme.spacing(1, 0, 0, 0),
+        fontSize: "1.5rem",
       },
-      // input: {
-      //   width: "100%",
-      //   // padding: theme.spacing(1),
-      // },
+
       uploadArea: {
         border: "1px dashed #ccc",
         padding: "10px",
-        // textAlign: "left",
-        // position: "relative",
-        // display: "flex",
-        // justifyContent: "center",
-        // alignItems: "center",
+
         cursor: "pointer",
         marginTop: "20px",
         borderRadius: "5px",
         backgroundColor: "#fafafa", // Light grey background
       },
-      // uploadButton: {
-      //   // position: "absolute",
-      //   top: "50%",
-      //   left: "50%",
-      //   transform: "translate(-50%, -50%)",
-      //   backgroundColor: "transparent",
-      //   color: "#1976d2",
-      //   "&:hover": {
-      //     backgroundColor: "transparent",
-      //     color: "#115293",
-      //   },
-      // },
+
       uploadIcon: {
         marginRight: "10px",
       },
@@ -71,11 +62,6 @@ const EditorForm = (props) => {
     })
   );
   const { classes } = useEditorFormStyles();
-  const tagOptions = [
-    { value: "tag1", label: "Tag 1" },
-    { value: "tag2", label: "Tag 2" },
-    { value: "tag3", label: "Tag 3" },
-  ];
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleImageUpload = async (e) => {
@@ -120,8 +106,9 @@ const EditorForm = (props) => {
       <div>
         <Container maxWidth="lg">
           <FormControl component="form" onSubmit={handleSubmit}>
-            <div className={classes.label}>
-              <TextField
+            <div className={classes.labelHeader}>
+              <label>Title:</label>
+              <input
                 label="Title"
                 type="text"
                 value={title}
@@ -149,8 +136,8 @@ const EditorForm = (props) => {
                   {isUploading
                     ? "Uploading..."
                     : imgUrl
-                    ? "Image uploaded!"
-                    : "Select title image"}
+                      ? "Image uploaded!"
+                      : "Select title image"}
                 </Typography>
                 {/* <Button className={classes.uploadButton}>Upload Image</Button> */}
                 <input

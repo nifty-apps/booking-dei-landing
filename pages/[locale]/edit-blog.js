@@ -7,7 +7,7 @@ import { makeStyles } from "tss-react/mui";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 
-const Editor = dynamic(() => import("~/components/Editor"), { ssr: false });
+const AddBlogs = dynamic(() => import("~/components/AddBlogs"), { ssr: false });
 const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
   header: {
     background: theme.palette.primary.dark,
@@ -44,7 +44,7 @@ const editBlog = (props) => {
         />
       </div>
       <div className={classes.editorSection}>
-        <Editor isEditing={true} />
+        <AddBlogs isEditing={true} />
       </div>
       <div className={classes.footer}>
         <Footer />

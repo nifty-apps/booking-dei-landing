@@ -6,6 +6,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import EditorForm from "./editorForm";
 import { makeStyles } from "tss-react/mui";
+
 // import ImageResize from "quill-image-resize-module-react";
 import ReactQuill from "react-quill";
 import BlotFormatter from "quill-blot-formatter";
@@ -125,7 +126,7 @@ const AddBlogs = ({ isEditing }) => {
     }
   }, [blogId]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (!title || !imgUrl || !description) {
       toast.error("Please fill out all required fields.");
@@ -135,75 +136,74 @@ const AddBlogs = ({ isEditing }) => {
     const method = isEditing ? "PATCH" : "POST";
     const url = isEditing ? `/api/blogs/${blogId}` : "/api/blogs";
 
-    fetch(url, {
-      method: method,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title,
-        imgUrl,
-        description,
-      }),
-    })
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
+    toast
+      .promise(
+        fetch(url, {
+          method: method,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title, imgUrl, description }),
+        })
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error(res.statusText);
+            }
+            return res.json();
+          })
+          .then((data) => {
+            // Clear form data
+            setDescription("");
+            setImgUrl("");
+            setTitle("");
+
+            // Redirect to the new or updated post
+            // Assuming 'data' contains the post ID or slug, adjust as needed
+            router.push(`/blogs-media/${data.id}`); // Replace with your post URL structure
+          }),
+        {
+          loading: "Posting...",
+          success: `Your post has been ${isEditing ? "updated" : "published"}`,
+          error: "Sorry, some error occurred",
         }
-        return res.json();
-      })
-      .then((data) => {
-        toast.success(
-          `Your post has been ${isEditing ? "updated" : "published"}`
-        );
-        setDescription("");
-        setImgUrl("");
-        setTitle("");
-        // Redirect to a different page or reset the editor as needed
-      })
+      )
       .catch((error) => {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-        toast.error("Sorry, some error occurred");
+        console.error("Problem with fetch operation:", error);
       });
   };
 
   return (
-    <>
-      <div>
-        <Container maxWidth="lg" className={classes.container}>
-          <EditorForm
-            imgUrl={imgUrl}
-            setImgUrl={setImgUrl}
-            title={title}
-            setTitle={setTitle}
-            tags={tags}
-            setTags={setTags}
+    <div>
+      <Container maxWidth="lg" className={classes.container}>
+        <EditorForm
+          imgUrl={imgUrl}
+          setImgUrl={setImgUrl}
+          title={title}
+          setTitle={setTitle}
+          tags={tags}
+          setTags={setTags}
+        />
+        <div className={classes.quillDiv}>
+          <ReactQuill
+            theme="snow"
+            modules={modules}
+            formats={formats}
+            value={description}
+            onChange={handleProcedureContentChange}
+            className={`${classes.quillEditor} `}
           />
-          <div className={classes.quillDiv}>
-            <ReactQuill
-              theme="snow"
-              modules={modules}
-              formats={formats}
-              value={description}
-              onChange={handleProcedureContentChange}
-              className={`${classes.quillEditor} `}
-            />
-          </div>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="medium"
-            className={classes.button}
-            onClick={handleSubmit}
-          >
-            {isEditing ? "Update your post" : "Publish your post"}
-          </Button>
-        </Container>
-      </div>
-    </>
+        </div>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="medium"
+          className={classes.button}
+          onClick={handleSubmit}
+        >
+          {isEditing ? "Update your post" : "Publish your post"}
+        </Button>
+      </Container>
+    </div>
   );
 };
 

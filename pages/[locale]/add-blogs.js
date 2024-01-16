@@ -8,8 +8,8 @@ import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
 import withAdmin from "../../components/WithAdmin/WithAdmin";
 
-const Editor = dynamic(() => import("~/components/Editor"), { ssr: false });
-const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
+const AddBlogs = dynamic(() => import("~/components/AddBlogs"), { ssr: false });
+const useStyles = makeStyles({ uniqId: "addBlogs" })((theme) => ({
   header: {
     background: theme.palette.primary.dark,
     position: "relative",
@@ -45,7 +45,7 @@ const addBlogs = (props) => {
         />
       </div>
       <div className={classes.editorSection}>
-        <Editor isEditing={false} />
+        <AddBlogs isEditing={false} />
       </div>
       <div className={classes.footer}>
         <Footer />
