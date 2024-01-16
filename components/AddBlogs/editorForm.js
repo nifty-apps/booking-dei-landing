@@ -28,6 +28,7 @@ const EditorForm = (props) => {
         gap: theme.spacing(0),
         alignItems: "start",
         fontSize: "1rem",
+        color: "black",
       },
       label: {
         width: "400px",

@@ -173,39 +173,37 @@ const AddBlogs = ({ isEditing }) => {
   };
 
   return (
-    <>
-      <div>
-        <Container maxWidth="lg" className={classes.container}>
-          <EditorForm
-            imgUrl={imgUrl}
-            setImgUrl={setImgUrl}
-            title={title}
-            setTitle={setTitle}
-            tags={tags}
-            setTags={setTags}
+    <div>
+      <Container maxWidth="lg" className={classes.container}>
+        <EditorForm
+          imgUrl={imgUrl}
+          setImgUrl={setImgUrl}
+          title={title}
+          setTitle={setTitle}
+          tags={tags}
+          setTags={setTags}
+        />
+        <div className={classes.quillDiv}>
+          <ReactQuill
+            theme="snow"
+            modules={modules}
+            formats={formats}
+            value={description}
+            onChange={handleProcedureContentChange}
+            className={`${classes.quillEditor} `}
           />
-          <div className={classes.quillDiv}>
-            <ReactQuill
-              theme="snow"
-              modules={modules}
-              formats={formats}
-              value={description}
-              onChange={handleProcedureContentChange}
-              className={`${classes.quillEditor} `}
-            />
-          </div>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="medium"
-            className={classes.button}
-            onClick={handleSubmit}
-          >
-            {isEditing ? "Update your post" : "Publish your post"}
-          </Button>
-        </Container>
-      </div>
-    </>
+        </div>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="medium"
+          className={classes.button}
+          onClick={handleSubmit}
+        >
+          {isEditing ? "Update your post" : "Publish your post"}
+        </Button>
+      </Container>
+    </div>
   );
 };
 
