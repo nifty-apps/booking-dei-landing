@@ -10,22 +10,6 @@ import useIsAdmin from "../../utils/adminCheck";
 
 const Blog = ({ blog, onDeleteBlog }) => {
   const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
-    mainBlogContainer: {
-      height: "100%",
-      width: "100%",
-      background: "white",
-      padding: theme.spacing(1, 4, 0),
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-      borderRadius: "10px",
-      boxSizing: "border-box",
-    },
-    blogContainer: {
-      position: "relative",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    },
     blogContainerHeader: {
       display: "flex",
       justifyContent: "space-between",
@@ -57,20 +41,23 @@ const Blog = ({ blog, onDeleteBlog }) => {
       [theme.breakpoints.down("sm")]: {
         height: "150px",
       },
-      // margin: theme.spacing(2, "auto"),
     },
     title: {
       marginTop: theme.spacing(2),
+      color: theme.palette.mode === "dark" ? "black" : "#121212",
     },
-    first150: {
-      // Your specific styles for the first 300 characters
-      fontSize: "18px", // example style
-      color: "gray", // example style
-    },
+
     descriptionContainer: {
+      overflowWrap: "break-word",
       "& > *": {
         fontSize: "18px",
-        color: [["gray"], "!important"],
+        color: "gray",
+      },
+      "& p ": {
+        color: "gray",
+      },
+      " & > div": {
+        color: "gray",
       },
     },
     button: {
@@ -91,10 +78,31 @@ const Blog = ({ blog, onDeleteBlog }) => {
         color: "white",
       },
     },
+    mainBlogContainer: {
+      height: "100%",
+      minHeight: "500px",
+      width: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      background: theme.palette.mode === "dark" ? "#4f4f4e" : "white",
+      padding: theme.spacing(1, 4, 0),
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      borderRadius: "10px",
+      boxSizing: "border-box",
+    },
+    blogContainer: {
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      flexGrow: 1,
+    },
     modifyButton: {
       position: "absolute",
-      bottom: theme.spacing(2), // Adjust as needed
-      right: theme.spacing(1), // Adjust as needed
+      bottom: theme.spacing(2),
+      right: theme.spacing(1),
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -169,18 +177,17 @@ const Blog = ({ blog, onDeleteBlog }) => {
           <img src={blog.imgUrl} alt={blog.title} className={classes.blogImg} />
         </div>
         <h1 className={classes.title}>{sanitizedTitle}</h1>
-        <div>
+        <div className={classes.descriptionContainer}>
           <div
             dangerouslySetInnerHTML={{
               __html: sanitizedDescription,
             }}
             className={classes.descriptionContainer}
-            style={{
-              fontSize: "18px",
-              color: "gray",
-              width: "400px",
-              overflowWrap: "break-word",
-            }}
+            // style={{
+            //   fontSize: "18px",
+            //   width: "400px",
+            //   overflowWrap: "break-word",
+            // }}
           ></div>
         </div>
         <div>
