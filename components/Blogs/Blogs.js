@@ -14,7 +14,7 @@ const Blogs = () => {
     blogsContainer: {
       display: "grid",
       gridTemplateColumns: "repeat(2, 1fr)",
-      background: theme.palette.mode === "dark" ? "#121212" : "white",
+      background: theme.palette.mode === "dark" ? "#303030" : "white",
       width: "100%",
       height: "100%",
       padding: theme.spacing(10),
