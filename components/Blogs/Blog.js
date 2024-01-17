@@ -46,6 +46,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
     },
     title: {
       width: "500px",
+      wordWrap: "break-word",
       [theme.breakpoints.down("lg")]: {
         width: "400px",
       },
@@ -53,7 +54,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
         width: "400px",
       },
       [theme.breakpoints.down("sm")]: {
-        height: "400px",
+        width: "300px",
       },
       textAlign: "center",
       fontSize: "24px",
@@ -69,11 +70,12 @@ const Blog = ({ blog, onDeleteBlog }) => {
         width: "400px",
       },
       [theme.breakpoints.down("sm")]: {
-        height: "400px",
+        width: "300px",
       },
     },
     description: {
       width: "100%",
+      pading: 0,
       overflowWrap: "break-word",
       "& > *": {
         fontSize: "18px",
@@ -97,6 +99,10 @@ const Blog = ({ blog, onDeleteBlog }) => {
       transition: "background-color 0.3s, color 0.3s, box-shadow 0.3s",
       boxShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
       marginBottom: theme.spacing(2),
+      [theme.breakpoints.down("sm")]: {
+        marginRight: theme.spacing(6),
+      },
+
       cursor: "pointer",
       "&:hover": {
         background: "gray",
