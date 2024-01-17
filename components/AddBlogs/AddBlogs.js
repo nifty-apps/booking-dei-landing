@@ -37,7 +37,7 @@ const AddBlogs = ({ isEditing }) => {
       padding: theme.spacing(2),
     },
     button: {
-      marginTop: theme.spacing(2),
+      marginTop: theme.spacing(8),
     },
     quillDiv: {
       height: "100%",
