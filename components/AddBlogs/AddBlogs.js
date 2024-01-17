@@ -41,12 +41,14 @@ const AddBlogs = ({ isEditing }) => {
     },
     quillDiv: {
       height: "100%",
-      width: "70%",
-      margin: theme.spacing(4, 0),
+      maxWidth: "100vw",
+      marginTop: theme.spacing(10),
     },
     quillEditor: {
       height: "100%",
-      width: "100%",
+      maxWidth: "80%",
+      margin: "auto",
+      // padding: theme.spacing(10, 0),
     },
     editorWithSpace: {
       margin: "200px",
