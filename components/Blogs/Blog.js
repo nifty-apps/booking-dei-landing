@@ -5,7 +5,6 @@ import DOMPurify from "dompurify";
 import Swal from "sweetalert2";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import { position } from "stylis";
 import useIsAdmin from "../../utils/adminCheck";
 
 const Blog = ({ blog, onDeleteBlog }) => {
@@ -28,22 +27,34 @@ const Blog = ({ blog, onDeleteBlog }) => {
     imgDiv: {
       position: "relative",
       width: "100%",
-      flex: "1",
+      // flex: "1",
       overflow: "hidden",
     },
     blogImg: {
       width: "100%",
       height: "300px",
       objectFit: "cover",
+      [theme.breakpoints.down("lg")]: {
+        height: "300px",
+      },
       [theme.breakpoints.down("md")]: {
-        height: "250px",
+        height: "400px",
       },
       [theme.breakpoints.down("sm")]: {
-        height: "150px",
+        height: "400px",
       },
     },
     title: {
       width: "500px",
+      [theme.breakpoints.down("lg")]: {
+        width: "400px",
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "400px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        height: "400px",
+      },
       textAlign: "center",
       fontSize: "24px",
       marginTop: theme.spacing(2),
@@ -51,9 +62,18 @@ const Blog = ({ blog, onDeleteBlog }) => {
     },
     descriptionContainer: {
       width: "500px",
+      [theme.breakpoints.down("lg")]: {
+        width: "300px",
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "400px",
+      },
+      [theme.breakpoints.down("sm")]: {
+        height: "400px",
+      },
     },
     description: {
-      width: "90%",
+      width: "100%",
       overflowWrap: "break-word",
       "& > *": {
         fontSize: "18px",
@@ -86,7 +106,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
     },
     mainBlogContainer: {
       height: "100%",
-      minHeight: "500px",
+      minHeight: "100%",
       width: "100%",
       display: "flex",
       flexDirection: "column",

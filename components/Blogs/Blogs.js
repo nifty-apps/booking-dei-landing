@@ -8,19 +8,36 @@ const Blogs = () => {
   const useStyles = makeStyles({ uniqId: "blogs" })((theme) => ({
     mainWrap: {
       position: "relative",
-      width: "100%",
+      maxWidth: "100vw",
       overflow: "hidden",
     },
     blogsContainer: {
       display: "grid",
       gridTemplateColumns: "repeat(2, 1fr)",
       background: theme.palette.mode === "dark" ? "#303030" : "white",
-      width: "100%",
+      maxWidth: "100%",
       height: "100%",
       padding: theme.spacing(10),
       gap: theme.spacing(10),
+      [theme.breakpoints.down("lg")]: {
+        gap: theme.spacing(5),
+      },
       [theme.breakpoints.down("md")]: {
         gridTemplateColumns: "1fr",
+      },
+    },
+    blogContainer: {
+      width: "100%",
+      marginLeft: "auto",
+      marginRight: "auto",
+      [theme.breakpoints.down("lg")]: {
+        width: "400px",
+      },
+      [theme.breakpoints.down("md")]: {
+        width: "100%",
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "100%",
       },
     },
     paginationContainer: {
@@ -78,7 +95,7 @@ const Blogs = () => {
   const canGoPrevious = currentPage > 1;
   const canGoNext = currentPage < Math.ceil(totalBlogs / blogsPerPage);
   return (
-    <div id="preloader">
+    <>
       {isLoading ? (
         <img
           style={{
@@ -92,11 +109,11 @@ const Blogs = () => {
           alt="loading"
         />
       ) : (
-        <>
+        <div className={classes.mainWrap}>
           <div className={classes.blogsContainer}>
             {Array.isArray(blogs) && blogs.length > 0 ? (
               blogs.map((blog) => (
-                <div key={blog.id}>
+                <div key={blog.id} className={classes.blogContainer}>
                   <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
                 </div>
               ))
@@ -137,9 +154,9 @@ const Blogs = () => {
               {">"}
             </Button>
           </ButtonGroup>
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 
