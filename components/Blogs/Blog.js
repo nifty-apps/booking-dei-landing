@@ -43,8 +43,11 @@ const Blog = ({ blog, onDeleteBlog }) => {
       },
     },
     title: {
+      width: "500px",
+      textAlign: "center",
+      fontSize: "24px",
       marginTop: theme.spacing(2),
-      color: theme.palette.mode === "dark" ? "black" : "#121212",
+      color: theme.palette.mode === "dark" ? "#a5a5a5" : "#121212",
     },
     descriptionContainer: {
       width: "500px",
@@ -88,7 +91,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
-      background: theme.palette.mode === "dark" ? "#4f4f4e" : "white",
+      background: theme.palette.mode === "dark" ? "#3d3d3d" : "white",
       padding: theme.spacing(1, 4, 0),
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px",
