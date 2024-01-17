@@ -46,8 +46,11 @@ const Blog = ({ blog, onDeleteBlog }) => {
       marginTop: theme.spacing(2),
       color: theme.palette.mode === "dark" ? "black" : "#121212",
     },
-
     descriptionContainer: {
+      width: "500px",
+    },
+    description: {
+      width: "90%",
       overflowWrap: "break-word",
       "& > *": {
         fontSize: "18px",
@@ -182,7 +185,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
             dangerouslySetInnerHTML={{
               __html: sanitizedDescription,
             }}
-            className={classes.descriptionContainer}
+            className={classes.description}
             // style={{
             //   fontSize: "18px",
             //   width: "400px",

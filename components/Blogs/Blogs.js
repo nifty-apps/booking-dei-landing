@@ -78,9 +78,19 @@ const Blogs = () => {
   const canGoPrevious = currentPage > 1;
   const canGoNext = currentPage < Math.ceil(totalBlogs / blogsPerPage);
   return (
-    <>
+    <div id="preloader">
       {isLoading ? (
-        <p style={{ padding: "20px", fontSize: "28px" }}>Loading Blogs......</p>
+        <img
+          style={{
+            opacity: 0.5,
+            position: "fixed",
+            top: "calc(50% - 50px)",
+            left: "calc(50% - 50px)",
+            padding: "80px",
+          }}
+          src="/images/loading.gif"
+          alt="loading"
+        />
       ) : (
         <>
           <div className={classes.blogsContainer}>
@@ -129,7 +139,7 @@ const Blogs = () => {
           </ButtonGroup>
         </>
       )}
-    </>
+    </div>
   );
 };
 

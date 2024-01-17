@@ -65,16 +65,26 @@ const SingleBlog = ({ blog }) => {
         padding: theme.spacing(0, 4),
       },
     },
-
+    blogDescriptionContainer: {
+      maxWidth: "95vw",
+    },
     blogDescription: {
+      boxSizing: "border-box",
+      color: "black",
       width: "80%",
       fontSize: "18px",
+      padding: 0,
       marginTop: theme.spacing(20),
-      // position: "relative",
-      zIndex: "1",
+      marginLeft: "auto",
+      marginRight: "auto",
+      zIndex: 1,
+      wordWrap: "break-word",
+      overflowWrap: "break-word",
       "& img": {
         maxWidth: "100%",
       },
+      // Ensure no other style is causing overflow, such as:
+      // overflow: "hidden", // or "auto" if you want to allow scrolling
     },
   }));
 
@@ -105,10 +115,12 @@ const SingleBlog = ({ blog }) => {
             </div>
           </div>
         </div>
-        <div
-          dangerouslySetInnerHTML={{ __html: description }}
-          className={classes.blogDescription}
-        ></div>
+        <div className={classes.blogDescriptionContainer}>
+          <div
+            dangerouslySetInnerHTML={{ __html: description }}
+            className={classes.blogDescription}
+          ></div>
+        </div>
       </div>
     </div>
   );
