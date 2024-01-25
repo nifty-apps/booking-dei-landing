@@ -26,31 +26,46 @@ const BlogPage = (props) => {
   const { onToggleDark, onToggleDir } = props;
 
   const [blog, setBlog] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
     if (!router.isReady) {
-      // If router is not ready, exit the effect
       return;
     }
+
+    setIsLoading(true); // Start loading
     fetch(`/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
+        setIsLoading(false); // Stop loading
       })
-      .catch((error) => console.error("Fetching blog failed", error));
+      .catch((error) => {
+        console.error("Fetching blog failed", error);
+        setIsLoading(false); // Stop loading on error
+      });
   }, [id]);
 
-  if (!blog) {
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <img
+        style={{
+          opacity: 0.5,
+          position: "fixed",
+          top: "calc(50% - 50px)",
+          left: "calc(50% )",
+        }}
+        src="/images/loading.gif"
+        alt="loading"
+      />
+    );
   }
-
   return (
     <Fragment>
       <Head>
         <title>{blog.title}</title>{" "}
-        {/* Assuming blog object has a title property */}
       </Head>
       <div className={classes.header}>
         <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
@@ -71,90 +86,24 @@ BlogPage.propTypes = {
 
 export async function getStaticProps(context) {
   const commonProps = await makeStaticProps(["common"])(context);
-
-  // const response = await fetch(
-  //   `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
-  // );
-  // const blogData = await response.json();
   const props = {
     ...commonProps.props,
-    // blog: blogData,
   };
 
   return { props, revalidate: 1 };
 }
-// const getStaticProps = makeStaticProps(["common"]);
-// console.log(getStaticProps);
-// export async function getStaticPaths() {
-//   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
-//   const blogsData = await blogs.json();
-//   const paths = blogsData?.blogs.map((blog) => ({
-//     params: { id: blog.id, locale: "en" },
-//   }));
-//   return {
-//     paths: paths,
-//     fallback: true, // See the "fallback" section below
-//   };
-// }
-// export const getI18nPaths = () =>
-//   nextI18nextConfig.i18n.locales.map((lng) => ({
-//     params: {
-//       locale: lng,
-//     },
-//   }));
-
-// export async function getStaticPaths() {
-// const res = await fetch("https://booking-dei-landing.vercel.app/api/blogs");
-// const posts = await res.json();
-
-// const locales = nextI18nextConfig.i18n.locales;
-
-// const paths = locales.flatMap((locale) =>
-//   posts.blogs.map((post) => ({
-//     params: { locale, id: post.id },
-//   }))
-// );
-
-//   return {
-//     paths: [],
-//     fallback: "blocking",
-//   };
-// }
-
-// export { getStaticProps };
-
-// export async function getStaticProps(context) {
-//   const commonProps = await makeStaticProps(["common"])(context);
-//   // Update the URL to your production or environment-specific API
-//   const response = await fetch(
-//     `https://booking-dei-landing.vercel.app/api/blogs/${context.params.id}`
-//   );
-//   if (!response.ok) {
-//     // Handle errors here, perhaps throw a 404 or return an error page
-//     return { notFound: true };
-//   }
-
-//   const blogData = await response.json();
-//   const props = {
-//     ...commonProps.props,
-//     blog: blogData,
-//   };
-//   console.log(blogData);
-//   return { props, revalidate: 1 }; // revalidate every 1 second for ISR
-// }
 
 export async function getStaticPaths() {
   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
   const blogsData = await blogs.json();
   const paths = blogsData?.blogs.map((blog) => ({
-    params: { id: blog.id.toString(), locale: "en" }, // Ensure IDs are strings
+    params: { id: blog.id.toString(), locale: "en" },
   }));
 
   return {
     paths,
-    fallback: "blocking", // Use 'blocking' for better SEO and user experience
+    fallback: "blocking",
   };
 }
-// export { getStaticProps };
 
 export default BlogPage;

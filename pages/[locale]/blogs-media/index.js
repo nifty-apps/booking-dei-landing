@@ -4,6 +4,7 @@ import BlogBanner from "../../../components/Blogs/BlogBanner";
 import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import Head from "next/head";
+import brand from "~/public/text/brand";
 import CssBaseline from "@mui/material/CssBaseline";
 import { makeStyles } from "tss-react/mui";
 import PropTypes from "prop-types";
@@ -43,7 +44,9 @@ const blogsMedia = (props) => {
 
   return (
     <Fragment>
-      <Head>{/* <title>{brand.saas.name + " - Blogs"}</title> */}</Head>
+      <Head>
+        <title>{brand.saas.name + " - Blogs"}</title>
+      </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>
         <Header

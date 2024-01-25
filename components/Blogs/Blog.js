@@ -202,7 +202,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
     <div className={classes.mainBlogContainer}>
       <div className={classes.blogContainerHeader}>
         <p>{formattedDate}</p>
-        <p>Author Name</p>
+        <p>Author: Sumon</p>
       </div>
       <div className={classes.blogContainer}>
         <div className={classes.imgDiv}>

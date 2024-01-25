@@ -7,15 +7,14 @@ export default function withAdmin(Component) {
   return function WithAdmin(props) {
     const router = useRouter();
     const { isAdmin, isLoading } = useIsAdmin();
-    console.log(isAdmin);
     useEffect(() => {
       if (!isAdmin && !isLoading) {
-        router.push("/404"); // Redirect to login if not admin
+        router.push("/404");
       }
     }, [router, isAdmin]);
     if (isLoading) {
-      return <div>Loading...</div>; // Or any other loading indicator
+      return <div>Loading...</div>;
     }
-    return isAdmin ? <Component {...props} /> : <ErrorPage />; // Render nothing while checking
+    return isAdmin ? <Component {...props} /> : <ErrorPage />;
   };
 }
