@@ -1,19 +1,16 @@
-import React from 'react';
-import { Head } from 'next/document';
-import theme from '../theme/palette';
-import brand from '../public/text/brand';
+import React from "react";
+import { Head } from "next/document";
+import theme from "../theme/palette";
+import brand from "../public/text/brand";
 
 const HeadComponent = () => (
   <Head>
     <meta charSet="utf-8" />
     {/* Use minimum-scale=1 to enable GPU rasterization */}
-    <meta
-      name="description"
-      content={brand.saas.desc}
-    />
+    <meta name="description" content={brand.saas.desc} />
     {/* Favicon */}
     <link rel="icon" href="/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
+    {/* <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />
     <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="/favicons/apple-icon-76x76.png" />
@@ -28,12 +25,21 @@ const HeadComponent = () => (
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
     <link rel="manifest" href="/favicons/manifest.json" />
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
+    <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" /> */}
     {/* PWA primary color */}
     <meta name="theme-color" content={theme.violeta.palette.primary.main} />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link href="https://unpkg.com/ionicons@3.0.0/dist/css/ionicons.min.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://unpkg.com/ionicons@3.0.0/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
     {/*  Facebook */}
     <meta property="author" content="luxi" />
     <meta property="og:site_name" content="luxi.ux-maestro.com" />
@@ -47,10 +53,7 @@ const HeadComponent = () => (
     <meta property="twitter:image:src" content="/images/saas-logo.png" />
     <meta property="og:url" content={brand.saas.url} />
     <meta property="og:title" content={brand.saas.desc} />
-    <meta
-      property="og:description"
-      content={brand.saas.desc}
-    />
+    <meta property="og:description" content={brand.saas.desc} />
     <meta name="twitter:site" content={brand.saas.url} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={brand.saas.img} />
