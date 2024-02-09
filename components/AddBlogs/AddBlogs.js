@@ -58,6 +58,7 @@ const AddBlogs = ({ isEditing }) => {
   const [imgUrl, setImgUrl] = useState("");
   const [tags, setTags] = useState("");
   const [title, setTitle] = useState("");
+  const [alt, setAlt] = useState("");
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -130,7 +131,7 @@ const AddBlogs = ({ isEditing }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!title || !imgUrl || !description) {
+    if (!title || !imgUrl || !description || !alt) {
       toast.error("Please fill out all required fields.");
       return;
     }
@@ -145,7 +146,7 @@ const AddBlogs = ({ isEditing }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ title, imgUrl, description }),
+          body: JSON.stringify({ title, imgUrl, description, alt }),
         })
           .then((res) => {
             if (!res.ok) {
@@ -154,11 +155,10 @@ const AddBlogs = ({ isEditing }) => {
             return res.json();
           })
           .then((data) => {
-            // Clear form data
             setDescription("");
             setImgUrl("");
             setTitle("");
-
+            setAlt("");
             // Redirect to the new or updated post
             // Assuming 'data' contains the post ID or slug, adjust as needed
             router.push(`/blogs-media/${data.id}`); // Replace with your post URL structure
@@ -184,6 +184,8 @@ const AddBlogs = ({ isEditing }) => {
           setTitle={setTitle}
           tags={tags}
           setTags={setTags}
+          alt={alt}
+          setAlt={setAlt}
         />
         <div className={classes.quillDiv}>
           <ReactQuill

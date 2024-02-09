@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       }
 
       case "POST": {
-        const blog = await createBlogs({ title, imgUrl, description });
+        const blog = await createBlogs({ title, imgUrl, description, alt });
         return res.status(200).json(blog);
       }
 

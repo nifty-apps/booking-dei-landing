@@ -9,8 +9,9 @@ import Container from "@mui/material/Container";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { makeStyles } from "tss-react/mui";
 import CssBaseline from "@mui/material/CssBaseline";
+import AWS from "aws-sdk";
 const EditorForm = (props) => {
-  const { imgUrl, tags, title, setTitle, setTags, setImgUrl } = props;
+  const { imgUrl, title, setTitle, setImgUrl, alt, setAlt } = props;
   const [isUploading, setIsUploading] = useState(false);
   const [isUploadComplete, setIsUploadComplete] = useState(false);
   const useEditorFormStyles = makeStyles({ uniqId: "editor-form" })(
@@ -64,26 +65,31 @@ const EditorForm = (props) => {
   const { classes } = useEditorFormStyles();
 
   const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleAltChange = (e) => setAlt(e.target.value);
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
       setIsUploading(true);
-      const formData = new FormData();
-      formData.append("image", file);
-
-      const imgBBApiKey = "e4ffcc08c6b308513aae20ba7cb73297";
+      const S3_BUCKET = "niftyit-team";
+      const REGION = "us-east-1";
+      AWS.config.update({
+        accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+      });
+      const s3 = new AWS.S3({
+        params: { Bucket: S3_BUCKET },
+        region: REGION,
+      });
+      const params = {
+        Bucket: S3_BUCKET,
+        Key: file.name,
+        Body: file,
+      };
       try {
-        const response = await fetch(
-          `https://api.imgbb.com/1/upload?key=${imgBBApiKey}`,
-          {
-            method: "POST",
-            body: formData,
-          }
-        );
+        const data = await s3.upload(params).promise();
 
-        const data = await response.json();
-        if (data.data && data.data.url) {
-          setImgUrl(data.data.url);
+        if (data.data && data.Location) {
+          setImgUrl(data.Location);
           setIsUploadComplete(true);
         }
       } catch (error) {
@@ -93,9 +99,6 @@ const EditorForm = (props) => {
       }
     }
   };
-  // const handleTagsChange = (e) => setTags(e.target.value);
-
-  // Add more tag options here
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -149,21 +152,17 @@ const EditorForm = (props) => {
                 />
               </Paper>
             </div>
-            {/* <div className={classes.label}>
-              <TextField
-                label="Tags"
-                select
-                onChange={handleTagsChange}
-                value={tags}
-                className={classes.input}
-              >
-                {tagOptions.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </div> */}
+            <div className={classes.labelHeader} style={{ marginTop: "40px" }}>
+              <label>Alt text for image:</label>
+              <input
+                label="alt"
+                type="text"
+                value={alt}
+                onChange={handleAltChange}
+                className={classes.label}
+                required
+              />
+            </div>
           </FormControl>
         </Container>
       </div>
