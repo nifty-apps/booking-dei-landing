@@ -30,6 +30,7 @@ const BlogPage = (props) => {
   const router = useRouter();
   const { id } = router.query;
 
+  // fetch single blog
   useEffect(() => {
     if (!router.isReady) {
       return;

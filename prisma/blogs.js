@@ -61,7 +61,7 @@ export async function getTotalBlogs() {
   }
 }
 
-// Edit a blog
+// Edit blog
 export async function updateBlogById(id, data) {
   try {
     const updatedBlog = await prisma.blogs.update({
