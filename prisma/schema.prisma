@@ -25,6 +25,7 @@ model Blogs{
   title       String
   description String
   imgUrl     String
+  alt        String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   published   Boolean   @default(false)
