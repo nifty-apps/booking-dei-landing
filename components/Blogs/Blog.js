@@ -206,7 +206,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
       </div>
       <div className={classes.blogContainer}>
         <div className={classes.imgDiv}>
-          <img src={blog.imgUrl} alt={blog.title} className={classes.blogImg} />
+          <img src={blog.imgUrl} alt={blog.alt} className={classes.blogImg} />
         </div>
         <h1 className={classes.title}>{sanitizedTitle}</h1>
         <div className={classes.descriptionContainer}>

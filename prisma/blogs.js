@@ -1,14 +1,15 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-// Create Blog
-export async function createBlogs({ title, imgUrl, description }) {
+// create blogs
+export async function createBlogs({ title, imgUrl, description, alt }) {
   try {
     const blogs = await prisma.blogs.create({
       data: {
         title,
         imgUrl,
         description,
+        alt,
       },
     });
 

@@ -88,7 +88,7 @@ const EditorForm = (props) => {
       try {
         const data = await s3.upload(params).promise();
 
-        if (data.data && data.Location) {
+        if (data.Location) {
           setImgUrl(data.Location);
           setIsUploadComplete(true);
         }
