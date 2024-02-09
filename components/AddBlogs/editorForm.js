@@ -70,7 +70,7 @@ const EditorForm = (props) => {
     const file = e.target.files[0];
     if (file) {
       setIsUploading(true);
-      const S3_BUCKET = "niftyit-team";
+      const S3_BUCKET = "booking-dei-blog";
       const REGION = "us-east-1";
       AWS.config.update({
         accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
