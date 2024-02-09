@@ -1,7 +1,7 @@
 import { getBlogs, createBlogs, getTotalBlogs } from "../../../prisma/blogs";
 
 export default async function handler(req, res) {
-  const { title, imgUrl, description } = req.body;
+  const { title, imgUrl, description, alt } = req.body;
 
   try {
     switch (req.method) {
