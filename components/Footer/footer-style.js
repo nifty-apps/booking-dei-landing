@@ -58,6 +58,15 @@ const footerStyles = makeStyles({ uniqId: "footer" })(
         marginTop: theme.spacing(2),
       },
     },
+    footerInfo: {
+      [theme.breakpoints.down("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+      },
+    },
     footerStyle: {
       display: "flex",
       justifyContent: "flex-end",
@@ -88,7 +97,13 @@ const footerStyles = makeStyles({ uniqId: "footer" })(
       },
     },
     logo: {
-      textAlign: "center",
+      [theme.breakpoints.down("md")]: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "0 auto",
+      },
     },
     footerDesc: {
       display: "block",

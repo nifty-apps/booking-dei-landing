@@ -14,6 +14,7 @@ import { useTranslation } from "next-i18next";
 import Quill from "quill";
 import ImageResize from "quill-image-resize-module";
 import { useRouter } from "next/router";
+import SeoForm from "./Seo-form";
 
 // const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
@@ -53,12 +54,25 @@ const AddBlogs = ({ isEditing }) => {
     editorWithSpace: {
       margin: "200px",
     },
+    seoForm: {
+      background: "white",
+      boxShadow: "0 1.5px 12px 2px rgba(0, 0, 0, 0.28)",
+      padding: "20px",
+      borderRadius: "10px",
+      margin: theme.spacing(4, 0),
+    },
   }));
   const { classes } = useStyles();
   const [imgUrl, setImgUrl] = useState("");
   const [tags, setTags] = useState("");
   const [title, setTitle] = useState("");
   const [alt, setAlt] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+  const [ogTitle, setOgTitle] = useState("");
+  const [slugUrl, setSlugUrl] = useState("");
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -98,29 +112,23 @@ const AddBlogs = ({ isEditing }) => {
     "font",
   ];
 
-  const [description, setDescription] = useState("");
-  const handleProcedureContentChange = (content, delta, source, editor) => {
+  const handleProcedureContentChange = (content) => {
     setDescription(content);
-    // let has_attribues = delta.ops[1].attributes || "";
-    // console.log(has_attribues);
-    // const cursorPosition = e.quill.getSelection().index;
-    // this.quill.insertText(cursorPosition, "★");
-    // this.quill.setSelection(cursorPosition + 1);
   };
 
   const router = useRouter();
-  const { blogId } = router.query; // Assuming the URL parameter name is 'blogId'
+  const { blogId } = router.query;
 
   useEffect(() => {
     if (blogId) {
-      // Use 'blogId' instead of 'isEditing'
       fetch(`/api/blogs/${blogId}`)
         .then((res) => res.json())
         .then((data) => {
-          // Assuming your API returns the blog directly
           setDescription(data.description);
           setImgUrl(data.imgUrl);
           setTitle(data.title);
+          setAlt(data.alt);
+          setAuthor(data.author);
         })
         .catch((error) => {
           console.error("Error fetching blog data:", error);
@@ -131,7 +139,17 @@ const AddBlogs = ({ isEditing }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!title || !imgUrl || !description || !alt) {
+    if (
+      !title ||
+      !imgUrl ||
+      !description ||
+      !alt ||
+      !author ||
+      !metaTitle ||
+      !metaDescription ||
+      !ogTitle ||
+      !slugUrl
+    ) {
       toast.error("Please fill out all required fields.");
       return;
     }
@@ -146,7 +164,17 @@ const AddBlogs = ({ isEditing }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ title, imgUrl, description, alt }),
+          body: JSON.stringify({
+            title,
+            imgUrl,
+            description,
+            alt,
+            author,
+            metaTitle,
+            metaDescription,
+            ogTitle,
+            slugUrl,
+          }),
         })
           .then((res) => {
             if (!res.ok) {
@@ -159,9 +187,8 @@ const AddBlogs = ({ isEditing }) => {
             setImgUrl("");
             setTitle("");
             setAlt("");
-            // Redirect to the new or updated post
-            // Assuming 'data' contains the post ID or slug, adjust as needed
-            router.push(`/blogs-media/${data.id}`); // Replace with your post URL structure
+            setAuthor("");
+            router.push(`/blogs-media/${data.id}`);
           }),
         {
           loading: "Posting...",
@@ -186,7 +213,22 @@ const AddBlogs = ({ isEditing }) => {
           setTags={setTags}
           alt={alt}
           setAlt={setAlt}
+          author={author}
+          setAuthor={setAuthor}
         />
+        <div className={classes.seoForm}>
+          <h5>SEO Setting</h5>
+          <SeoForm
+            metaTitle={metaTitle}
+            setMetaTitle={setMetaTitle}
+            metaDescription={metaDescription}
+            setMetaDescription={setMetaDescription}
+            ogTitle={ogTitle}
+            setOgTitle={setOgTitle}
+            slugUrl={slugUrl}
+            setSlugUrl={setSlugUrl}
+          />
+        </div>
         <div className={classes.quillDiv}>
           <ReactQuill
             theme="snow"

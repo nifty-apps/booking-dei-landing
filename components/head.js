@@ -5,15 +5,7 @@ import brand from "../public/text/brand";
 
 const HeadComponent = () => {
   const [blogs, setBlogs] = useState();
-  useEffect(() => {
-    fetch(`/api/blogs`)
-      .then((res) => res.json())
-      .then((data) => {
-        setBlogs(data.blogs.slice(0, 2));
-      });
-  }, []);
-  const title = blogs?.slice(0, 1).map((blog) => blog.title);
-  console.log(title && title[0]);
+
   return (
     <Head>
       <meta charSet="utf-8" />
@@ -52,15 +44,15 @@ const HeadComponent = () => {
         rel="stylesheet"
       />
       {/*  Facebook */}
-      <meta property="author" content="luxi" />
-      <meta property="og:site_name" content={title && title[0]} />
+      <meta property="author" content="bookingdei" />
+      <meta property="og:site_name" content={"bookingdei.com"} />
 
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="website" />
       {/*  Twitter */}
-      <meta property="twitter:site" content="luxi.ux-maestro.com" />
-      <meta property="twitter:domain" content="luxi.ux-maestro.com" />
-      <meta property="twitter:creator" content="luxi" />
+      <meta property="twitter:site" content="bookingdei.com" />
+      <meta property="twitter:domain" content="bookingdei.com" />
+      <meta property="twitter:creator" content="bookingdei" />
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:image:src" content="/images/saas-logo.png" />
       <meta property="og:url" content={brand.saas.url} />

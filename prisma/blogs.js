@@ -2,7 +2,17 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 // create blogs
-export async function createBlogs({ title, imgUrl, description, alt }) {
+export async function createBlogs({
+  title,
+  imgUrl,
+  description,
+  alt,
+  author,
+  metaTitle,
+  metaDescription,
+  ogTitle,
+  slugUrl,
+}) {
   try {
     const blogs = await prisma.blogs.create({
       data: {
@@ -10,6 +20,11 @@ export async function createBlogs({ title, imgUrl, description, alt }) {
         imgUrl,
         description,
         alt,
+        author,
+        metaTitle,
+        metaDescription,
+        ogTitle,
+        slugUrl,
       },
     });
 

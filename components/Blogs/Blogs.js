@@ -11,11 +11,15 @@ const Blogs = () => {
       maxWidth: "100vw",
       overflow: "hidden",
     },
+    blogWrap: {
+      width: "100%",
+      padding: 0,
+    },
     blogsContainer: {
       display: "grid",
       gridTemplateColumns: "repeat(2, 1fr)",
       background: theme.palette.mode === "dark" ? "#303030" : "white",
-      maxWidth: "100%",
+      width: "100%",
       height: "100%",
       padding: theme.spacing(10),
       gap: theme.spacing(10),
@@ -23,22 +27,18 @@ const Blogs = () => {
         gap: theme.spacing(5),
       },
       [theme.breakpoints.down("md")]: {
-        gridTemplateColumns: "1fr",
+        gridTemplateColumns: "repeat(2, 1fr)",
+        padding: theme.spacing(2),
+        gap: theme.spacing(2),
+      },
+      [theme.breakpoints.down("350px")]: {
+        display: "none",
       },
     },
     blogContainer: {
       width: "100%",
       marginLeft: "auto",
       marginRight: "auto",
-      [theme.breakpoints.down("lg")]: {
-        width: "400px",
-      },
-      [theme.breakpoints.down("md")]: {
-        width: "100%",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "100%",
-      },
     },
     paginationContainer: {
       display: "flex",
@@ -110,16 +110,18 @@ const Blogs = () => {
         />
       ) : (
         <div className={classes.mainWrap}>
-          <div className={classes.blogsContainer}>
-            {Array.isArray(blogs) && blogs.length > 0 ? (
-              blogs.map((blog) => (
-                <div key={blog.id} className={classes.blogContainer}>
-                  <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
-                </div>
-              ))
-            ) : (
-              <p>No blogs available.</p>
-            )}
+          <div className={classes.blogWrap}>
+            <div className={classes.blogsContainer}>
+              {Array.isArray(blogs) && blogs.length > 0 ? (
+                blogs.map((blog) => (
+                  <div key={blog.id} className={classes.blogContainer}>
+                    <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
+                  </div>
+                ))
+              ) : (
+                <p>No blogs available.</p>
+              )}
+            </div>
           </div>
           <ButtonGroup
             className={classes.paginationContainer}

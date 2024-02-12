@@ -1,7 +1,17 @@
 import { getBlogs, createBlogs, getTotalBlogs } from "../../../prisma/blogs";
 
 export default async function handler(req, res) {
-  const { title, imgUrl, description, alt } = req.body;
+  const {
+    title,
+    imgUrl,
+    description,
+    alt,
+    author,
+    metaTitle,
+    metaDescription,
+    ogTitle,
+    slugUrl,
+  } = req.body;
 
   try {
     switch (req.method) {
@@ -13,7 +23,17 @@ export default async function handler(req, res) {
       }
 
       case "POST": {
-        const blog = await createBlogs({ title, imgUrl, description, alt });
+        const blog = await createBlogs({
+          title,
+          imgUrl,
+          description,
+          alt,
+          author,
+          metaTitle,
+          metaDescription,
+          ogTitle,
+          slugUrl,
+        });
         return res.status(200).json(blog);
       }
 
