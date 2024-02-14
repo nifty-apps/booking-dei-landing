@@ -32,30 +32,30 @@ const Blog = ({ blog, onDeleteBlog }) => {
     },
     blogImg: {
       width: "100%",
-      height: "300px",
+      // height: "300px",
       objectFit: "cover",
-      [theme.breakpoints.down("lg")]: {
-        height: "300px",
-      },
-      [theme.breakpoints.down("md")]: {
-        height: "400px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        height: "400px",
-      },
+      // [theme.breakpoints.down("lg")]: {
+      //   height: "300px",
+      // },
+      // [theme.breakpoints.down("md")]: {
+      //   height: "400px",
+      // },
+      // [theme.breakpoints.down("sm")]: {
+      //   // height: "400px",
+      // },
     },
     title: {
-      width: "500px",
-      wordWrap: "break-word",
-      [theme.breakpoints.down("lg")]: {
-        width: "400px",
-      },
-      [theme.breakpoints.down("md")]: {
-        width: "400px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "300px",
-      },
+      // width: "500px",
+      // wordWrap: "break-word",
+      // [theme.breakpoints.down("lg")]: {
+      //   width: "400px",
+      // },
+      // [theme.breakpoints.down("md")]: {
+      //   width: "400px",
+      // },
+      // [theme.breakpoints.down("sm")]: {
+      //   width: "250px",
+      // },
       textAlign: "center",
       fontSize: "24px",
       marginTop: theme.spacing(2),
@@ -67,10 +67,10 @@ const Blog = ({ blog, onDeleteBlog }) => {
         width: "300px",
       },
       [theme.breakpoints.down("md")]: {
-        width: "400px",
+        width: "250px",
       },
       [theme.breakpoints.down("sm")]: {
-        width: "300px",
+        width: "250px",
       },
     },
     description: {
@@ -112,11 +112,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
     },
     mainBlogContainer: {
       height: "100%",
-      minHeight: "100%",
       width: "100%",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "space-between",
       background: theme.palette.mode === "dark" ? "#3d3d3d" : "white",
       padding: theme.spacing(1, 4, 0),
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -202,7 +198,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
     <div className={classes.mainBlogContainer}>
       <div className={classes.blogContainerHeader}>
         <p>{formattedDate}</p>
-        <p>Author: Sumon</p>
+        <p>Author: {blog.author}</p>
       </div>
       <div className={classes.blogContainer}>
         <div className={classes.imgDiv}>
@@ -215,11 +211,6 @@ const Blog = ({ blog, onDeleteBlog }) => {
               __html: sanitizedDescription,
             }}
             className={classes.description}
-            // style={{
-            //   fontSize: "18px",
-            //   width: "400px",
-            //   overflowWrap: "break-word",
-            // }}
           ></div>
         </div>
         <div>

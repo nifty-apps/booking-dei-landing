@@ -111,7 +111,7 @@ const SingleBlog = ({ blog }) => {
             <div className={classes.blogDetailsContent}>
               <p>{formattedDate}</p>
               <p>{blog.title}</p>
-              <p>Author: Sumon</p>
+              <p>Author:{blog.author}</p>
             </div>
           </div>
         </div>

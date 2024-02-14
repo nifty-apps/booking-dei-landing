@@ -15,7 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import React from "react";
-import logo from "../../public/images/Booking_Dei_logo.png";
+import logo from "../../public/images/logos/booking-dei-logo.png";
 import brand from "~/public/text/brand";
 import SelectLang from "../LangSwitch/Select";
 import useStyles from "./footer-style";
@@ -75,7 +75,7 @@ function Footer(props) {
       className={cx(classes.footer, invert && classes.invert)}
     >
       <Grid container spacing={4} className={classes.footerStyle}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} className={classes.footerInfo}>
           <div className={classes.footerLeft}>
             <div className={classes.logo}>
               <img src={logo} alt="logo" />

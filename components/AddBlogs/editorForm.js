@@ -11,7 +11,8 @@ import { makeStyles } from "tss-react/mui";
 import CssBaseline from "@mui/material/CssBaseline";
 import AWS from "aws-sdk";
 const EditorForm = (props) => {
-  const { imgUrl, title, setTitle, setImgUrl, alt, setAlt } = props;
+  const { imgUrl, title, setTitle, setImgUrl, alt, setAlt, author, setAuthor } =
+    props;
   const [isUploading, setIsUploading] = useState(false);
   const [isUploadComplete, setIsUploadComplete] = useState(false);
   const useEditorFormStyles = makeStyles({ uniqId: "editor-form" })(
@@ -33,17 +34,17 @@ const EditorForm = (props) => {
       },
       label: {
         width: "400px",
-        height: "60px",
-        margin: theme.spacing(1, 0, 0, 0),
+        height: "40px",
+        borderRadius: "4px",
+        margin: theme.spacing(0, 0, 0, 0),
         fontSize: "1.5rem",
       },
 
       uploadArea: {
         border: "1px dashed #ccc",
         padding: "10px",
-
         cursor: "pointer",
-        marginTop: "20px",
+        marginTop: "10px",
         borderRadius: "5px",
         backgroundColor: "#fafafa", // Light grey background
       },
@@ -66,6 +67,7 @@ const EditorForm = (props) => {
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleAltChange = (e) => setAlt(e.target.value);
+  const handleAuthorChange = (e) => setAuthor(e.target.value);
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -159,6 +161,17 @@ const EditorForm = (props) => {
                 type="text"
                 value={alt}
                 onChange={handleAltChange}
+                className={classes.label}
+                required
+              />
+            </div>
+            <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
+              <label>Author Name:</label>
+              <input
+                label="author"
+                type="text"
+                value={author}
+                onChange={handleAuthorChange}
                 className={classes.label}
                 required
               />

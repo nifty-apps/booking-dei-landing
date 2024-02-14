@@ -26,6 +26,11 @@ model Blogs{
   description String
   imgUrl     String
   alt        String
+  author    String
+  metaTitle String
+  metaDescription String
+  ogTitle String
+  slugUrl String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   published   Boolean   @default(false)

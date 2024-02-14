@@ -67,6 +67,8 @@ const BlogPage = (props) => {
     <Fragment>
       <Head>
         <title>{blog.title}</title>{" "}
+        <meta name="title" content={blog.metaTitle} />
+        <meta name="description" content={blog.metaDescription} />
       </Head>
       <div className={classes.header}>
         <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
