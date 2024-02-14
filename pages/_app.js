@@ -13,6 +13,8 @@ import LoadingBar from "react-top-loading-bar";
 import { appWithTranslation } from "next-i18next";
 import lngDetector from "../lib/languageDetector";
 import appTheme from "../theme/appTheme";
+import Header from "~/components/Header";
+import Footer from "~/components/Footer";
 /* import css vendors */
 import "dandelion-animated-slider/build/horizontal.css";
 import "animate.css/animate.css";
