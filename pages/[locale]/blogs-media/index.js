@@ -37,6 +37,17 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
       position: "relative",
     },
   },
+  paddingColored: {
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "30px",
+      paddingRight: "30px",
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+      background:
+        theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "#dae9f5",
+    },
+    paddingTop: theme.spacing(20),
+  },
 }));
 const blogsMedia = (props) => {
   const { classes } = useStyles();
@@ -55,12 +66,14 @@ const blogsMedia = (props) => {
           // invert={true}
         />
 
-        <section id="home" className={classes.containerWrap}>
+        <section id="blogs" className={classes.containerWrap}>
           <BlogBanner />
         </section>
       </div>
+      <div className={classes.paddingColored}>
+        <Blogs />
+      </div>
 
-      <Blogs />
       <div className={classes.footer}>
         <Footer />
       </div>

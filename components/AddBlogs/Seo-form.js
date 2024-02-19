@@ -89,7 +89,7 @@ const SeoForm = (props) => {
         <Container maxWidth="lg">
           <FormControl component="form" onSubmit={handleSubmit}>
             <div className={classes.labelHeader}>
-              <label>Meta title:</label>
+              <label>Seo title:</label>
               <input
                 label="meta-title"
                 type="text"
@@ -114,17 +114,7 @@ const SeoForm = (props) => {
                 placeholder="Write a brief description of your blog post"
               />
             </div>
-            <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
-              <label>Open Grpah Title:</label>
-              <input
-                label="ogTitle"
-                type="text"
-                value={ogTitle}
-                onChange={handleOgTitleChange}
-                className={classes.label}
-                required
-              />
-            </div>
+
             <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
               <label>Slug Url:</label>
               <input

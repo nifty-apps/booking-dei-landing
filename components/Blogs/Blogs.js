@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import { makeStyles } from "tss-react/mui";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 const Blogs = () => {
@@ -110,19 +111,28 @@ const Blogs = () => {
         />
       ) : (
         <div className={classes.mainWrap}>
-          <div className={classes.blogWrap}>
-            <div className={classes.blogsContainer}>
-              {Array.isArray(blogs) && blogs.length > 0 ? (
-                blogs.map((blog) => (
-                  <div key={blog.id} className={classes.blogContainer}>
-                    <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
-                  </div>
-                ))
-              ) : (
-                <p>No blogs available.</p>
-              )}
-            </div>
-          </div>
+          <Box
+            sx={{
+              maxWidth: "1080px",
+              m: "0px auto",
+              display: "grid",
+              gap: "30px",
+              gridTemplateColumns: {
+                xs: "repeat(1, minmax(0, 1fr))",
+                md: "repeat(2, minmax(0, 1fr))",
+              },
+            }}
+          >
+            {Array.isArray(blogs) && blogs.length > 0 ? (
+              blogs.map((blog) => (
+                <div key={blog.id}>
+                  <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
+                </div>
+              ))
+            ) : (
+              <p>No blogs available.</p>
+            )}
+          </Box>
           <ButtonGroup
             className={classes.paginationContainer}
             variant="text"
