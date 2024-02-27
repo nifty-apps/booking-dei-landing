@@ -32,7 +32,12 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
     position: "relative",
   },
   containerWrap: {
-    marginTop: -40,
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(0),
+      padding: theme.spacing(0),
+    },
+    // marginTop: theme.spacing(10),
+    // padding: theme.spacing(4),
     "& > section": {
       position: "relative",
     },
@@ -66,8 +71,13 @@ const blogsMedia = (props) => {
           // invert={true}
         />
 
-        <section id="blogs" className={classes.containerWrap}>
+
+        <section id="blog" className={classes.containerWrap}>
+
           <BlogBanner />
+        </section>
+        <section className={classes.paddingColored} id="blogs-cards">
+          <Blogs />
         </section>
       </div>
       <div className={classes.paddingColored}>

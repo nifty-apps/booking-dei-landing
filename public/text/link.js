@@ -4,7 +4,7 @@ const link = {
     contact: "/contact",
     login: "/login",
     register: "/register",
-    addBlogs: "/add-blogs",
+    dashboard: "/dashboard/blogs",
     blogsMedia: "/blogs-media",
   },
 };

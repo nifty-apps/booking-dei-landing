@@ -22,6 +22,7 @@ import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import Notification from "~/components/Notification";
 import withAdmin from "../../../components/WithAdmin/WithAdmin";
+import DashboardMenu from "../../../components/Dashboard/Dashboard";
 
 const useStyles = makeStyles({ uniqId: "blank" })((theme) => ({
   header: {
@@ -120,74 +121,10 @@ function dashboard(props) {
         <title>{brand.saas.name + " - Dashboard"}</title>
       </Head>
       <CssBaseline />
-      <div className={classes.header}>
-        <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
-        <Box sx={{ display: "flex" }}>
-          <CssBaseline />
-          <Drawer variant="permanent" open={open} ref={drawerRef}>
-            <Toolbar
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                px: [1],
-              }}
-            >
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-            </Toolbar>
 
-            <Divider />
-            <List>
-              <Link href="/add-blogs" style={{ textDecoration: "none" }}>
-                <ListItemButton
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <PostAddIcon className={classes.linkIcon} />
+      <div className={classes.mainWrap}>
+        <DashboardMenu />
 
-                  {open && <div className={classes.linkDec}>Add posts</div>}
-                </ListItemButton>
-              </Link>
-            </List>
-            <List>
-              <Link href="/add-blogs" style={{ textDecoration: "none" }}>
-                <ListItemButton
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <EngineeringIcon className={classes.linkIcon} />
-
-                  {open && <div className={classes.linkDec}>Global SEO</div>}
-                </ListItemButton>
-              </Link>
-            </List>
-          </Drawer>
-          <Box
-            component="main"
-            sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1,
-              height: "100vh",
-              marginTop: "130px",
-              overflow: "auto",
-            }}
-          >
-            <Toolbar />
-          </Box>
-        </Box>
       </div>
     </React.Fragment>
   );

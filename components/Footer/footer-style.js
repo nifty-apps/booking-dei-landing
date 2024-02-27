@@ -11,7 +11,7 @@ const footerStyles = makeStyles({ uniqId: "footer" })(
     invert: {},
     footer: {
       position: "relative",
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(0),
       paddingTop: theme.spacing(3),
       paddingBottom: theme.spacing(8),
 

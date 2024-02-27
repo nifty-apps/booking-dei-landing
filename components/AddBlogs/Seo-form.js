@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControl } from "@mui/material";
+import { FormControl, Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Button";
@@ -16,8 +16,6 @@ const SeoForm = (props) => {
     setMetaTitle,
     metaDescription,
     setMetaDescription,
-    ogTitle,
-    setOgTitle,
     slugUrl,
     setSlugUrl,
   } = props;
@@ -76,7 +74,6 @@ const SeoForm = (props) => {
 
   const handleMetaTitleChange = (e) => setMetaTitle(e.target.value);
   const handleMetaDescriptionChange = (e) => setMetaDescription(e.target.value);
-  const handleOgTitleChange = (e) => setOgTitle(e.target.value);
   const handleSlugUrlChange = (e) => setSlugUrl(e.target.value);
 
   const handleSubmit = (e) => {
@@ -84,52 +81,64 @@ const SeoForm = (props) => {
   };
 
   return (
-    <>
-      <div>
-        <Container maxWidth="lg">
-          <FormControl component="form" onSubmit={handleSubmit}>
-            <div className={classes.labelHeader}>
-              <label>Seo title:</label>
-              <input
-                label="meta-title"
-                type="text"
-                value={metaTitle}
-                onChange={handleMetaTitleChange}
-                className={classes.label}
-                required
-              />
-            </div>
 
-            <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
-              <label>Meta Description:</label>
-              <textarea
-                label="metaDescription"
-                name="metaDescription"
-                rows="5"
-                cols="51"
-                maxLength="160"
-                onChange={handleMetaDescriptionChange}
-                value={metaDescription}
-                required
-                placeholder="Write a brief description of your blog post"
-              />
-            </div>
+    <Container maxWidth="lg">
+      <FormControl component="form" onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item lg={5}>
+            <TextField
+              label="meta-title"
+              type="text"
+              value={metaTitle}
+              onChange={handleMetaTitleChange}
+              required
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              name="seoTitle"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+          <Grid item lg={6}>
+            <TextField
+              name="metaDescription"
+              maxLength="160"
+              onChange={handleMetaDescriptionChange}
+              value={metaDescription}
+              required
+              placeholder="Write a brief description of your blog post"
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              label="Meta Description"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+          <Grid item lg={3}>
+            <TextField
+              type="text"
+              value={slugUrl}
+              onChange={handleSlugUrlChange}
+              className={classes.label}
+              required
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              name="slugUrl"
+              label="Slug URL"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+        </Grid>
+      </FormControl>
+    </Container>
 
-            <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
-              <label>Slug Url:</label>
-              <input
-                label="slugUrl"
-                type="text"
-                value={slugUrl}
-                onChange={handleSlugUrlChange}
-                className={classes.label}
-                required
-              />
-            </div>
-          </FormControl>
-        </Container>
-      </div>
-    </>
   );
 };
 

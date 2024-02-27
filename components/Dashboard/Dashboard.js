@@ -1,208 +1,147 @@
-import React, { useEffect, useRef, useState } from "react";
-import PropTypes from "prop-types";
-import { makeStyles } from "tss-react/mui";
-import { useTranslation } from "next-i18next";
-import Head from "next/head";
-import CssBaseline from "@mui/material/CssBaseline";
-import { styled } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Link from "next/link";
+import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
-import Divider from "@mui/material/Divider";
-import ListItemButton from "@mui/material/ListItemButton";
-import EngineeringIcon from "@mui/icons-material/Engineering";
-import PostAddIcon from "@mui/icons-material/PostAdd";
 import List from "@mui/material/List";
-import IconButton from "@mui/material/IconButton";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
-import brand from "~/public/text/brand";
-import Header from "~/components/Header";
-import Footer from "~/components/Footer";
-import Notification from "~/components/Notification";
-import withAdmin from "../../../components/WithAdmin/WithAdmin";
-
-const useStyles = makeStyles({ uniqId: "blank" })((theme) => ({
-  header: {
-    background: theme.palette.primary.dark,
-    position: "relative",
-    height: "130px",
-  },
-  mainWrap: {
-    position: "relative",
-    width: "100%",
-    overflow: "hidden",
-    background: theme.palette.background.paper,
-  },
-  spaceBottom: {
-    marginBottom: theme.spacing(20),
-  },
-  spaceTop: {
-    paddingTop: theme.spacing(20),
-  },
-  containerWrap: {
-    marginTop: theme.spacing(10),
-    padding: theme.spacing(4),
-    "& > section": {
-      position: "relative",
-    },
-  },
-  linkDec: {
-    color: theme.palette.mode === "dark" ? `white` : `black`,
-    textDecoration: "none",
-    fontWeight: "bold",
-  },
-  linkIcon: {
-    color: theme.palette.mode === "dark" ? `white` : `black`,
-  },
-}));
+import Divider from "@mui/material/Divider";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+import logo from "../../public/images/logos/booking-dei-logo.png";
+import { Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import HomeIcon from "@mui/icons-material/Home";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 const drawerWidth = 240;
-
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "fixed",
-    marginTop: "70px",
-    zIndex: 0,
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
-
-function dashboard(props) {
-  const { classes, cx } = useStyles();
-  const { onToggleDark, onToggleDir } = props;
-  const { t } = useTranslation("common");
-  const [open, setOpen] = useState(true);
-  const [hide, setHide] = useState(false);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-  const drawerRef = useRef(null);
+const DashboardMenu = () => {
+  const router = useRouter();
+  const { t, i18n } = useTranslation("common");
+  const curLang = "/" + i18n.language;
+  const [user, setUser] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (drawerRef.current) {
-        const newTop = "50";
-        drawerRef.current.style.top = `${newTop}px`;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    setUser(!!localStorage.getItem("user"));
   }, []);
 
+  const dashbordMenu = [
+    {
+      title: "Blog",
+      href: "/dashboard/blogs/",
+    },
+  ];
+
+  const logout = () => {
+    toast.success("You have logged out.");
+    localStorage.removeItem("user");
+    setUser(!!localStorage.getItem("user"));
+    router.push(`/${curLang}/login`);
+  };
   return (
-    <React.Fragment>
-      <Head>
-        <title>{brand.saas.name + " - Dashboard"}</title>
-      </Head>
-      <CssBaseline />
-      <div className={classes.header}>
-        <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
-        <Box sx={{ display: "flex" }}>
-          <CssBaseline />
-          <Drawer variant="permanent" open={open} ref={drawerRef}>
-            <Toolbar
+    <Box>
+      <Drawer
+        sx={{
+          position: "relative",
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box",
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar>
+          <Link
+            href={curLang + "/"}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            <Box
               sx={{
                 display: "flex",
+                gap: "10px",
                 alignItems: "center",
-                justifyContent: "flex-end",
-                px: [1],
+                "& img": {
+                  width: 38,
+                },
               }}
             >
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-            </Toolbar>
-
-            <Divider />
-            <List>
-              <Link href="/add-blogs" style={{ textDecoration: "none" }}>
-                <ListItemButton
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <PostAddIcon className={classes.linkIcon} />
-
-                  {open && <div className={classes.linkDec}>Add posts</div>}
-                </ListItemButton>
-              </Link>
-            </List>
-            <List>
-              <Link href="/add-blogs" style={{ textDecoration: "none" }}>
-                <ListItemButton
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <EngineeringIcon className={classes.linkIcon} />
-
-                  {open && <div className={classes.linkDec}>Global SEO</div>}
-                </ListItemButton>
-              </Link>
-            </List>
-          </Drawer>
-          <Box
-            component="main"
-            sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1,
-              height: "100vh",
-              marginTop: "130px",
-              overflow: "auto",
+              <img src={logo} alt="logo" />
+            </Box>
+          </Link>
+        </Toolbar>
+        <Divider />
+        {user && (
+          <List sx={{ padding: "5px" }}>
+            {dashbordMenu.map((menu, index) => (
+              <ListItem
+                key={menu?.href}
+                sx={{
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  borderRadius: "5px",
+                  backgroundColor: router?.asPath?.includes(menu.href)
+                    ? "#458FCD"
+                    : "none",
+                  boxShadow: router?.asPath?.includes(menu.href)
+                    ? "0px 3px 5px rgba(69, 143, 205, 0.50)"
+                    : "none",
+                  "& a": {
+                    width: "100%",
+                    color: router?.asPath?.includes(menu.href)
+                      ? "white"
+                      : "black",
+                    textDecoration: "none",
+                  },
+                }}
+              >
+                <Link href={curLang + menu?.href}>
+                  <ListItemText primary={menu?.title} />
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        )}
+        <Box
+          sx={{
+            padding: "5px",
+            position: "absolute",
+            bottom: "10px",
+            display: "flex",
+            gap: "5px",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Button
+            variant="outlined"
+            size="medium"
+            onClick={() => {
+              router.push(`/${curLang}/`);
             }}
+            startIcon={<HomeIcon />}
           >
-            <Toolbar />
-          </Box>
+            Home
+          </Button>
+          {user && (
+            <Button
+              variant="contained"
+              size="medium"
+              type="submit"
+              onClick={logout}
+              startIcon={<PowerSettingsNewIcon />}
+            >
+              Logout
+            </Button>
+          )}
         </Box>
-      </div>
-    </React.Fragment>
+      </Drawer>
+    </Box>
   );
-}
-
-dashboard.propTypes = {
-  onToggleDark: PropTypes.func.isRequired,
-  onToggleDir: PropTypes.func.isRequired,
 };
 
-// Use this below for Server Side Render/Translation (SSR)
-// export const getStaticProps = async ({ locale }) => ({ props: { ...await serverSideTranslations(locale, ['common']) } });
+export default DashboardMenu;
 
-// Use this below for Static Site Generation (SSG)
-const getStaticProps = makeStaticProps(["common"]);
-export { getStaticPaths, getStaticProps };
-
-export default withAdmin(dashboard);

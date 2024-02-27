@@ -171,10 +171,10 @@ function Header(props) {
                     </Button>
                     {isAdmin && !isLoading && (
                       <Button
-                        href={curLang + link.saas.addBlogs}
+                        href={curLang + link.saas.dashboard}
                         style={{ opacity: isActive ? ".5" : "1" }}
                       >
-                        {t("saas-landing.header_addBlogs")}
+                        {t("saas-landing.dashboard")}
                       </Button>
                     )}
                   </li>

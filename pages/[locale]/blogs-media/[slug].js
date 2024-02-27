@@ -8,8 +8,15 @@ import SingleBlog from "~/components/Blogs/SingleBlog";
 import { makeStaticProps } from "~/lib/getStatic";
 import { useRouter } from "next/router";
 import nextI18nextConfig from "../../../next-i18next.config";
+import { Box } from "@mui/material";
 
 const useStyles = makeStyles({ uniqId: "singleBlog" })((theme) => ({
+  mainWrap: {
+    position: "relative",
+    width: "100%",
+    overflow: "hidden",
+    background: theme.palette.background.paper,
+  },
   header: {
     background: theme.palette.primary.dark,
     position: "relative",
@@ -28,7 +35,7 @@ const BlogPage = (props) => {
   const [blog, setBlog] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
   // fetch single blog
   useEffect(() => {
@@ -37,17 +44,18 @@ const BlogPage = (props) => {
     }
 
     setIsLoading(true); // Start loading
-    fetch(`/api/blogs/${id}`)
+    fetch(`/api/blogs/${slug}`)
       .then((res) => res.json())
       .then((data) => {
         setBlog(data);
-        setIsLoading(false); // Stop loading
+
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Fetching blog failed", error);
         setIsLoading(false); // Stop loading on error
       });
-  }, [id]);
+  }, [slug]);
 
   if (isLoading) {
     return (
@@ -65,17 +73,15 @@ const BlogPage = (props) => {
   }
   return (
     <Fragment>
-      <Head>
-        <title>{blog.title}</title>{" "}
-        <meta name="title" content={blog.metaTitle} />
-        <meta name="description" content={blog.metaDescription} />
-      </Head>
-      <div className={classes.header}>
-        <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
-      </div>
-      <SingleBlog blog={blog} />
-      <div className={classes.footer}>
-        <Footer />
+      <div className={classes.mainWrap}>
+        <div className={classes.header}>
+          <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} />
+        </div>
+        <SingleBlog blog={blog} />
+
+        <div className={classes.footer}>
+          <Footer />
+        </div>
       </div>
     </Fragment>
   );
@@ -100,7 +106,7 @@ export async function getStaticPaths() {
   const blogs = await fetch(`https://booking-dei-landing.vercel.app/api/blogs`);
   const blogsData = await blogs.json();
   const paths = blogsData?.blogs.map((blog) => ({
-    params: { id: blog.id.toString(), locale: "en" },
+    params: { slug: blog.slugUrl.toString(), locale: "en" },
   }));
 
   return {
