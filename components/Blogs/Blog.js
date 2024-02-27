@@ -103,6 +103,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
   const sanitizedTitle = DOMPurify.sanitize(titlePreview);
 
   return (
+    <>
     <Card
       sx={{
         p: "20px",
@@ -114,7 +115,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
       }}
       className={classes.customCard}
     >
-      <CardContent sx={{ mb: "25px" }}>
+      <Box sx={{ mb: "25px" }}>
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
 
           <Typography
@@ -192,6 +193,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
         </Link>
       </CardActions>
     </Card>
+    </>
   );
 };
 
