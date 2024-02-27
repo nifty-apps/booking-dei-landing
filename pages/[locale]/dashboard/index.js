@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "tss-react/mui";
 import { useTranslation } from "next-i18next";
@@ -11,9 +11,8 @@ import Link from "next/link";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import PostAddIcon from "@mui/icons-material/PostAdd";
 import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -26,6 +25,11 @@ import withAdmin from "../../../components/WithAdmin/WithAdmin";
 import DashboardMenu from "../../../components/Dashboard/Dashboard";
 
 const useStyles = makeStyles({ uniqId: "blank" })((theme) => ({
+  header: {
+    background: theme.palette.primary.dark,
+    position: "relative",
+    height: "130px",
+  },
   mainWrap: {
     position: "relative",
     width: "100%",
@@ -45,6 +49,14 @@ const useStyles = makeStyles({ uniqId: "blank" })((theme) => ({
       position: "relative",
     },
   },
+  linkDec: {
+    color: theme.palette.mode === "dark" ? `white` : `black`,
+    textDecoration: "none",
+    fontWeight: "bold",
+  },
+  linkIcon: {
+    color: theme.palette.mode === "dark" ? `white` : `black`,
+  },
 }));
 
 const drawerWidth = 240;
@@ -53,7 +65,8 @@ const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
   "& .MuiDrawer-paper": {
-    position: "relative",
+    position: "fixed",
+    marginTop: "70px",
     zIndex: 0,
     whiteSpace: "nowrap",
     width: drawerWidth,
@@ -80,10 +93,27 @@ function dashboard(props) {
   const { classes, cx } = useStyles();
   const { onToggleDark, onToggleDir } = props;
   const { t } = useTranslation("common");
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
+  const [hide, setHide] = useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const drawerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (drawerRef.current) {
+        const newTop = "50";
+        drawerRef.current.style.top = `${newTop}px`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <React.Fragment>
@@ -91,8 +121,10 @@ function dashboard(props) {
         <title>{brand.saas.name + " - Dashboard"}</title>
       </Head>
       <CssBaseline />
+
       <div className={classes.mainWrap}>
         <DashboardMenu />
+
       </div>
     </React.Fragment>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import { makeStyles } from "tss-react/mui";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import { Box, Pagination, Stack, Typography } from "@mui/material";
 
@@ -137,7 +138,9 @@ const Blogs = () => {
               },
             }}
           >
+
             {blogs.length > 0 ? (
+
               blogs.map((blog) => (
                 <div key={blog.id}>
                   <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
