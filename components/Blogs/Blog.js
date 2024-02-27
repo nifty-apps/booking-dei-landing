@@ -2,16 +2,6 @@ import React from "react";
 import { makeStyles } from "tss-react/mui";
 import Link from "next/link";
 import DOMPurify from "dompurify";
-import Swal from "sweetalert2";
-import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import useIsAdmin from "../../utils/adminCheck";
 import {
   Box,
@@ -29,7 +19,6 @@ const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
       boxShadow:
         "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
     },
-
   },
   readMore: {
     width: "200px",
@@ -45,37 +34,36 @@ const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
       background: "#458FCD",
       color: "white",
 
-    customCard: {
-      "&:hover": {
-        boxShadow:
-          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
+      customCard: {
+        "&:hover": {
+          boxShadow:
+            "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);",
+        },
+      },
+      descriptionContainer: {
+        width: "500px",
+        [theme.breakpoints.down("lg")]: {
+          width: "300px",
+        },
+        [theme.breakpoints.down("md")]: {
+          width: "250px",
+        },
+        [theme.breakpoints.down("sm")]: {
+          width: "250px",
+        },
       },
     },
-    descriptionContainer: {
-      width: "500px",
-      [theme.breakpoints.down("lg")]: {
-        width: "300px",
-      },
-      [theme.breakpoints.down("md")]: {
-        width: "250px",
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "250px",
-      },
-
+    modifyButton: {
+      position: "absolute",
+      bottom: theme.spacing(2),
+      right: theme.spacing(1),
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: 1,
     },
-  },
-  modifyButton: {
-    position: "absolute",
-    bottom: theme.spacing(2),
-    right: theme.spacing(1),
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 1,
   },
 }));
-
 
 const Blog = ({ blog, onDeleteBlog }) => {
   const { title, createdAt, description, author, imgUrl, alt, slugUrl } = blog;
@@ -104,37 +92,36 @@ const Blog = ({ blog, onDeleteBlog }) => {
 
   return (
     <>
-    <Card
-      sx={{
-        p: "20px",
-        maxWidth: "525px",
-        cursor: "pointer",
-        position: "relative",
+      <Card
+        sx={{
+          p: "20px",
+          maxWidth: "525px",
+          cursor: "pointer",
+          position: "relative",
 
-        margin: "0px auto",
-      }}
-      className={classes.customCard}
-    >
-      <Box sx={{ mb: "25px" }}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
-
-          <Typography
-            sx={{ fontSize: 14, textTransform: "uppercase" }}
-            color="text.secondary"
-          >
-            {formattedDate}
-          </Typography>
-          <Typography
-            sx={{ fontSize: 14, textTransform: "uppercase" }}
-            color="text.secondary"
-          >
-            {author}
-          </Typography>
-        </Box>
+          margin: "0px auto",
+        }}
+        className={classes.customCard}
+      >
+        <CardContent sx={{ mb: "25px" }}>
+          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
+            <Typography
+              sx={{ fontSize: 14, textTransform: "uppercase" }}
+              color="text.secondary"
+            >
+              {formattedDate}
+            </Typography>
+            <Typography
+              sx={{ fontSize: 14, textTransform: "uppercase" }}
+              color="text.secondary"
+            >
+              {author}
+            </Typography>
+          </Box>
 
           <Typography>{formattedDate}</Typography>
           <Typography>Author: {blog.author}</Typography>
-        </Box>
+        </CardContent>
         <CardMedia
           component="img"
           sx={{
@@ -146,12 +133,6 @@ const Blog = ({ blog, onDeleteBlog }) => {
           src={imgUrl}
           image={imgUrl}
           alt={alt}
-            height: "250px",
-            mb: "35px",
-            overflow: "hidden",
-          }}
-          src={blog.imgUrl}
-          alt={blog.alt}
           classes={classes.cardImage}
         />
         <Typography
@@ -160,7 +141,6 @@ const Blog = ({ blog, onDeleteBlog }) => {
           sx={{ textAlign: "center", fontSize: "24px", mb: "20px" }}
         >
           {sanitizedTitle}
-
         </Typography>
         <Typography
           sx={{ mb: 1.5, textAlign: "center", fontSize: "16px" }}
@@ -170,29 +150,27 @@ const Blog = ({ blog, onDeleteBlog }) => {
             __html: sanitizedDescription,
           }}
         ></Typography>
-      </CardContent>
-      <CardActions
-        sx={{
-          position: "absolute",
-          bottom: "5px",
-          justifyContent: "center",
-          width: "92%",
-        }}
-      >
 
-        <Link href={`/blogs-media/${slugUrl}`} as={`/blogs-media/${slugUrl}`}>
-
-          <Button
-            variant="outlined"
-            color="primary"
-            size="small"
-            classes={classes.readMore}
-          >
-            Read More
-          </Button>
-        </Link>
-      </CardActions>
-    </Card>
+        <CardActions
+          sx={{
+            position: "absolute",
+            bottom: "5px",
+            justifyContent: "center",
+            width: "92%",
+          }}
+        >
+          <Link href={`/blogs-media/${slugUrl}`} as={`/blogs-media/${slugUrl}`}>
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              classes={classes.readMore}
+            >
+              Read More
+            </Button>
+          </Link>
+        </CardActions>
+      </Card>
     </>
   );
 };
