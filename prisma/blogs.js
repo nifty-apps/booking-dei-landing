@@ -51,11 +51,11 @@ export async function getBlogs(page = 1, limit = 10) {
 }
 
 // Get a single Blog
-export async function getBlogById(id) {
+export async function getBlogBySlug(slug) {
   try {
     const blog = await prisma.blogs.findUnique({
       where: {
-        id: id,
+        slugUrl: slug,
       },
     });
     return blog;
@@ -77,11 +77,11 @@ export async function getTotalBlogs() {
 }
 
 // Edit blog
-export async function updateBlogById(id, data) {
+export async function updateBlogBySlug(slug, data) {
   try {
     const updatedBlog = await prisma.blogs.update({
       where: {
-        id: id,
+        slugUrl: slug,
       },
       data: {
         ...data,
@@ -96,11 +96,11 @@ export async function updateBlogById(id, data) {
 }
 
 // Delete  a blog
-export async function deleteBlogById(id) {
+export async function deleteBlogBySlug(slug) {
   try {
     await prisma.blogs.delete({
       where: {
-        id: id,
+        slugUrl: slug,
       },
     });
   } catch (error) {

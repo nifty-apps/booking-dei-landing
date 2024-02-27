@@ -1,24 +1,24 @@
 import {
-  deleteBlogById,
-  getBlogById,
-  updateBlogById,
+  deleteBlogBySlug,
+  getBlogBySlug,
+  updateBlogBySlug,
 } from "../../../../prisma/blogs";
 
 export default async function handler(req, res) {
-  const { id } = req.query;
+  const { slug } = req.query;
 
   try {
     switch (req.method) {
       case "GET":
-        const blog = await getBlogById(id);
+        const blog = await getBlogBySlug(slug);
         return res.status(200).json(blog);
 
       case "PATCH":
-        const updatedBlog = await updateBlogById(id, req.body);
+        const updatedBlog = await updateBlogBySlug(slug, req.body);
         return res.status(200).json(updatedBlog);
 
       case "DELETE":
-        await deleteBlogById(id);
+        await deleteBlogBySlug(slug);
         return res.status(200).json({ message: "Blog successfully deleted" });
 
       default:

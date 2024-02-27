@@ -29,8 +29,7 @@ model Blogs{
   author    String
   metaTitle String
   metaDescription String
-  ogTitle String
-  slugUrl String
+  slugUrl String @unique
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   published   Boolean   @default(false)

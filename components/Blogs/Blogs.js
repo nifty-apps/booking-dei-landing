@@ -3,6 +3,7 @@ import Blog from "./Blog";
 import { makeStyles } from "tss-react/mui";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import { Box, Pagination, Stack, Typography } from "@mui/material";
 
 const Blogs = () => {
   const useStyles = makeStyles({ uniqId: "blogs" })((theme) => ({
@@ -64,7 +65,8 @@ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalBlogs, setTotalBlogs] = useState(0);
-  const blogsPerPage = 6; // Adjust as needed
+  const blogsPerPage = 6;
+  const itemsPerPage = 10;
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -82,18 +84,18 @@ const Blogs = () => {
       });
   }, [currentPage, totalBlogs]);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
-
   const handleDeleteBlog = (deletedBlogId) => {
     // Filter out the deleted blog from the current blogs state
     const updatedBlogs = blogs.filter((blog) => blog.id !== deletedBlogId);
     setBlogs(updatedBlogs);
   };
 
-  const canGoPrevious = currentPage > 1;
-  const canGoNext = currentPage < Math.ceil(totalBlogs / blogsPerPage);
+  const totalPages = Math.ceil(totalBlogs / itemsPerPage);
+
+  // Function to change page
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
+  };
   return (
     <>
       {isLoading ? (
@@ -110,52 +112,53 @@ const Blogs = () => {
         />
       ) : (
         <div className={classes.mainWrap}>
-          <div className={classes.blogWrap}>
-            <div className={classes.blogsContainer}>
-              {Array.isArray(blogs) && blogs.length > 0 ? (
-                blogs.map((blog) => (
-                  <div key={blog.id} className={classes.blogContainer}>
-                    <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
-                  </div>
-                ))
-              ) : (
-                <p>No blogs available.</p>
-              )}
-            </div>
-          </div>
-          <ButtonGroup
-            className={classes.paginationContainer}
-            variant="text"
-            color="primary"
-            aria-label="text primary button group"
+          <Typography
+            sx={{
+              fontSize: "48px",
+              fontWeight: "700",
+              color: "#458FCD",
+              textAlign: "center",
+              mb: "25px",
+            }}
+            color="text.primary"
           >
-            <Button
-              disabled={!canGoPrevious}
-              onClick={() => canGoPrevious && handlePageChange(currentPage - 1)}
-            >
-              {"<"}
-            </Button>
-            {Number.isFinite(Math.ceil(totalBlogs / blogsPerPage)) &&
-              [...Array(Math.ceil(totalBlogs / blogsPerPage)).keys()].map(
-                (page) => (
-                  <Button
-                    key={page + 1}
-                    className={
-                      page + 1 === currentPage ? classes.activePage : ""
-                    }
-                    onClick={() => handlePageChange(page + 1)}
-                  >
-                    {page + 1}
-                  </Button>
-                )
-              )}
-            <Button
-              disabled={!canGoNext}
-              onClick={() => canGoNext && handlePageChange(currentPage + 1)}
-            >
-              {">"}
-            </Button>
-          </ButtonGroup>
+            Our Blogs
+          </Typography>
+
+          <Box
+            sx={{
+              maxWidth: "1080px",
+              m: "0px auto",
+              display: "grid",
+              gap: "30px",
+              gridTemplateColumns: {
+                xs: "repeat(1, minmax(0, 1fr))",
+                md: "repeat(2, minmax(0, 1fr))",
+              },
+            }}
+          >
+            {blogs.length > 0 ? (
+              blogs.map((blog) => (
+                <div key={blog.id}>
+                  <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
+                </div>
+              ))
+            ) : (
+              <p>No blogs available.</p>
+            )}
+          </Box>
+
+          <Box
+            sx={{ marginY: "20px", display: "flex", justifyContent: "center" }}
+          >
+            <Stack spacing={2}>
+              <Pagination
+                count={totalPages} // Use totalPages here
+                page={currentPage}
+                onChange={handleChange}
+              />
+            </Stack>
+          </Box>
         </div>
       )}
     </>

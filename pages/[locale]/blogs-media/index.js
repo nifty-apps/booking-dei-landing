@@ -32,10 +32,26 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
     position: "relative",
   },
   containerWrap: {
-    marginTop: -40,
+    [theme.breakpoints.down("md")]: {
+      marginTop: theme.spacing(0),
+      padding: theme.spacing(0),
+    },
+    // marginTop: theme.spacing(10),
+    // padding: theme.spacing(4),
     "& > section": {
       position: "relative",
     },
+  },
+  paddingColored: {
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "30px",
+      paddingRight: "30px",
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+      background:
+        theme.palette.mode === "dark" ? "rgba(0, 0, 0, 0.38)" : "#dae9f5",
+    },
+    paddingTop: theme.spacing(20),
   },
 }));
 const blogsMedia = (props) => {
@@ -55,12 +71,14 @@ const blogsMedia = (props) => {
           // invert={true}
         />
 
-        <section id="home" className={classes.containerWrap}>
+        <section id="blog" className={classes.containerWrap}>
           <BlogBanner />
+        </section>
+        <section className={classes.paddingColored} id="blogs-cards">
+          <Blogs />
         </section>
       </div>
 
-      <Blogs />
       <div className={classes.footer}>
         <Footer />
       </div>

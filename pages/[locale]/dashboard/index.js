@@ -23,6 +23,7 @@ import Header from "~/components/Header";
 import Footer from "~/components/Footer";
 import Notification from "~/components/Notification";
 import withAdmin from "../../../components/WithAdmin/WithAdmin";
+import DashboardMenu from "../../../components/Dashboard/Dashboard";
 
 const useStyles = makeStyles({ uniqId: "blank" })((theme) => ({
   mainWrap: {
@@ -91,54 +92,7 @@ function dashboard(props) {
       </Head>
       <CssBaseline />
       <div className={classes.mainWrap}>
-        <Header onToggleDark={onToggleDark} onToggleDir={onToggleDir} invert />
-        <Box sx={{ display: "flex" }}>
-          <CssBaseline />
-          <Drawer variant="permanent" open={open} sx={{ marginTop: "130px" }}>
-            <Toolbar
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "flex-end",
-                px: [1],
-              }}
-            >
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-              {/* <Link href="/dashboard"> Add posts</Link> */}
-            </Toolbar>
-
-            <Divider />
-            <List>
-              <ListItemButton>
-                <ListItemIcon>
-                  {" "}
-                  <Link href="/add-blogs"> Add posts</Link>
-                </ListItemIcon>
-              </ListItemButton>
-            </List>
-          </Drawer>
-          <Box
-            component="main"
-            sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === "light"
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1,
-              height: "100vh",
-              marginTop: "130px",
-              overflow: "auto",
-            }}
-          >
-            <Toolbar />
-          </Box>
-        </Box>
-        <section className={classes.spaceTop}>
-          <Footer invert />
-        </section>
-        <Notification />
+        <DashboardMenu />
       </div>
     </React.Fragment>
   );

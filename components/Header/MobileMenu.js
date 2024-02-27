@@ -67,11 +67,11 @@ function MobileMenu(props) {
             <ListItem
               button
               component="a"
-              href={curLang + routeLink.saas.addBlogs}
+              href={curLang + routeLink.saas.dashboard}
               style={{ animationDuration: navMenu.length * 0.15 + "s" }}
             >
               <ListItemText
-                primary={t("saas-landing.header_addBlogs")}
+                primary={t("saas-landing.dashboard")}
                 className={classes.menuList}
               />
             </ListItem>

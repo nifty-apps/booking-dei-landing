@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControl } from "@mui/material";
+import { FormControl, Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Button";
@@ -42,9 +42,10 @@ const EditorForm = (props) => {
 
       uploadArea: {
         border: "1px dashed #ccc",
-        padding: "10px",
+        width: "100%",
+        padding: "0px",
         cursor: "pointer",
-        marginTop: "10px",
+        marginTop: "0px",
         borderRadius: "5px",
         backgroundColor: "#fafafa", // Light grey background
       },
@@ -107,79 +108,96 @@ const EditorForm = (props) => {
   };
 
   return (
-    <>
-      <div>
-        <Container maxWidth="lg">
-          <FormControl component="form" onSubmit={handleSubmit}>
-            <div className={classes.labelHeader}>
-              <label>Title:</label>
-              <input
-                label="Title"
-                type="text"
-                value={title}
-                onChange={handleTitleChange}
-                className={classes.label}
-                required
-              />
-            </div>
-
-            <div className={classes.label}>
-              <Paper
-                variant="outlined"
-                className={classes.uploadArea}
-                onClick={() => document.getElementById("file-input").click()}
+    <Container maxWidth="lg">
+      <FormControl component="form" onSubmit={handleSubmit}>
+        <Grid container spacing={2}>
+          <Grid item lg={6}>
+            <TextField
+              type="text"
+              value={title}
+              onChange={handleTitleChange}
+              className={classes.label}
+              required
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              name="title"
+              label="Blog Title"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+          <Grid item lg={6}>
+            <TextField
+              type="text"
+              value={author}
+              onChange={handleAuthorChange}
+              className={classes.label}
+              required
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              name="author"
+              label="Author's Name"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+        </Grid>
+        <Grid container spacing={2} sx={{ marginY: "10px" }}>
+          <Grid item lg={6}>
+            <Paper
+              variant="outlined"
+              className={classes.uploadArea}
+              onClick={() => document.getElementById("file-input").click()}
+            >
+              <Typography
+                variant="body1"
+                style={{
+                  color: isUploadComplete ? "green" : "gray",
+                  width: "380px",
+                }}
+                className={classes.placeholderText}
+                startIcon={<CloudUploadIcon className={classes.uploadIcon} />}
               >
-                <Typography
-                  variant="body1"
-                  style={{
-                    color: isUploadComplete ? "green" : "gray",
-                    width: "380px",
-                  }}
-                  className={classes.placeholderText}
-                  startIcon={<CloudUploadIcon className={classes.uploadIcon} />}
-                >
-                  {isUploading
-                    ? "Uploading..."
-                    : imgUrl
-                      ? "Image uploaded!"
-                      : "Select title image"}
-                </Typography>
-                {/* <Button className={classes.uploadButton}>Upload Image</Button> */}
-                <input
-                  accept="image/*"
-                  className={classes.input}
-                  id="file-input"
-                  type="file"
-                  onChange={handleImageUpload}
-                />
-              </Paper>
-            </div>
-            <div className={classes.labelHeader} style={{ marginTop: "40px" }}>
-              <label>Alt text for image:</label>
+                {isUploading
+                  ? "Uploading..."
+                  : imgUrl
+                    ? "Image uploaded!"
+                    : "Select title image"}
+              </Typography>
+              {/* <Button className={classes.uploadButton}>Upload Image</Button> */}
               <input
-                label="alt"
-                type="text"
-                value={alt}
-                onChange={handleAltChange}
-                className={classes.label}
-                required
+                accept="image/*"
+                className={classes.input}
+                id="file-input"
+                type="file"
+                onChange={handleImageUpload}
               />
-            </div>
-            <div className={classes.labelHeader} style={{ marginTop: "20px" }}>
-              <label>Author Name:</label>
-              <input
-                label="author"
-                type="text"
-                value={author}
-                onChange={handleAuthorChange}
-                className={classes.label}
-                required
-              />
-            </div>
-          </FormControl>
-        </Container>
-      </div>
-    </>
+            </Paper>
+          </Grid>
+          <Grid item lg={6}>
+            <TextField
+              type="text"
+              value={alt}
+              onChange={handleAltChange}
+              className={classes.label}
+              required
+              fullWidth
+              variant="outlined"
+              id="outlined-error"
+              name="alt"
+              label="Alt Image Text"
+              autoComplete="off"
+              size="small"
+              sx={{ marginBottom: "20px" }}
+            />
+          </Grid>
+        </Grid>
+      </FormControl>
+    </Container>
   );
 };
 
