@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Blog from "./Blog";
 import { makeStyles } from "tss-react/mui";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import { Box, Pagination, Stack, Typography } from "@mui/material";
 
 const Blogs = () => {
