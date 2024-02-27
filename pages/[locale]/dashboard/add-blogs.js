@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 import { makeStyles } from "tss-react/mui";
 import { useTranslation } from "next-i18next";
 import { getStaticPaths, makeStaticProps } from "~/lib/getStatic";
-import withAdmin from "../../components/WithAdmin/WithAdmin";
+import withAdmin from "../../../components/WithAdmin/WithAdmin";
+import Dashboard from "../../../components/Dashboard/Dashboard";
 
 const AddBlogs = dynamic(() => import("~/components/AddBlogs"), { ssr: false });
 const useStyles = makeStyles({ uniqId: "addBlogs" })((theme) => ({
@@ -43,6 +44,9 @@ const addBlogs = (props) => {
           onToggleDir={onToggleDir}
           // invert={true}
         />
+      </div>
+      <div>
+        <Dashboard />
       </div>
       <div className={classes.editorSection}>
         <AddBlogs isEditing={false} />

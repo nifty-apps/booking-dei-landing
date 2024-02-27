@@ -81,6 +81,7 @@ const SeoForm = (props) => {
   };
 
   return (
+
     <Container maxWidth="lg">
       <FormControl component="form" onSubmit={handleSubmit}>
         <Grid container spacing={2}>
@@ -137,6 +138,7 @@ const SeoForm = (props) => {
         </Grid>
       </FormControl>
     </Container>
+
   );
 };
 
