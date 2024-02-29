@@ -93,83 +93,94 @@ const Blog = ({ blog, onDeleteBlog }) => {
 
   return (
     <>
-      <Card
-        sx={{
-          p: "20px",
-          maxWidth: "525px",
-          maxHeight: "570px",
-          cursor: "pointer",
-          position: "relative",
-
-          margin: "0px auto",
-        }}
-        className={classes.customCard}
+      <Link
+        href={`/blogs-media/${slugUrl}`}
+        as={`/blogs-media/${slugUrl}`}
+        style={{ textDecoration: "none" }}
       >
-        <CardContent sx={{ mb: "25px" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}>
-            <Typography
-              sx={{ fontSize: 14, textTransform: "uppercase" }}
-              color="text.secondary"
-            >
-              {formattedDate}
-            </Typography>
-            <Typography
-              sx={{ fontSize: 14, textTransform: "uppercase" }}
-              color="text.secondary"
-            >
-              {author}
-            </Typography>
-          </Box>
-        </CardContent>
-        <CardMedia
-          component="img"
+        <Card
           sx={{
-            maxWidth: "100%",
-            height: { lg: "250px", md: "200px" },
-            mb: "35px",
-            overflow: "hidden",
-          }}
-          src={imgUrl}
-          image={imgUrl}
-          alt={alt}
-          classes={classes.cardImage}
-        />
-        <Typography
-          variant="h5"
-          component="div"
-          sx={{ textAlign: "center", fontSize: "24px", mb: "20px" }}
-        >
-          {sanitizedTitle}
-        </Typography>
-        <Typography
-          sx={{ mb: 8, textAlign: "center", fontSize: "16px" }}
-          color="text.secondary"
-          variant="body1"
-          dangerouslySetInnerHTML={{
-            __html: sanitizedDescription,
-          }}
-        ></Typography>
+            p: "20px",
+            maxWidth: "525px",
+            height: "600px",
+            cursor: "pointer",
+            position: "relative",
 
-        <CardActions
-          sx={{
-            position: "absolute",
-            bottom: "5px",
-            justifyContent: "center",
-            width: "92%",
+            margin: "0px auto",
           }}
+          className={classes.customCard}
         >
-          <Link href={`/blogs-media/${slugUrl}`} as={`/blogs-media/${slugUrl}`}>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="small"
-              classes={classes.readMore}
+          <CardContent sx={{ mb: "25px" }}>
+            <Box
+              sx={{ display: "flex", justifyContent: "space-between", mb: 1 }}
             >
-              Read More
-            </Button>
-          </Link>
-        </CardActions>
-      </Card>
+              <Typography
+                sx={{ fontSize: 14, textTransform: "uppercase" }}
+                color="text.secondary"
+              >
+                {formattedDate}
+              </Typography>
+              <Typography
+                sx={{ fontSize: 14, textTransform: "uppercase" }}
+                color="text.secondary"
+              >
+                {author}
+              </Typography>
+            </Box>
+          </CardContent>
+          <CardMedia
+            component="img"
+            sx={{
+              maxWidth: "100%",
+              height: { lg: "250px", md: "200px" },
+              mb: "35px",
+              overflow: "hidden",
+            }}
+            src={imgUrl}
+            image={imgUrl}
+            alt={alt}
+            classes={classes.cardImage}
+          />
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ textAlign: "center", fontSize: "24px", mb: "20px" }}
+          >
+            {sanitizedTitle}
+          </Typography>
+          <Typography
+            sx={{ mb: "200px", textAlign: "center", fontSize: "16px" }}
+            variant="body1"
+            dangerouslySetInnerHTML={{
+              __html: sanitizedDescription,
+            }}
+          ></Typography>
+
+          <CardActions
+            sx={{
+              position: "absolute",
+              bottom: "5px",
+              justifyContent: "center",
+
+              width: "92%",
+            }}
+          >
+            <Link
+              href={`/blogs-media/${slugUrl}`}
+              as={`/blogs-media/${slugUrl}`}
+            >
+              <Button
+                variant="outlined"
+                color="primary"
+                size="small"
+                classes={classes.readMore}
+              >
+                Read More
+              </Button>
+            </Link>
+          </CardActions>
+        </Card>
+      </Link>
     </>
   );
 };

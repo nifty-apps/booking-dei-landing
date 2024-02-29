@@ -142,13 +142,13 @@ const SingleBlog = ({ blog }) => {
               </Box>
             </Box>
           </Box>
-          <Box className={classes.blogDescriptionContainer}>
-            <Typography
-              sx={{ fontSize: 14 }}
-              dangerouslySetInnerHTML={{ __html: description }}
-              className={classes.blogDescription}
-            ></Typography>
-          </Box>
+
+          <Typography
+            sx={{ fontSize: 14 }}
+            dangerouslySetInnerHTML={{ __html: description }}
+            color="text.secondary"
+            className={classes.blogDescription}
+          ></Typography>
         </Box>
       </Box>
     </>
