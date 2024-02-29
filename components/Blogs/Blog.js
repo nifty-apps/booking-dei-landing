@@ -30,6 +30,7 @@ const useStyles = makeStyles({ uniqId: "blog" })((theme) => ({
     fontSize: "16px",
     color: "black",
     transitionDuration: "400ms",
+    margin: "10px",
     "&:hover": {
       background: "#458FCD",
       color: "white",
@@ -118,9 +119,6 @@ const Blog = ({ blog, onDeleteBlog }) => {
               {author}
             </Typography>
           </Box>
-
-          <Typography>{formattedDate}</Typography>
-          <Typography>Author: {blog.author}</Typography>
         </CardContent>
         <CardMedia
           component="img"
@@ -143,7 +141,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
           {sanitizedTitle}
         </Typography>
         <Typography
-          sx={{ mb: 1.5, textAlign: "center", fontSize: "16px" }}
+          sx={{ mb: 8, textAlign: "center", fontSize: "16px" }}
           color="text.secondary"
           variant="body1"
           dangerouslySetInnerHTML={{

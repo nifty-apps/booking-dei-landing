@@ -71,17 +71,12 @@ const blogsMedia = (props) => {
           // invert={true}
         />
 
-
         <section id="blog" className={classes.containerWrap}>
-
           <BlogBanner />
         </section>
         <section className={classes.paddingColored} id="blogs-cards">
           <Blogs />
         </section>
-      </div>
-      <div className={classes.paddingColored}>
-        <Blogs />
       </div>
 
       <div className={classes.footer}>
