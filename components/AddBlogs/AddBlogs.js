@@ -198,7 +198,7 @@ const AddBlogs = ({ isEditing }) => {
             setMetaTitle("");
             setSlugUrl("");
             setIsUploadComplete(false);
-            router.push(`/blogs-media/${data.id}`);
+            router.push(`/blogs-media/${data.slugUrl}`);
           }),
         {
           loading: "Posting...",
