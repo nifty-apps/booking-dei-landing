@@ -77,7 +77,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
   const options = { day: "numeric", month: "long", year: "numeric" };
   const formattedDate = dateObject.toLocaleDateString("en-US", options);
 
-  const getDescriptionPreview = (description, maxLength = 150) => {
+  const getDescriptionPreview = (description, maxLength = 100) => {
     const trimmedDescription = description?.trim();
     if (trimmedDescription?.length > maxLength) {
       return `${trimmedDescription.substring(0, maxLength)}...`;
@@ -87,7 +87,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
   };
 
   const descriptionPreview = getDescriptionPreview(description);
-  const titlePreview = getDescriptionPreview(title, 40);
+  const titlePreview = getDescriptionPreview(title, 30);
   const sanitizedDescription = DOMPurify.sanitize(descriptionPreview);
   const sanitizedTitle = DOMPurify.sanitize(titlePreview);
 
@@ -97,6 +97,7 @@ const Blog = ({ blog, onDeleteBlog }) => {
         sx={{
           p: "20px",
           maxWidth: "525px",
+          maxHeight: "570px",
           cursor: "pointer",
           position: "relative",
 
