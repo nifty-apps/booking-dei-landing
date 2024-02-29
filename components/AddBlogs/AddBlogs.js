@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 // import dynamic from "next/dynamic";
@@ -7,12 +7,26 @@ import Button from "@mui/material/Button";
 import EditorForm from "./editorForm";
 import { makeStyles } from "tss-react/mui";
 
+// Require Editor JS files.
+import "froala-editor/js/froala_editor.pkgd.min.js";
+import "froala-editor/js/plugins.pkgd.min.js";
+import "froala-editor/js/third_party/embedly.min.js";
+import "froala-editor/js/plugins/fullscreen.min.js";
+import "froala-editor/js/plugins/image.min.js";
+
+// Require Editor CSS files.
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import "froala-editor/css/third_party/embedly.min.css";
+import "froala-editor/css/plugins/fullscreen.min.css";
+
+import Froala from "react-froala-wysiwyg";
 // import ImageResize from "quill-image-resize-module-react";
-import ReactQuill from "react-quill";
-import BlotFormatter from "quill-blot-formatter";
+// import ReactQuill from "react-quill";
+// import BlotFormatter from "quill-blot-formatter";
 import { useTranslation } from "next-i18next";
-import Quill from "quill";
-import ImageResize from "quill-image-resize-module";
+// import Quill from "quill";
+// import ImageResize from "quill-image-resize-module";
 import { useRouter } from "next/router";
 import SeoForm from "./Seo-form";
 import { Box, CircularProgress, Typography } from "@mui/material";
@@ -20,9 +34,9 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 // const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 const AddBlogs = ({ isEditing }) => {
-  window.Quill = Quill;
-  Quill.register("modules/imageResize", ImageResize);
-  Quill.register("modules/blotFormatter", BlotFormatter);
+  // window.Quill = Quill;
+  // Quill.register("modules/imageResize", ImageResize);
+  // Quill.register("modules/blotFormatter", BlotFormatter);
 
   const { t, i18n } = useTranslation("common");
   const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
@@ -73,44 +87,44 @@ const AddBlogs = ({ isEditing }) => {
   const [metaDescription, setMetaDescription] = useState("");
   const [slugUrl, setSlugUrl] = useState("");
   const [isUploadComplete, setIsUploadComplete] = useState(false);
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, 3, 4, 5, 6, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ size: [false, "small", "large", "huge"] }],
-      [{ font: [] }],
-      [{ align: ["right", "center", "justify"] }],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
-      [{ color: ["red", "#785412"] }],
-      [{ background: ["red", "#785412"] }],
-    ],
-    imageResize: {
-      parchment: Quill.import("parchment"),
-      modules: ["Resize", "DisplaySize", "toolbar"],
-    },
-    blotFormatter: {
-      overlay: true,
-    },
-  };
+  // const modules = {
+  //   toolbar: [
+  //     [{ header: [1, 2, 3, 4, 5, 6, false] }],
+  //     ["bold", "italic", "underline", "strike", "blockquote"],
+  //     [{ size: [false, "small", "large", "huge"] }],
+  //     [{ font: [] }],
+  //     [{ align: ["right", "center", "justify"] }],
+  //     [{ list: "ordered" }, { list: "bullet" }],
+  //     ["link", "image"],
+  //     [{ color: ["red", "#785412"] }],
+  //     [{ background: ["red", "#785412"] }],
+  //   ],
+  //   imageResize: {
+  //     parchment: Quill.import("parchment"),
+  //     modules: ["Resize", "DisplaySize", "toolbar"],
+  //   },
+  //   blotFormatter: {
+  //     overlay: true,
+  //   },
+  // };
 
-  const formats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "link",
-    "color",
-    "image",
-    "background",
-    "align",
-    "size",
-    "font",
-  ];
+  // const formats = [
+  //   "header",
+  //   "bold",
+  //   "italic",
+  //   "underline",
+  //   "strike",
+  //   "blockquote",
+  //   "list",
+  //   "bullet",
+  //   "link",
+  //   "color",
+  //   "image",
+  //   "background",
+  //   "align",
+  //   "size",
+  //   "font",
+  // ];
 
   const handleProcedureContentChange = (content) => {
     setDescription(content);
@@ -213,6 +227,169 @@ const AddBlogs = ({ isEditing }) => {
     setIsUploadComplete(false);
   };
 
+  const config = {
+    attribution: false,
+    placeholder: "Start typing...",
+    toolbarButtons: {
+      moreText: {
+        buttons: [
+          "bold",
+          "italic",
+          "underline",
+          "strikeThrough",
+          "subscript",
+          "superscript",
+          "fontFamily",
+          "fontSize",
+          "textColor",
+          "backgroundColor",
+          "inlineClass",
+          "inlineStyle",
+          "clearFormatting",
+        ],
+      },
+      moreParagraph: {
+        buttons: [
+          "alignLeft",
+          "alignCenter",
+          "formatOLSimple",
+          "alignRight",
+          "alignJustify",
+          "formatOL",
+          "formatUL",
+          "paragraphFormat",
+          "paragraphStyle",
+          "lineHeight",
+          "outdent",
+          "indent",
+          "quote",
+        ],
+      },
+      moreRich: {
+        buttons: [
+          "insertLink",
+          "insertImage",
+          "insertVideo",
+          "insertTable",
+          "emoticons",
+          "fontAwesome",
+          "specialCharacters",
+          "embedly",
+          "insertFile",
+          "insertHR",
+        ],
+      },
+      moreMisc: {
+        buttons: [
+          "undo",
+          "redo",
+          "fullscreen",
+          "print",
+          "getPDF",
+          "spellChecker",
+          "selectAll",
+          "html",
+          "help",
+        ],
+        align: "right",
+        buttonsVisible: 2,
+      },
+    },
+    pluginsEnabled: [
+      "table",
+      "spell",
+      "quote",
+      "save",
+      "quickInsert",
+      "paragraphFormat",
+      "paragraphStyle",
+      "help",
+      "draggable",
+      "align",
+      "link",
+      "lists",
+      "file",
+      "image",
+      "emoticons",
+      "url",
+      "video",
+      "embedly",
+      "colors",
+      "entities",
+      "inlineClass",
+      "inlineStyle",
+      // 'codeBeautif '
+      // 'spellChecker',
+      "imageTUI",
+    ],
+    events: {
+      "image.beforeUpload": async function (images) {
+        const imageUrl = images[0];
+        const S3_BUCKET = "booking-dei-blog";
+        const REGION = "us-east-1";
+        AWS.config.update({
+          accessKeyId: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
+        });
+        const s3 = new AWS.S3({
+          params: { Bucket: S3_BUCKET },
+          region: REGION,
+        });
+        const params = {
+          Bucket: S3_BUCKET,
+          Key: imageUrl.name,
+          Body: imageUrl,
+        };
+        try {
+          const data = await s3.upload(params).promise();
+          this.image.insert(data.Location, null, null, this.image.get());
+          console.log(this.image.insert, "this");
+        } catch (err) {
+          console.error("File upload error:", err);
+        }
+        return false;
+      },
+      "image.uploaded": function (response) {
+        return true;
+      },
+    },
+  };
+  const ref = useRef({ editor: null });
+  const [isFroalaInitialized, setIsFroalaInitialized] = useState(false);
+
+  const [editor, setEditor] = useState(null);
+
+  const handleModelChange = (model) => {
+    console.log(description, "model");
+    setDescription(model);
+  };
+
+  // useEffect(() => {
+  //   ref.current.editor.data._init = null;
+  //   setEditor(ref.current.editor);
+  //   editor && setIsFroalaInitialized(true);
+  //   console.log("test", <Froala />);
+  // }, [ref.current]);
+
+  useEffect(() => {
+    if (ref.current?.editor?.data) {
+      ref.current.editor.data._init = null;
+      setEditor(ref.current.editor);
+      if (editor) {
+        setIsFroalaInitialized(true);
+      }
+    } else {
+      console.error("Editor data is not initialized yet.");
+    }
+    console.log("test", <Froala />);
+  }, [ref.current]);
+
+  // Do after initialization
+  useEffect(() => {
+    if (isFroalaInitialized) {
+      editor.html.set(description);
+    }
+  }, [isFroalaInitialized]);
   return (
     <div>
       <Box sx={{ maxWidth: "1080px", margin: "0px auto", paddingTop: "20px" }}>
@@ -243,14 +420,21 @@ const AddBlogs = ({ isEditing }) => {
           <Typography sx={{ padding: "20px", fontWeight: 500 }}>
             Description:
           </Typography>
-          <ReactQuill
+          <Froala
+            ref={ref}
+            model={description}
+            onModelChange={handleModelChange}
+            tag="textarea"
+            config={config}
+          />
+          {/* <ReactQuill
             theme="snow"
             modules={modules}
             formats={formats}
             value={description}
             onChange={handleProcedureContentChange}
             className={`${classes.quillEditor} `}
-          />
+          /> */}
         </Box>
         <Box>
           <h5>SEO Setting</h5>

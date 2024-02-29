@@ -138,7 +138,7 @@ const Blogs = () => {
             {blogs.length > 0 ? (
               blogs.map((blog) => (
                 <div key={blog.id}>
-                  <Blog blog={blog} onDeleteBlog={handleDeleteBlog} />
+                  <Blog blog={blog} />
                 </div>
               ))
             ) : (
