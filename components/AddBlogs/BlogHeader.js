@@ -18,8 +18,8 @@ const AddBlogsHeader = () => {
           Blog Page
         </Typography>
         <Link
-          href={"/dashboard/blogs/add-blog/"}
-          as={"/dashboard/blogs/add-blog/"}
+          href={"/dashboard/blogs/add-blogs/"}
+          as={"/dashboard/blogs/add-blogs/"}
         >
           <Button
             sx={{
