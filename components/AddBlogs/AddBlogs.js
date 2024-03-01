@@ -390,6 +390,13 @@ const AddBlogs = ({ isEditing }) => {
       editor.html.set(description);
     }
   }, [isFroalaInitialized]);
+
+  // Do after initialization
+  useEffect(() => {
+    if (isFroalaInitialized) {
+      editor.html.set(description);
+    }
+  }, [isFroalaInitialized]);
   return (
     <div>
       <Box sx={{ maxWidth: "1080px", margin: "0px auto", paddingTop: "20px" }}>
