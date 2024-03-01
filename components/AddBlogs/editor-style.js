@@ -1,7 +1,7 @@
 import { makeStyles } from "tss-react/mui";
 // import errorDeco from "~/public/images/saas/error-deco.png";
 
-const useStyles = makeStyles({ uniqId: "add-blogs" })((theme) => ({
+const useStyles = makeStyles({ uniqId: "add-blog" })((theme) => ({
   errorWrap: {
     position: "relative",
     width: "70%",
