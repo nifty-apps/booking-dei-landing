@@ -126,7 +126,5 @@ module.exports = withImages({
 
     return config;
   },
-  experimental: {
-    serverMinification: false,
-  },
+  swcMinify: false,
 });
