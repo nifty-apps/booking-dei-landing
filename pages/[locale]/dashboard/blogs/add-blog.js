@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 import DashboardMenu from "../../../../components/Dashboard/Dashboard";
 import withAdmin from "../../../../components/WithAdmin/WithAdmin";
 
-const AddBlogs = dynamic(() => import("../../../../components/AddBlogs"), {
+const AddBlogs = dynamic(() => import("~/components/AddBlogs"), {
   ssr: false,
 });
 const useStyles = makeStyles({ uniqId: "AddBlogManagement" })((theme) => ({

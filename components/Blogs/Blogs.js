@@ -135,8 +135,8 @@ const Blogs = () => {
               },
             }}
           >
-            {blogs.length > 0 ? (
-              blogs.map((blog) => (
+            {blogs?.length > 0 ? (
+              blogs?.map((blog) => (
                 <div key={blog.id}>
                   <Blog blog={blog} />
                 </div>
