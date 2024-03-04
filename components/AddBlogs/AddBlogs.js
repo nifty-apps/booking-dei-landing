@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-// import "react-quill/dist/quill.snow.css";
-// import dynamic from "next/dynamic";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import EditorForm from "./editorForm";
 import { makeStyles } from "tss-react/mui";
@@ -19,19 +16,14 @@ import "froala-editor/css/froala_style.min.css";
 import "froala-editor/css/froala_editor.pkgd.min.css";
 import "froala-editor/css/third_party/embedly.min.css";
 import "froala-editor/css/plugins/fullscreen.min.css";
+import "froala-editor/css/plugins/image.min.css";
 
 import Froala from "react-froala-wysiwyg";
-// import ImageResize from "quill-image-resize-module-react";
-// import ReactQuill from "react-quill";
-// import BlotFormatter from "quill-blot-formatter";
 import { useTranslation } from "next-i18next";
-// import Quill from "quill";
-// import ImageResize from "quill-image-resize-module";
+
 import { useRouter } from "next/router";
 import SeoForm from "./Seo-form";
 import { Box, CircularProgress, Typography } from "@mui/material";
-
-// const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
 const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
   container: {
@@ -72,10 +64,6 @@ const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
 }));
 
 const AddBlogs = ({ isEditing }) => {
-  // window.Quill = Quill;
-  // Quill.register("modules/imageResize", ImageResize);
-  // Quill.register("modules/blotFormatter", BlotFormatter);
-
   const { t, i18n } = useTranslation("common");
 
   const { classes } = useStyles();
@@ -89,48 +77,6 @@ const AddBlogs = ({ isEditing }) => {
   const [metaDescription, setMetaDescription] = useState("");
   const [slugUrl, setSlugUrl] = useState("");
   const [isUploadComplete, setIsUploadComplete] = useState(false);
-  // const modules = {
-  //   toolbar: [
-  //     [{ header: [1, 2, 3, 4, 5, 6, false] }],
-  //     ["bold", "italic", "underline", "strike", "blockquote"],
-  //     [{ size: [false, "small", "large", "huge"] }],
-  //     [{ font: [] }],
-  //     [{ align: ["right", "center", "justify"] }],
-  //     [{ list: "ordered" }, { list: "bullet" }],
-  //     ["link", "image"],
-  //     [{ color: ["red", "#785412"] }],
-  //     [{ background: ["red", "#785412"] }],
-  //   ],
-  //   imageResize: {
-  //     parchment: Quill.import("parchment"),
-  //     modules: ["Resize", "DisplaySize", "toolbar"],
-  //   },
-  //   blotFormatter: {
-  //     overlay: true,
-  //   },
-  // };
-
-  // const formats = [
-  //   "header",
-  //   "bold",
-  //   "italic",
-  //   "underline",
-  //   "strike",
-  //   "blockquote",
-  //   "list",
-  //   "bullet",
-  //   "link",
-  //   "color",
-  //   "image",
-  //   "background",
-  //   "align",
-  //   "size",
-  //   "font",
-  // ];
-
-  const handleProcedureContentChange = (content) => {
-    setDescription(content);
-  };
 
   const router = useRouter();
   const { slug } = router.query;
@@ -427,14 +373,6 @@ const AddBlogs = ({ isEditing }) => {
             tag="textarea"
             config={config}
           />
-          {/* <ReactQuill
-            theme="snow"
-            modules={modules}
-            formats={formats}
-            value={description}
-            onChange={handleProcedureContentChange}
-            className={`${classes.quillEditor} `}
-          /> */}
         </Box>
         <Box>
           <h5>SEO Setting</h5>
