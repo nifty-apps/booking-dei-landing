@@ -43,6 +43,9 @@ export async function getBlogs(page = 1, limit = 10) {
     const blogs = await prisma.blogs.findMany({
       skip: (pageInt - 1) * limitInt,
       take: limitInt,
+      orderBy: {
+        createdAt: "desc",
+      },
     });
     return blogs;
   } catch (error) {
