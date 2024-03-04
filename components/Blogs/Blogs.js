@@ -101,8 +101,8 @@ const Blogs = () => {
           style={{
             opacity: 0.5,
             position: "fixed",
-            top: "calc(50% - 50px)",
-            left: "calc(50% - 50px)",
+            top: "calc(50% )",
+            left: "calc(50% )",
             padding: "80px",
           }}
           src="/images/loading.gif"

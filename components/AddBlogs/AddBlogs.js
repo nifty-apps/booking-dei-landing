@@ -338,7 +338,14 @@ const AddBlogs = ({ isEditing }) => {
 
   return (
     <div>
-      <Box sx={{ maxWidth: "1080px", margin: "0px auto", paddingTop: "20px" }}>
+      <Box
+        sx={{
+          maxWidth: "1080px",
+          margin: "0px auto",
+          paddingTop: "20px",
+          paddingX: "120px",
+        }}
+      >
         <Typography
           sx={{
             fontSize: "26px",
@@ -386,25 +393,34 @@ const AddBlogs = ({ isEditing }) => {
           />
         </Box>
 
-        <Button
-          variant="contained"
-          size="large"
-          type="submit"
-          onClick={handleSubmit}
-          disabled={isUploadComplete}
+        <Box
           sx={{
-            width: "30%",
-            background: "#2c89d8",
-            margin: "20px 0 0 20px",
-            "&:hover": { background: "#004c8c" },
-            color: "#fefefe",
+            width: "100vw",
+            marginY: "20px",
           }}
         >
-          {isEditing ? "Update your post" : "Publish your post"}
-          {isUploadComplete && (
-            <CircularProgress size={18} sx={{ marginLeft: "5px" }} />
-          )}
-        </Button>
+          <Button
+            variant="contained"
+            size="large"
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isUploadComplete}
+            sx={{
+              margin: "auto",
+              background: "#2c89d8",
+              "&:hover": { background: "#004c8c" },
+              color: "#fefefe",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {isEditing ? "Update your post" : "Publish your post"}
+            {isUploadComplete && (
+              <CircularProgress size={18} sx={{ marginLeft: "5px" }} />
+            )}
+          </Button>
+        </Box>
       </Box>
     </div>
   );

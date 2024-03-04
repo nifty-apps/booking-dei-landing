@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { FormControl, Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Paper from "@mui/material/Button";
-import Typography from "@mui/material/Button";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import Container from "@mui/material/Container";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -153,11 +153,13 @@ const EditorForm = (props) => {
               className={classes.uploadArea}
               onClick={() => document.getElementById("file-input").click()}
             >
-              <Typography
+              <Button
                 variant="body1"
                 style={{
                   color: isUploadComplete ? "green" : "gray",
                   width: "380px",
+                  height: "40px",
+                  margin: "0 auto",
                 }}
                 className={classes.placeholderText}
                 startIcon={<CloudUploadIcon className={classes.uploadIcon} />}
@@ -167,7 +169,7 @@ const EditorForm = (props) => {
                   : imgUrl
                     ? "Image uploaded!"
                     : "Select title image"}
-              </Typography>
+              </Button>
               {/* <Button className={classes.uploadButton}>Upload Image</Button> */}
               <input
                 accept="image/*"
