@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
-import "react-quill/dist/quill.snow.css";
+// import "react-quill/dist/quill.snow.css";
 // import dynamic from "next/dynamic";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
@@ -345,7 +345,6 @@ const AddBlogs = ({ isEditing }) => {
         try {
           const data = await s3.upload(params).promise();
           this.image.insert(data.Location, null, null, this.image.get());
-          console.log(this.image.insert, "this");
         } catch (err) {
           console.error("File upload error:", err);
         }
@@ -362,7 +361,6 @@ const AddBlogs = ({ isEditing }) => {
   const [editor, setEditor] = useState(null);
 
   const handleModelChange = (model) => {
-    console.log(description, "model");
     setDescription(model);
   };
 
@@ -383,7 +381,6 @@ const AddBlogs = ({ isEditing }) => {
     } else {
       console.error("Editor data is not initialized yet.");
     }
-    console.log("test", <Froala />);
   }, [ref.current]);
 
   // Do after initialization
