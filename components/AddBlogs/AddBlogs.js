@@ -33,49 +33,51 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 
 // const ReactQuill = dynamic(import("react-quill"), { ssr: false });
 
+const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
+  container: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    margin: theme.spacing(0, 0),
+    padding: theme.spacing(2),
+  },
+  button: {
+    marginTop: theme.spacing(8),
+  },
+  quillDiv: {
+    height: "100%",
+    maxWidth: "100vw",
+    marginTop: theme.spacing(10),
+  },
+  quillEditor: {
+    height: "100%",
+    maxWidth: "76%",
+    marginLeft: "20px",
+  },
+  editorWithSpace: {
+    margin: "200px",
+  },
+  seoForm: {
+    background: "white",
+    boxShadow: "0 1.5px 12px 2px rgba(0, 0, 0, 0.28)",
+    padding: "20px",
+    borderRadius: "10px",
+    margin: theme.spacing(4, 0),
+  },
+}));
+
 const AddBlogs = ({ isEditing }) => {
   // window.Quill = Quill;
   // Quill.register("modules/imageResize", ImageResize);
   // Quill.register("modules/blotFormatter", BlotFormatter);
 
   const { t, i18n } = useTranslation("common");
-  const useStyles = makeStyles({ uniqId: "editor" })((theme) => ({
-    container: {
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      position: "relative",
-      alignItems: "center",
-      justifyContent: "center",
-      alignContent: "center",
-      margin: theme.spacing(0, 0),
-      padding: theme.spacing(2),
-    },
-    button: {
-      marginTop: theme.spacing(8),
-    },
-    quillDiv: {
-      height: "100%",
-      maxWidth: "100vw",
-      marginTop: theme.spacing(10),
-    },
-    quillEditor: {
-      height: "100%",
-      maxWidth: "76%",
-      marginLeft: "20px",
-    },
-    editorWithSpace: {
-      margin: "200px",
-    },
-    seoForm: {
-      background: "white",
-      boxShadow: "0 1.5px 12px 2px rgba(0, 0, 0, 0.28)",
-      padding: "20px",
-      borderRadius: "10px",
-      margin: theme.spacing(4, 0),
-    },
-  }));
+
   const { classes } = useStyles();
   const [imgUrl, setImgUrl] = useState("");
   const [tags, setTags] = useState("");

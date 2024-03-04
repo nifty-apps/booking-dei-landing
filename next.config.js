@@ -95,9 +95,6 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = withImages({
-  experimental: {
-    serverMinification: false,
-  },
   trailingSlash: true,
   images: {
     disableStaticImages: true,
@@ -128,5 +125,8 @@ module.exports = withImages({
     );
 
     return config;
+  },
+  experimental: {
+    serverMinification: false,
   },
 });
